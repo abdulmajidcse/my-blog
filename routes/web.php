@@ -18,5 +18,5 @@ Route::name('frontend.')->namespace('Frontend')->group(function() {
 Auth::routes(['register' => false]);
 
 Route::prefix('admin')->name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('home', 'HomeController@index')->name('home');
 });
