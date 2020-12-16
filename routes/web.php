@@ -40,6 +40,13 @@ Route::prefix('admin')->group(function() {
      */
     Route::name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
         Route::get('/', 'HomeController@index')->name('home');
+
+        // Blog Routes
+        Route::prefix('blog')->name('blog.')->group(function() {
+            // Category Routes
+            Route::resource('categories', 'BlogCategoryController');
+        });
+
     });
 
 

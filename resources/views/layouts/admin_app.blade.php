@@ -9,6 +9,8 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <link rel="icon" type="image/jpg" href="{{ asset('assets/static_uploads/abdulmajid.jpg') }}">
+
   <title>@yield('admin_title', 'Web Developer') | {{ config('app.name') }}</title>
 
   <!-- Font Awesome -->
@@ -77,16 +79,7 @@
 
     <!-- Main content -->
     <section class="content">
-
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-body">
-          @yield('admin_content')
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-
+      @yield('admin_content')
     </section>
     <!-- /.content -->
   </div>

@@ -21,6 +21,8 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <link rel="icon" type="image/jpg" href="{{ asset('assets/static_uploads/abdulmajid.jpg') }}">
+
   <title>@yield('frontend_title', 'Web Developer') | {{ config('app.name') }}</title>
 
   <!-- Font Awesome Icons -->
