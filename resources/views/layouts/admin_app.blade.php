@@ -9,9 +9,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>
-    @yield('admin_title', 'Web Developer | ' . config('app.name'))
-  </title>
+  <title>@yield('admin_title', 'Web Developer') | {{ config('app.name') }}</title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">

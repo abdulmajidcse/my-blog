@@ -5,7 +5,7 @@
 @endsection
 
 @section('frontend_title')
-    {{ 'Home | ' . config('app.name') }}
+    {{ 'Home' }}
 @endsection
 
 @section('blog_content')
