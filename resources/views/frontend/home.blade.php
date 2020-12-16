@@ -1,5 +1,13 @@
 @extends('layouts.frontend_app')
 
+@section('frontend_meta_tags')
+    <meta name="author" content="Abdul Majid">
+@endsection
+
+@section('frontend_title')
+    {{ 'Home | ' . config('app.name') }}
+@endsection
+
 @section('blog_content')
     <!-- Post -->
     <div class="post">
