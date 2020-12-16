@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+  {{-- <meta name='google-site-verification' content="" /> --}}
+  <!-- [ Meta Tag SEO ] -->
+  <meta name='language' content='English, Bangla'/>
+  <meta name='url' content="{{ Request::url() }}" />
+  <meta name='identifier-URL' content="{{ Request::url() }}" />
+  <meta name='type' content='Website' />
+  <meta name="author" content="Abdul Majid" />
+  <meta property="og:url" content="{{ Request::url() }}" />
+  <meta property="og:type" content="Website" />
+
   @yield('frontend_meta_tags')
 
   <!-- CSRF Token -->
