@@ -50,7 +50,7 @@
           <div class="row">
             
             {{-- Blog post start from here --}}
-            <div class="col-md-9">
+            <div class="col-md-7 col-lg-8">
               <div class="card">
                 <div class="card-body">
 
@@ -62,7 +62,7 @@
             </div>
             <!-- /.col -->
 
-            <div class="col-md-3">
+            <div class="col-md-5 col-lg-4">
   
               @include('layouts.templates.frontend.right_sidebar')
 

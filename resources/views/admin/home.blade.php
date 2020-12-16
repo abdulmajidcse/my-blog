@@ -1,7 +1,7 @@
 @extends('layouts.admin_app')
 
 @section('admin_title')
-    {{ 'Home | ' . config('app.name') }}
+    {{ 'Dashboard | ' . config('app.name') }}
 @endsection
 
 @section('admin_content')
