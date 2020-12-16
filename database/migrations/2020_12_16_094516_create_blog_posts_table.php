@@ -15,6 +15,16 @@ class CreateBlogPostsTable extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('blog_category_id')
+                ->constrained('blog_categories')
+                ->onDelete('cascade');
+            $table->string('title')->unique();
+            $table->string('slug')->unique();
+            $table->string('image')->nullable();
+            $table->longText('content');
+            $table->text('meta_keyword');
+            $table->text('meta_description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
