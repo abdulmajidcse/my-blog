@@ -64,8 +64,13 @@ class BlogCategoryController extends Controller
      */
     public function edit(BlogCategory $blogCategory)
     {
-        return response()->json($blogCategory);
         return view('admin.blog_category.edit', ['blogCategory' => $blogCategory]);
+    }
+
+
+    public function test(BlogCategory $blogCategory)
+    {
+        return $blogCategory;
     }
 
     /**

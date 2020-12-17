@@ -17,7 +17,7 @@
           <h3 class="card-title">All Category</h3>
 
           <div class="card-tools">
-            <a href="{{ route('admin.blog.categories.create') }}" class="btn btn-sm btn-primary">Create Category</a>
+            <a href="{{ route('admin.blog-categories.create') }}" class="btn btn-sm btn-primary">Create Category</a>
           </div>
         </div>
         <div class="card-body">
@@ -47,9 +47,9 @@
                                             Action
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ route('admin.blog.categories.edit', $blogCategory) }}"><i class="fas fa-edit"></i> Edit</a>
+                                            <a class="dropdown-item" href="{{ route('admin.blog-categories.edit', $blogCategory) }}"><i class="fas fa-edit"></i> Edit</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" id="destroy" href="{{ route('admin.blog.categories.destroy', $blogCategory) }}"><i class="fas fa-trash-alt"></i> Delete</a>
+                                            <a class="dropdown-item" id="destroy" href="{{ route('admin.blog-categories.destroy', $blogCategory) }}"><i class="fas fa-trash-alt"></i> Delete</a>
                                         </div>
                                     </div>
 

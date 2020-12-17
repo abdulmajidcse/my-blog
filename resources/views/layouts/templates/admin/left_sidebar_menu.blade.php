@@ -35,13 +35,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('admin.blog.categories.create') }}" class="nav-link">
+                <a href="{{ route('admin.blog-categories.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.blog.categories.index') }}" class="nav-link">
+                <a href="{{ route('admin.blog-categories.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Category</p>
                 </a>
@@ -69,6 +69,31 @@
                 <a href="../layout/top-nav-sidebar.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Top Navigation + Sidebar</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          {{-- Trash --}}
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Trash
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../layout/top-nav.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Blog Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Blog Posts</p>
                 </a>
               </li>
             </ul>

@@ -39,17 +39,14 @@ Route::prefix('admin')->group(function() {
     Route::name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
         Route::get('/', 'HomeController@index')->name('home');
 
-        // Blog Routes
-        Route::prefix('blog')->name('blog.')->group(function() {
+        // name to slug convert route
+        Route::post('create-slug', function(Request $request) {
+            // return a slug in json format
+            return response()->json(['slug' => Str::slug($request->name, '-')]);
+        })->name('slug.create');
 
-            Route::post('create-slug', function(Request $request) {
-                // return a slug in json format
-                return response()->json(['slug' => Str::slug($request->name, '-')]);
-            })->name('slug.create');
-
-            // Category Routes
-            Route::resource('categories', 'BlogCategoryController')->except(['show']);
-        });
+        // Blog Category Routes
+        Route::resource('blog-categories', 'BlogCategoryController')->except(['show']);
 
     });
 

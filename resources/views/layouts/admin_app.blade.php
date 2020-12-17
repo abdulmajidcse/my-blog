@@ -108,6 +108,33 @@
 
 <script>
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // name to slug convert
+    $('#name').change(function() {
+      
+      let slug = $('#name').val()
+      $.ajax({
+        method: "POST",
+        url: "{{ route('admin.slug.create') }}",
+        data: { name: slug }
+      })
+      .done((success) => {
+        $('#slug').val(success.slug)
+      })
+      .fail((error) => {
+        Swal.fire({
+          icon: 'error',
+          text: 'Name to slug convert failed!',
+        })
+      })
+
+    })
+
   // action message
   @if(Session::has('message') AND Session::has('alert-type'))
     Swal.fire({

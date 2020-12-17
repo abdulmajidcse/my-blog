@@ -18,7 +18,7 @@ class CreateBlogPostsTable extends Migration
             $table->foreignId('blog_category_id')
                 ->constrained('blog_categories')
                 ->onDelete('cascade');
-            $table->string('title')->unique();
+            $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->longText('content');

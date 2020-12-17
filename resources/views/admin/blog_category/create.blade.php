@@ -11,13 +11,13 @@
           <h3 class="card-title">Create Category</h3>
 
           <div class="card-tools">
-            <a href="{{ route('admin.blog.categories.index') }}" class="btn btn-sm btn-primary">All Category</a>
+            <a href="{{ route('admin.blog-categories.index') }}" class="btn btn-sm btn-primary">All Category</a>
           </div>
         </div>
         <div class="card-body">
           
           {{-- Create Category Form --}}
-          <form role="form" action="{{ route('admin.blog.categories.store') }}" method="POST">
+          <form role="form" action="{{ route('admin.blog-categories.store') }}" method="POST">
             @csrf
             <div class="form-group">
               <label for="name">Name *</label>
@@ -69,33 +69,3 @@
     </div>
 
 @endsection
-
-@push('admin_scripts')
-  <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    $('#name').change(function() {
-      
-      let slug = $('#name').val()
-      $.ajax({
-        method: "POST",
-        url: "{{ route('admin.blog.slug.create') }}",
-        data: { name: slug }
-      })
-      .done((success) => {
-        $('#slug').val(success.slug)
-      })
-      .fail((error) => {
-        Swal.fire({
-          icon: 'error',
-          text: 'Name to slug convert failed!',
-        })
-      })
-
-    })
-  </script>
-@endpush
