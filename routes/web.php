@@ -48,6 +48,9 @@ Route::prefix('admin')->group(function() {
         // Blog Category Routes
         Route::resource('blog-categories', 'BlogCategoryController')->except(['show']);
 
+        // Blog Post Routes
+        Route::resource('blog-posts', 'BlogPostController')->except(['show']);
+
     });
 
 

@@ -13,7 +13,7 @@ class BlogCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $blogCategories = BlogCategory::orderBy('id', 'desc')->get();
         return view('admin.blog_category.index', ['blogCategories' => $blogCategories]);
