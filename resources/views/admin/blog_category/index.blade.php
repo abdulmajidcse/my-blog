@@ -39,12 +39,31 @@
                             <td> {{ $blogCategory->name }} </td>
                             <td> {{ $blogCategory->slug }} </td>
                             <td>
-                                edit
+                                <div class="dropdown">
+
+                                    <!-- Action button -->
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{ route('admin.blog.categories.edit', $blogCategory) }}"><i class="fas fa-edit"></i> Edit</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" id="destroy" href="{{ route('admin.blog.categories.destroy', $blogCategory) }}"><i class="fas fa-trash-alt"></i> Delete</a>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
-            </table>            
+            </table>
+            
+            {{-- Delete form will add here --}}
+            <div id="add-destroy-form" class="d-none">
+                
+            </div>
 
         </div>
         <!-- /.card-body -->

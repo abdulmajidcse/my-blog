@@ -103,6 +103,77 @@
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+<!-- sweet alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+
+  // action message
+  @if(Session::has('message') AND Session::has('alert-type'))
+    Swal.fire({
+      icon: "{{ Session::get('alert-type') }}",
+      text: "{{ Session::get('message') }}",
+    })
+  @endif
+
+  //return delete confirm message**********
+  $(document).on("click", "#destroy", function(e){
+      e.preventDefault()
+
+      let link = $(this).attr("href");
+
+      Swal.fire({
+        title: 'Are you sure?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $('#add-destroy-form').html(`
+            <form id="destroy-form" action="${link}" method="POST">
+                @csrf
+                @method('delete')
+            </form>
+          `)
+          document.getElementById('destroy-form').submit()
+        } else {
+          Swal.fire({
+            icon: 'success',
+            text: 'Canceled!',
+          })
+        }
+      })
+
+  });
+
+  //return confirm message**********
+  $(document).on("click", "#confirm", function(e){
+      e.preventDefault();
+      let link = $(this).attr("href");
+
+      Swal.fire({
+        title: 'Are you sure?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = link;
+        } else {
+          Swal.fire({
+            icon: 'success',
+            text: 'Canceled!',
+          })
+        }
+      })
+
+  });
+
+</script>
 
 @stack('admin_scripts')
 

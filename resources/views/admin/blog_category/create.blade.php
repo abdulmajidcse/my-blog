@@ -19,59 +19,83 @@
           {{-- Create Category Form --}}
           <form role="form" action="{{ route('admin.blog.categories.store') }}" method="POST">
             @csrf
-
-            <div class="card-body">
-
-              <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-              </div>
-
-              <div class="form-group">
-                <label for="slug">Slug *</label>
-                <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" required>
-                @error('slug')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-              </div>
-
-              <div class="form-group">
-                <label for="meta_keyword">Meta Keyword *</label>
-                <textarea rows="4" class="form-control @error('meta_keyword') is-invalid @enderror" id="meta_keyword" name="meta_keyword" required>{{ old('meta_keyword') }}</textarea>
-                @error('meta_keyword')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-              </div>
-
-              <div class="form-group">
-                <label for="meta_description">Meta Description *</label>
-                <textarea rows="8" class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" required>{{ old('meta_description') }}</textarea>
-                @error('meta_description')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-              </div>
-
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+              @error('name')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div>
-            <!-- /.card-body -->
 
-            <div class="card-footer">
-              <button type="submit" class="btn btn-primary">Save</button>
+            <div class="form-group">
+              <label for="slug">Slug *</label>
+              <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ old('slug') }}" required>
+              @error('slug')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
             </div>
+
+            <div class="form-group">
+              <label for="meta_keyword">Meta Keyword *</label>
+              <textarea rows="4" class="form-control @error('meta_keyword') is-invalid @enderror" id="meta_keyword" name="meta_keyword" required>{{ old('meta_keyword') }}</textarea>
+              @error('meta_keyword')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
+            </div>
+
+            <div class="form-group">
+              <label for="meta_description">Meta Description *</label>
+              <textarea rows="8" class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" required>{{ old('meta_description') }}</textarea>
+              @error('meta_description')
+                  <span class="invalid-feedback" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </span>
+              @enderror
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+
           </form>
 
         </div>
         <!-- /.card-body -->
+
     </div>
 
 @endsection
+
+@push('admin_scripts')
+  <script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#name').change(function() {
+      
+      let slug = $('#name').val()
+      $.ajax({
+        method: "POST",
+        url: "{{ route('admin.blog.slug.create') }}",
+        data: { name: slug }
+      })
+      .done((success) => {
+        $('#slug').val(success.slug)
+      })
+      .fail((error) => {
+        Swal.fire({
+          icon: 'error',
+          text: 'Name to slug convert failed!',
+        })
+      })
+
+    })
+  </script>
+@endpush
