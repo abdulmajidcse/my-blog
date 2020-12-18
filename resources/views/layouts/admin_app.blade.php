@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+  <!-- Magnific Popup core CSS file -->
+  <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -104,7 +106,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
 <!-- sweet alert -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{ asset('assets/js/sweetalert2010.min.js') }}"></script>
+
+<!-- Magnific Popup core JS file -->
+<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
 
 <script>
 
@@ -173,7 +178,7 @@
         }
       })
 
-  });
+  })
 
   //return confirm message**********
   $(document).on("click", "#confirm", function(e){
@@ -198,7 +203,15 @@
         }
       })
 
-  });
+  })
+
+  $('.magnific_image_container').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    gallery:{
+        enabled: true
+    }
+  })
 
 </script>
 

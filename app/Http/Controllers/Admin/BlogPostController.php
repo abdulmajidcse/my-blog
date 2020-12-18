@@ -47,6 +47,10 @@ class BlogPostController extends Controller
             'content'          => 'required|string',
             'meta_keyword'     => 'required|string',
             'meta_description' => 'required|string',
+        ],
+        [
+            'blog_category_id.required' => 'The post category field is required.',
+            'blog_category_id.numeric' => 'The post category must be a number.',
         ]);
 
         $blogPost                   = new BlogPost();
@@ -69,6 +73,8 @@ class BlogPostController extends Controller
             // save name in table
             $blogPost->image = $image_full_name;
         }
+
+        $blogPost->save();
         
         $request->session()->flash('message', 'Blog Post Saved.');
         $request->session()->flash('alert-type', 'success');
@@ -98,12 +104,16 @@ class BlogPostController extends Controller
     {
         $request->validate([
             'blog_category_id' => 'required|numeric',
-            'name'             => 'required|string|unique:blog_posts,name,',$blogPost->id,
+            'name'             => 'required|string|unique:blog_posts,name,'.$blogPost->id,
             'slug'             => 'required|string|unique:blog_posts,slug,'.$blogPost->id,
             'image'            => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
             'content'          => 'required|string',
             'meta_keyword'     => 'required|string',
             'meta_description' => 'required|string',
+        ],
+        [
+            'blog_category_id.required' => 'The post category field is required.',
+            'blog_category_id.numeric' => 'The post category must be a number.',
         ]);
 
         $blogPost->blog_category_id = $request->blog_category_id;
@@ -131,6 +141,8 @@ class BlogPostController extends Controller
             // save name in table
             $blogPost->image = $image_full_name;
         }
+
+        $blogPost->save();
         
         $request->session()->flash('message', 'Blog Post Saved.');
         $request->session()->flash('alert-type', 'success');

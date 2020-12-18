@@ -24,4 +24,9 @@ class BlogPost extends Model
         'meta_keyword',
         'meta_description',
     ];
+
+    public function blogCategory()
+    {
+        return $this->belongsTo(BlogCategory::class);
+    }
 }

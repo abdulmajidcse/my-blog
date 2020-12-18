@@ -29,6 +29,8 @@
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+  <!-- Magnific Popup core CSS file -->
+  <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
@@ -109,6 +111,18 @@
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+<!-- Magnific Popup core JS file -->
+<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
+
+<script>
+  $('.magnific_image_container').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    gallery:{
+        enabled: true
+    }
+  })
+</script>
 
 @stack('frontend_scripts')
 
