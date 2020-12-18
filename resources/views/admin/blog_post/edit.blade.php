@@ -34,9 +34,11 @@
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
-              <div class="magnific_image_container mt-2" style="width: 200px;">
-                <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100"></a>
-              </div>
+              @if ($blogPost->image)
+                <div class="magnific_image_container mt-2" style="width: 200px;">
+                  <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100"></a>
+                </div>
+              @endif
             </div>
 
             <div class="form-group">
@@ -66,7 +68,7 @@
 
             <div class="form-group">
               <label for="slug">Slug *</label>
-              <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ $blogPost->name }}" required>
+              <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug" value="{{ $blogPost->slug }}" required>
               @error('slug')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>

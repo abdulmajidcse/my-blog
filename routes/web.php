@@ -10,7 +10,18 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::name('frontend.')->namespace('Frontend')->group(function() {
+    // All blog posts
     Route::get('/', 'HomeController@index')->name('home');
+
+    /**
+     * Frontend Blog Routes
+     */
+    Route::prefix('blog')->name('blog.')->group(function() {
+        // all post by category
+        Route::get('category/{slug}', 'BlogController@postsByCategory')->name('category');
+        // single post
+        Route::get('{slug}', 'BlogController@singlePost')->name('post');
+    });
 });
 
 

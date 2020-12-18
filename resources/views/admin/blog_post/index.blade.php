@@ -32,6 +32,8 @@
                     <th>Name</th>
                     <th>Slug</th>
                     <th>Content</th>
+                    <th>Meta Keyword</th>
+                    <th>Meta Description</th>
                     <th>Option</th>
                     </tr>
                 </thead>
@@ -40,14 +42,19 @@
                         <tr>
                             <td> {{ ++$loop->index }} </td>
                             <td> 
-                                <div class="magnific_image_container">
-                                    <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100"></a>
-                                </div>
+                                @if ($blogPost->image)
+                                    <div class="magnific_image_container">
+                                        <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100"></a>
+                                    </div>
+                                @endif
+                                
                             </td>
                             <td> {{ optional($blogPost->blogCategory)->name }} </td>
                             <td> {{ $blogPost->name }} </td>
                             <td> {{ $blogPost->slug }} </td>
-                            <td> {!! Str::words($blogPost->content, 65) !!} </td>
+                            <td> {!! Str::words($blogPost->content, 20) !!} </td>
+                            <td> {{ $blogPost->meta_keyword }} </td>
+                            <td> {{ $blogPost->meta_description }} </td>
                             <td>
                                 <div class="dropdown">
 
@@ -96,7 +103,7 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": false,
+            "autoWidth": true,
             "responsive": true,
         });
     </script>

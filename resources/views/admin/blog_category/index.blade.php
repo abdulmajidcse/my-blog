@@ -29,6 +29,8 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Slug</th>
+                    <th>Meta Keyword</th>
+                    <th>Meta Description</th>
                     <th>Option</th>
                     </tr>
                 </thead>
@@ -38,6 +40,8 @@
                             <td> {{ ++$loop->index }} </td>
                             <td> {{ $blogCategory->name }} </td>
                             <td> {{ $blogCategory->slug }} </td>
+                            <td> {{ $blogCategory->meta_keyword }} </td>
+                            <td> {{ $blogCategory->meta_description }} </td>
                             <td>
                                 <div class="dropdown">
 

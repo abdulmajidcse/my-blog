@@ -16,9 +16,6 @@
           <li class="nav-item">
             <a href="{{ route('frontend.home') }}" class="nav-link">Home</a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Blog</a>
-          </li>
 
           <li class="nav-item dropdown">
             <a id="categoriesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Categories</a>

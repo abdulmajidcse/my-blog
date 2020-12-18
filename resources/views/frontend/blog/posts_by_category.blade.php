@@ -5,11 +5,11 @@
 @endsection
 
 @section('frontend_title')
-    {{ 'Home' }}
+    {{ $blogCategory->name . ' - Category' }}
 @endsection
 
 @section('blog_content')
-
+    <h2 class="text-center text-muted font-weight-bold border-bottom">Category: {{ $blogCategory->name }}</h2>
     @foreach ($blogPosts as $blogPost)
         <!-- Post -->
         <div class="post">
