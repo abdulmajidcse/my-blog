@@ -52,10 +52,10 @@
             <a id="contactDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Contact</a>
             <ul aria-labelledby="contactDropdown" class="dropdown-menu border-0 shadow">
               <li class="m-2 text-center">
-                <a href="#" class="btn btn-sm btn-primary mb-1">YouTube</a>
-                <a href="#" class="btn btn-sm btn-primary mb-1">Facebook</a>
-                <a href="#" class="btn btn-sm btn-primary mb-1">LinkedIn</a>
-                <a href="#" class="btn btn-sm btn-primary mb-1">Github</a>
+                <a href="https://www.youtube.com/channel/UC74l6d0jcefsx0JvHvW4K2Q" class="btn btn-sm btn-danger mb-1">YouTube</a>
+                <a href="https://facebook.com/abdulmajidcse" class="btn btn-sm btn-primary mb-1">Facebook</a>
+                <a href="https://www.linkedin.com/in/abdulmajidcse" class="btn btn-sm btn-info mb-1">LinkedIn</a>
+                <a href="https://github.com/abdulmajidcse" class="btn btn-sm btn-dark mb-1">Github</a>
              </li>
             </ul>
           </li>

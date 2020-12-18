@@ -44,7 +44,7 @@
                                     <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100"></a>
                                 </div>
                             </td>
-                            <td> {{ $blogPost->blogCategory->name }} </td>
+                            <td> {{ optional($blogPost->blogCategory)->name }} </td>
                             <td> {{ $blogPost->name }} </td>
                             <td> {{ $blogPost->slug }} </td>
                             <td> {!! Str::words($blogPost->content, 65) !!} </td>
@@ -96,7 +96,7 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true,
+            "autoWidth": false,
             "responsive": true,
         });
     </script>

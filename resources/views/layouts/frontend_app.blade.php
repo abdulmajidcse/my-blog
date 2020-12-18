@@ -6,16 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  {{-- <meta name='google-site-verification' content="" /> --}}
-  <!-- [ Meta Tag SEO ] -->
-  <meta name='language' content='English, Bangla'/>
-  <meta name='url' content="{{ Request::url() }}" />
-  <meta name='identifier-URL' content="{{ Request::url() }}" />
-  <meta name='type' content='Website' />
-  <meta name="author" content="Abdul Majid" />
-  <meta property="og:url" content="{{ Request::url() }}" />
-  <meta property="og:type" content="Website" />
-
   @yield('frontend_meta_tags')
 
   <!-- CSRF Token -->
@@ -90,11 +80,11 @@
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
+  <footer class="main-footer bg-dark">
     <div class="container">
         <!-- To the right -->
         <div class="float-md-right font-weight-bold">
-          <a href="#">YouTube</a> | <a href="#">Facebook</a> | <a href="#">LinkedIn</a> | <a href="#">Github</a>
+          <a href="https://www.youtube.com/channel/UC74l6d0jcefsx0JvHvW4K2Q">YouTube</a> | <a href="https://facebook.com/abdulmajidcse">Facebook</a> | <a href="https://www.linkedin.com/in/abdulmajidcse">LinkedIn</a> | <a href="https://github.com/abdulmajidcse">Github</a>
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2020 <a href="https://facebook.com/abdulmajidcse">Abdul Majid</a>.</strong> All rights reserved.
