@@ -27,7 +27,7 @@
           {{-- Blog Categories --}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-layer-group"></i>
               <p>
                 Blog Categories
                 <i class="fas fa-angle-left right"></i>
@@ -52,7 +52,7 @@
           {{-- Blog Posts --}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-plus-square"></i>
               <p>
                 Blog Posts
                 <i class="fas fa-angle-left right"></i>
@@ -74,26 +74,44 @@
             </ul>
           </li>
 
+          {{-- Count total trash --}}
+          @php
+              $blogCategoryTrash = \App\Models\BlogCategory::onlyTrashed()->count();
+              $blogPostTrash = \App\Models\BlogPost::onlyTrashed()->count();
+          @endphp
+
+
           {{-- Trash --}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-trash"></i>
               <p>
                 Trash
                 <i class="fas fa-angle-left right"></i>
+                @if ($blogCategoryTrash + $blogPostTrash)
+                  <span class="badge badge-danger right">{{ $blogCategoryTrash + $blogPostTrash }}</span>
+                @endif
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../layout/top-nav.html" class="nav-link">
+                <a href="{{ route('admin.trash.blog.index', 'categories') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Blog Categories</p>
+                  <p>Blog Categories 
+                    @if ($blogCategoryTrash)
+                      <span class="badge badge-danger right">{{ $blogCategoryTrash }}</span>
+                    @endif
+                  </p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../layout/top-nav-sidebar.html" class="nav-link">
+                <a href="{{ route('admin.trash.blog.index', 'posts') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Blog Posts</p>
+                  <p>Blog Posts 
+                    @if ($blogPostTrash)
+                      <span class="badge badge-danger right">{{ $blogPostTrash }}</span>
+                    @endif
+                  </p>
                 </a>
               </li>
             </ul>

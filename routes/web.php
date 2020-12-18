@@ -51,6 +51,17 @@ Route::prefix('admin')->group(function() {
         // Blog Post Routes
         Route::resource('blog-posts', 'BlogPostController')->except(['show']);
 
+        /**
+         * Trash Routes
+         */
+        Route::prefix('trash')->name('trash.')->group(function() {
+            Route::prefix('blog')->name('blog.')->group(function() {
+                Route::get('{type}', 'TrashController@indexBlog')->name('index');
+                Route::get('{type}/{id}', 'TrashController@restoreBlog')->name('restore');
+                Route::delete('{type}/{id}', 'TrashController@permanentlyDestroyBlog')->name('destroy');
+            });
+        });
+
     });
 
 
