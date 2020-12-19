@@ -54,6 +54,10 @@ Route::prefix('admin')->group(function() {
         // admin home route
         Route::get('/', 'HomeController@index')->name('home');
 
+        // admin profile route
+        Route::get('profile', 'HomeController@editProfile')->name('profile');
+        Route::put('profile', 'HomeController@updateProfile')->name('profile.update');
+
         // settings route
         Route::resource('settings', 'SettingController')->only(['index', 'store', 'update']);
 
