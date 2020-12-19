@@ -18,7 +18,7 @@ class BlogController extends Controller
     {
         $blogCategory = BlogCategory::where('slug', $slug)->first();
         if($blogCategory) {
-            $blogPosts = BlogPost::where('blog_category_id', $blogCategory->id)->orderBy('id', 'desc')->paginate(3);
+            $blogPosts = BlogPost::where('blog_category_id', $blogCategory->id)->orderBy('id', 'desc')->paginate(5);
 
             if(count($blogPosts) > 0) {
                 return view('frontend.blog.posts_by_category', ['blogPosts' => $blogPosts, 'blogCategory' => $blogCategory]);

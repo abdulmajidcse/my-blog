@@ -10,8 +10,8 @@
     <h2 class="text-center text-muted font-weight-bold border-bottom">Category: {{ $blogCategory->name }}</h2>
 @endisset
 
-@if(Session::has('searchValue'))
-    <h2 class="text-center text-muted font-weight-bold border-bottom">Search for: {{ Session::get('searchValue') }}</h2>
+@if(isset($searchValue))
+    <h2 class="text-center text-muted font-weight-bold border-bottom">Search for: {{ $searchValue }}</h2>
 
 @else
     <h1 class="font-weight-bold text-center text-danger"> Comming soon...</h1>

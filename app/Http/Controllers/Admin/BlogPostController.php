@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\BlogPost;
+use Illuminate\Support\Str;
+use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BlogCategory;
 
 class BlogPostController extends Controller
 {
@@ -56,7 +57,7 @@ class BlogPostController extends Controller
         $blogPost                   = new BlogPost();
         $blogPost->blog_category_id = $request->blog_category_id;
         $blogPost->name             = $request->name;
-        $blogPost->slug             = $request->slug;
+        $blogPost->slug             = Str::slug($request->slug, '-');
         $blogPost->content          = $request->content;
         $blogPost->meta_keyword     = $request->meta_keyword;
         $blogPost->meta_description = $request->meta_description;
@@ -118,7 +119,7 @@ class BlogPostController extends Controller
 
         $blogPost->blog_category_id = $request->blog_category_id;
         $blogPost->name             = $request->name;
-        $blogPost->slug             = $request->slug;
+        $blogPost->slug             = Str::slug($request->slug, '-');
         $blogPost->content          = $request->content;
         $blogPost->meta_keyword     = $request->meta_keyword;
         $blogPost->meta_description = $request->meta_description;

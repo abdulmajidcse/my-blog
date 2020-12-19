@@ -53,8 +53,8 @@
         <!-- SEARCH FORM -->
         <form class="form-inline ml-0 ml-md-3" id="search-form">
           <div class="input-group input-group-sm">
-            @if(Session::has('searchValue'))
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value" value="{{ Session::get('searchValue') }}">
+            @if(isset($searchValue))
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value" value="{{ $searchValue }}">
             @else
               <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value">
             @endif

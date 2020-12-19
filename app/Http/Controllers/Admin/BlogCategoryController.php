@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Str;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -46,7 +47,7 @@ class BlogCategoryController extends Controller
 
         $blogCategory                   = new BlogCategory();
         $blogCategory->name             = $request->name;
-        $blogCategory->slug             = $request->slug;
+        $blogCategory->slug             = Str::slug($request->slug, '-');
         $blogCategory->meta_keyword     = $request->meta_keyword;
         $blogCategory->meta_description = $request->meta_description;
         $blogCategory->save();
@@ -90,7 +91,7 @@ class BlogCategoryController extends Controller
         ]);
 
         $blogCategory->name             = $request->name;
-        $blogCategory->slug             = $request->slug;
+        $blogCategory->slug             = Str::slug($request->slug, '-');
         $blogCategory->meta_keyword     = $request->meta_keyword;
         $blogCategory->meta_description = $request->meta_description;
         $blogCategory->save();

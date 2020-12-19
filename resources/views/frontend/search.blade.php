@@ -5,23 +5,23 @@
 @endsection
 
 @section('frontend_title')
-    {{ Session::get('searchValue') . ' - Search' }}
+    {{ $searchValue . ' - Search' }}
 @endsection
 
 @section('blog_content')
 
-    <h2 class="text-center text-muted font-weight-bold border-bottom">Search for: {{ Session::get('searchValue') }}</h2>
+    <h2 class="text-center text-muted font-weight-bold border-bottom">Search for: {{ $searchValue }}</h2>
 
     @foreach ($blogPosts as $blogPost)
         <!-- Post -->
         <div class="post">
             <div class="user-block">
-                <h3 class="font-weight-bold mb-0"><a href="{{ route('frontend.blog.post', $blogPost->slug) }}"> {{ $blogPost->name }} </a></h3>
+                <h3 class="font-weight-bold mb-0"><a href="{{ route('frontend.blog.post', $blogPost->slug) }}"> {{ Str::title($blogPost->name) }} </a></h3>
                 <span class="small">
                     @if ($blogPost->BlogCategory)
-                        Category - <a href="{{ route('frontend.blog.category', $blogPost->blogCategory->slug) }}" class="font-weight-bold">{{ $blogPost->BlogCategory->name }}</a>, 
+                        <i class="fas fa-layer-group mr-1"></i> <a href="{{ route('frontend.blog.category', $blogPost->blogCategory->slug) }}" class="font-weight-bold mr-2">{{ $blogPost->BlogCategory->name }}</a>
                     @endif
-                     Publish - {{ date_format($blogPost->created_at, 'M d, Y') }}
+                    <i class="fas fa-calendar-alt mr-1"></i> <span class="font-weight-bold">{{ date_format($blogPost->created_at, 'M d, Y') }}</span>
                 </span>
             </div>
 
