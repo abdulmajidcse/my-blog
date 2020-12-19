@@ -32,7 +32,7 @@
 
       <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-      <p class="text-muted">Bangladesh</p>
+      <p class="text-muted">Rangpur, Bangladesh</p>
 
       <hr>
 

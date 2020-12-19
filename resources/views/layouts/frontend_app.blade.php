@@ -83,11 +83,11 @@
   <footer class="main-footer bg-dark">
     <div class="container">
         <!-- To the right -->
-        <div class="float-md-right font-weight-bold">
-          <a href="https://www.youtube.com/channel/UC74l6d0jcefsx0JvHvW4K2Q">YouTube</a> | <a href="https://facebook.com/abdulmajidcse">Facebook</a> | <a href="https://www.linkedin.com/in/abdulmajidcse">LinkedIn</a> | <a href="https://github.com/abdulmajidcse">Github</a>
+        <div class="float-md-right font-weight-bold text-white">
+          <a href="https://www.youtube.com/channel/UC74l6d0jcefsx0JvHvW4K2Q" class="text-white">YouTube</a> | <a href="https://facebook.com/abdulmajidcse" class="text-white">Facebook</a> | <a href="https://www.linkedin.com/in/abdulmajidcse" class="text-white">LinkedIn</a> | <a href="https://github.com/abdulmajidcse" class="text-white">Github</a>
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2020 <a href="https://facebook.com/abdulmajidcse">Abdul Majid</a>.</strong> All rights reserved.
+        <span>Copyright &copy; 2020 <a href="https://facebook.com/abdulmajidcse" class="text-white font-weight-bold border-bottom">Abdul Majid</a>. All rights reserved.</span>
     </div>
   </footer>
 </div>
