@@ -1,5 +1,9 @@
 @extends('layouts.frontend_app')
 
+@section('frontend_title')
+    {{ 'Verify' }}
+@endsection
+
 @section('blog_content')
 
     <div class="card">
