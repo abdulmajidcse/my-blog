@@ -26,6 +26,9 @@
             </span>
         </div>
 
+        {{-- Social Share --}}
+        @include('layouts.templates.share')
+
         <div>
             {{-- post thumbnail --}}
             @if ($blogPost->image)
@@ -39,6 +42,10 @@
                 <p>{!! $blogPost->content !!}</p>
             </div>
 
+            {{-- Social Share --}}
+            @include('layouts.templates.share')
+
+            {{-- Post tags --}}
             <div class="mt-3">
                 <span class="btn btn-flat btn-dark"><i class="fas fa-tags"></i> Tags: </span> {{ Str::title($blogPost->meta_keyword) }}
             </div>
