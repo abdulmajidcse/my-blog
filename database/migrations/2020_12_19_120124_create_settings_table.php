@@ -23,8 +23,8 @@ class CreateSettingsTable extends Migration
             $table->string('linkedin_link');
             $table->string('github_link');
             $table->string('twitter_link');
-            $table->string('meta_keyword');
-            $table->string('meta_description');
+            $table->text('meta_keyword');
+            $table->text('meta_description');
             $table->string('meta_image')->nullable();
             $table->timestamps();
         });

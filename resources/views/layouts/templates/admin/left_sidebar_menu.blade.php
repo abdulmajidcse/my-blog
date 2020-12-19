@@ -24,6 +24,14 @@
             </a>
           </li>
 
+          {{-- Profile --}}
+          <li class="nav-item">
+            <a href="{{ route('admin.settings.index') }}" class="nav-link">
+              <i class="nav-icon fa fa-user"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+
           {{-- Blog Categories --}}
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
@@ -115,6 +123,14 @@
                 </a>
               </li>
             </ul>
+          </li>
+
+          {{-- Setting --}}
+          <li class="nav-item">
+            <a href="{{ route('admin.settings.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>Setting</p>
+            </a>
           </li>
 
         </ul>
