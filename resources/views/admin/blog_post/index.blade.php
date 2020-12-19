@@ -63,7 +63,7 @@
                                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Action
                                         </button>
-                                        <div class="dropdown-menu">
+                                        <div class="dropdown-menu dropdown-menu-right">
                                             <a class="dropdown-item" href="{{ route('admin.blog-posts.edit', $blogPost) }}"><i class="fas fa-edit"></i> Edit</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" id="destroy" href="{{ route('admin.blog-posts.destroy', $blogPost) }}"><i class="fas fa-trash-alt"></i> Delete</a>

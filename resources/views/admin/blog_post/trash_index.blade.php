@@ -62,8 +62,8 @@
                                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Action
                                         </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ route('admin.trash.blog.restore', ['post', $blogPost->id]) }}"><i class="fas fa-edit"></i> Restore</a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="{{ route('admin.trash.blog.restore', ['post', $blogPost->id]) }}"><i class="fas fa-trash-restore"></i> Restore</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" id="destroy" href="{{ route('admin.trash.blog.destroy', ['post', $blogPost->id]) }}"><i class="fas fa-trash-alt"></i> Permanently Delete</a>
                                         </div>

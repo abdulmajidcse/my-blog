@@ -105,6 +105,7 @@
 <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
 
 <script>
+
   $('.magnific_image_container').magnificPopup({
     delegate: 'a',
     type: 'image',
@@ -112,6 +113,17 @@
         enabled: true
     }
   })
+
+  // search form
+  $(document).on("submit", "#search-form", function(e){
+    e.preventDefault()
+    let searchValue = $('#search-value').val()
+    let link = "{{ route('frontend.search', '') }}" + "/" + searchValue 
+
+    window.location.href = link;
+
+  })
+
 </script>
 
 @stack('frontend_scripts')

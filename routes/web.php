@@ -13,6 +13,9 @@ Route::name('frontend.')->namespace('Frontend')->group(function() {
     // All blog posts
     Route::get('/', 'HomeController@index')->name('home');
 
+    // search
+    Route::get('search/{value}', 'HomeController@search')->where('value', '.*')->name('search');
+
     /**
      * Frontend Blog Routes
      */

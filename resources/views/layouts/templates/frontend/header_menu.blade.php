@@ -21,26 +21,17 @@
             <a id="categoriesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Categories</a>
             <ul aria-labelledby="categoriesDropdown" class="dropdown-menu dropdown-menu-xl border-0 shadow">
               <li class="m-2 text-center">
-                 <a href="#" class="btn btn-sm btn-primary mb-1">PHP</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">Problem Solving</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">HTML</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">CSS</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">PHP</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">Problem Solving</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">HTML</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">CSS</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">PHP</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">Problem Solving</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">HTML</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">CSS</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">PHP</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">Problem Solving</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">HTML</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">CSS</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">PHP</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">Problem Solving</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">HTML</a>
-                 <a href="#" class="btn btn-sm btn-primary mb-1">CSS</a>
+                @php
+                    $blogCategories = \App\Models\BlogCategory::orderBy('id', 'desc')->get();
+                @endphp
+                @if (count($blogCategories) > 0)
+                  @foreach ($blogCategories as $blogCategory)
+                    <a href="{{ route('frontend.blog.category', $blogCategory->slug) }}" class="btn btn-sm btn-flat btn-outline-primary mb-1">{{ $blogCategory->name }}</a>
+                  @endforeach
+                @else
+                  <span class="btn btn-flat btn-outline-danger">No Category Available.</span>
+                @endif
+                 
               </li>
             </ul>
           </li>
@@ -49,10 +40,10 @@
             <a id="contactDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Contact</a>
             <ul aria-labelledby="contactDropdown" class="dropdown-menu border-0 shadow">
               <li class="m-2 text-center">
-                <a href="https://www.youtube.com/channel/UC74l6d0jcefsx0JvHvW4K2Q" class="btn btn-sm btn-danger mb-1">YouTube</a>
-                <a href="https://facebook.com/abdulmajidcse" class="btn btn-sm btn-primary mb-1">Facebook</a>
-                <a href="https://www.linkedin.com/in/abdulmajidcse" class="btn btn-sm btn-info mb-1">LinkedIn</a>
-                <a href="https://github.com/abdulmajidcse" class="btn btn-sm btn-dark mb-1">Github</a>
+                <a href="https://www.youtube.com/channel/UC74l6d0jcefsx0JvHvW4K2Q" class="btn btn-sm btn-flat btn-outline-danger mb-1">YouTube</a>
+                <a href="https://facebook.com/abdulmajidcse" class="btn btn-sm btn-flat btn-outline-primary mb-1">Facebook</a>
+                <a href="https://www.linkedin.com/in/abdulmajidcse" class="btn btn-sm btn-flat btn-outline-info mb-1">LinkedIn</a>
+                <a href="https://github.com/abdulmajidcse" class="btn btn-sm btn-flat btn-outline-dark mb-1">Github</a>
              </li>
             </ul>
           </li>
@@ -60,9 +51,14 @@
         </ul>
 
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-0 ml-md-3">
+        <form class="form-inline ml-0 ml-md-3" id="search-form">
           <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+            @if(Session::has('searchValue'))
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value" value="{{ Session::get('searchValue') }}">
+            @else
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value">
+            @endif
+            
             <div class="input-group-append">
               <button class="btn btn-navbar" type="submit">
                 <i class="fas fa-search"></i>
