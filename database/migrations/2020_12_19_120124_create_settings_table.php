@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateSettingsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('settings', function (Blueprint $table) {
+            $table->id();
+            $table->string('app_name');
+            $table->string('app_title');
+            $table->string('app_logo')->nullable();
+            $table->string('facebook_link');
+            $table->string('youtube_link');
+            $table->string('linkedin_link');
+            $table->string('github_link');
+            $table->string('twitter_link');
+            $table->string('meta_keyword');
+            $table->string('meta_description');
+            $table->string('meta_image')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('settings');
+    }
+}

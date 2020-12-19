@@ -51,7 +51,11 @@ Route::prefix('admin')->group(function() {
      * Admin Controll Panel Routes
      */
     Route::name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
+        // admin home route
         Route::get('/', 'HomeController@index')->name('home');
+
+        // settings route
+        Route::resource('settings', 'SettingController')->only(['index', 'store', 'update']);
 
         // name to slug convert route
         Route::post('create-slug', function(Request $request) {
