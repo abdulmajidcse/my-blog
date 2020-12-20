@@ -8,6 +8,17 @@
     {{ $blogPost->name }}
 @endsection
 
+@push('frontend_styles')
+    
+    <style>
+        /* Social share icon style */
+        .social-share a i{
+            font-size: 30px;
+        }
+    </style>
+
+@endpush
+
 @section('blog_content')
 
     {{-- facebook comment plugin --}}
@@ -45,6 +56,7 @@
             {{-- Social Share --}}
             @include('layouts.templates.share')
 
+
             {{-- Post tags --}}
             <div class="mt-3">
                 <span class="btn btn-flat btn-dark"><i class="fas fa-tags"></i> Tags: </span> {{ Str::title($blogPost->meta_keyword) }}
@@ -64,4 +76,56 @@
 
     </div>
 
+
+    {{-- Copy link modal --}}
+    <div class="modal fade" id="copyLinkModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="copyLinkModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title font-weight-bold" id="copyLinkModalLabel">Post Link</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <!-- The text field -->
+                <input type="text" value="{{ Request::url() }}" id="copyLinkValue" class="form-control">
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-flat btn-success" data-dismiss="modal" onclick="copyPostLink()">Copy</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
 @endsection
+
+@push('frontend_scripts')
+
+    <!-- sweet alert -->
+    <script src="{{ asset('assets/js/sweetalert2010.min.js') }}"></script>
+    
+    <script>
+
+        function copyPostLink() {
+            /* Get the text field */
+            let copylink = document.getElementById("copyLinkValue");
+
+            /* Select the text field */
+            copylink.select();
+            copylink.setSelectionRange(0, 99999); /* For mobile devices */
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+
+            setTimeout(function() {
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Copied the link.',
+                })
+            }, 1000)
+        }
+
+    </script>
+
+@endpush
