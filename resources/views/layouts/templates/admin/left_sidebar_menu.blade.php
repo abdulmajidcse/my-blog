@@ -2,11 +2,11 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.home') }}" class="brand-link">
-      <img src="{{ asset('assets/static_uploads/abdulmajid.jpg') }}"
+      <img src="{{ Session::has('setting') ? asset('assets/uploads/'.Session::get('setting')->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}"
            alt="Abdul Majid"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Abdul Majid</span>
+      <span class="brand-text font-weight-light">{{ Session::has('setting') ? Session::get('setting')->app_name : config('app.name') }}</span>
     </a>
 
     <!-- Sidebar -->

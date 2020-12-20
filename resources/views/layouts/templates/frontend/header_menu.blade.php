@@ -3,7 +3,7 @@
     <div class="container">
 
       <a href="{{ route('frontend.home') }}" class="navbar-brand">
-        <img src="{{ asset('assets/static_uploads/abdulmajid.jpg') }}" alt="Abdul Majid" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ Session::has('setting') ? asset('assets/uploads/'.Session::get('setting')->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}" alt="{{ Session::has('setting') ? Session::get('setting')->app_name : config('app.name') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +38,13 @@
 
           <li class="nav-item dropdown">
             <a id="contactDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">Contact</a>
-            <ul aria-labelledby="contactDropdown" class="dropdown-menu border-0 shadow">
+            <ul aria-labelledby="contactDropdown" class="dropdown-menu dropdown-menu-lg border-0 shadow">
               <li class="m-2 text-center">
-                <a href="https://www.youtube.com/channel/UC74l6d0jcefsx0JvHvW4K2Q" class="btn btn-sm btn-flat btn-outline-danger mb-1">YouTube</a>
-                <a href="https://facebook.com/abdulmajidcse" class="btn btn-sm btn-flat btn-outline-primary mb-1">Facebook</a>
-                <a href="https://www.linkedin.com/in/abdulmajidcse" class="btn btn-sm btn-flat btn-outline-info mb-1">LinkedIn</a>
-                <a href="https://github.com/abdulmajidcse" class="btn btn-sm btn-flat btn-outline-dark mb-1">Github</a>
+                <a href="{{ Session::has('setting') ? Session::get('setting')->youtube_link : '#' }}" class="btn btn-sm btn-flat btn-outline-danger mb-1" title="YouTube">YouTube</a>
+                <a href="{{ Session::has('setting') ? Session::get('setting')->facebook_link : '#' }}" class="btn btn-sm btn-flat btn-outline-primary mb-1" title="Facebook">Facebook</a>
+                <a href="{{ Session::has('setting') ? Session::get('setting')->linkedin_link : '#' }}" class="btn btn-sm btn-flat btn-outline-info mb-1" title="LinkedIn">LinkedIn</a>
+                <a href="{{ Session::has('setting') ? Session::get('setting')->github_link : '#' }}" class="btn btn-sm btn-flat btn-outline-dark mb-1" title="Github">Github</a>
+                <a href="{{ Session::has('setting') ? Session::get('setting')->twitter_link : '#' }}" class="btn btn-sm btn-flat btn-outline-primary mb-1" title="Twitter">Twitter</a>
              </li>
             </ul>
           </li>

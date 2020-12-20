@@ -1,3 +1,13 @@
+{{-- Setting --}}
+@php
+    $setting = \App\Models\Setting::first();
+@endphp
+
+@if ($setting)
+    @php
+        Session::put('setting', $setting);
+    @endphp
+@endif
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -11,9 +21,9 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="icon" type="image/jpg" href="{{ asset('assets/static_uploads/abdulmajid.jpg') }}">
+  <link rel="icon" type="image/jpg" href="{{ Session::has('setting') ? asset('assets/uploads/'.Session::get('setting')->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}">
 
-  <title>@yield('frontend_title', 'Web Developer') | {{ config('app.name') }}</title>
+  <title>@yield('frontend_title', 'Web Developer') | {{ Session::has('setting') ? Session::get('setting')->app_name : config('app.name') }}</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
@@ -39,7 +49,7 @@
         <div class="container">
           <div class="row mb-2">
             <div class="col-12 text-muted">
-              <h1>A Bengali Blog about ICT</h1>
+              <h1>{{ Session::has('setting') ? Session::get('setting')->app_title : 'Set Your Application Title Here' }}</h1>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -82,12 +92,16 @@
   <!-- Main Footer -->
   <footer class="main-footer bg-dark">
     <div class="container">
-        <!-- To the right -->
-        <div class="float-md-right font-weight-bold text-white">
-          <a href="https://www.youtube.com/channel/UC74l6d0jcefsx0JvHvW4K2Q" class="text-white">YouTube</a> | <a href="https://facebook.com/abdulmajidcse" class="text-white">Facebook</a> | <a href="https://www.linkedin.com/in/abdulmajidcse" class="text-white">LinkedIn</a> | <a href="https://github.com/abdulmajidcse" class="text-white">Github</a>
-        </div>
-        <!-- Default to the left -->
-        <span>Copyright &copy; 2020 <a href="https://facebook.com/abdulmajidcse" class="text-white font-weight-bold border-bottom">Abdul Majid</a>. All rights reserved.</span>
+      <!-- To the right -->
+      <div class="float-md-right font-weight-bold text-white">
+        <a href="{{ Session::has('setting') ? Session::get('setting')->youtube_link : '#' }}" class="text-white" title="YouTube">YouTube</a> | 
+        <a href="{{ Session::has('setting') ? Session::get('setting')->facebook_link : '#' }}" class="text-white" title="Facebook">Facebook</a> | 
+        <a href="{{ Session::has('setting') ? Session::get('setting')->linkedin_link : '#' }}" class="text-white" title="LinkedIn">LinkedIn</a> | 
+        <a href="{{ Session::has('setting') ? Session::get('setting')->github_link : '#' }}" class="text-white" title="Github">Github</a> | 
+        <a href="{{ Session::has('setting') ? Session::get('setting')->twitter_link : '#' }}" class="text-white" title="Twitter">Twitter</a>
+      </div>
+      <!-- Default to the left -->
+      <span>Developed By <a href="https://facebook.com/abdulmajidcse" class="text-white font-weight-bold border-bottom">Abdul Majid</a>.</span>
     </div>
   </footer>
 </div>
