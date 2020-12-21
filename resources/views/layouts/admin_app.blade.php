@@ -3,12 +3,6 @@
     $setting = \App\Models\Setting::first();
 @endphp
 
-@if ($setting)
-    @php
-        Session::put('setting', $setting);
-    @endphp
-@endif
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -20,9 +14,9 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="icon" type="image/jpg" href="{{ Session::has('setting') ? asset('assets/uploads/'.Session::get('setting')->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}">
+  <link rel="icon" type="image/jpg" href="{{ $setting ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}">
 
-  <title>@yield('admin_title', 'Web Developer') | {{ Session::has('setting') ? Session::get('setting')->app_name : config('app.name') }}</title>
+  <title>@yield('admin_title', 'Web Developer') | {{ $setting ? $setting->app_name : config('app.name') }}</title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
@@ -50,7 +44,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item">
-        <a href="{{ route('frontend.home') }}" class="nav-link">Frontend</a>
+        <a href="{{ route('frontend.home') }}" class="nav-link">Visite Site</a>
       </li>
     </ul>
 
@@ -84,7 +78,7 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-12 text-muted">
-            <h1>{{ Session::has('setting') ? Session::get('setting')->app_title : 'Set Your Application Title Here' }}</h1>
+            <h1>{{ $setting ? $setting->app_title : 'Set Your Application Title Here' }}</h1>
           </div>
         </div>
       </div>
@@ -102,14 +96,14 @@
     <div class="container">
       <!-- To the right -->
       <div class="float-md-right font-weight-bold text-white">
-        <a href="{{ Session::has('setting') ? Session::get('setting')->youtube_link : '#' }}" class="text-white" title="YouTube">YouTube</a> | 
-        <a href="{{ Session::has('setting') ? Session::get('setting')->facebook_link : '#' }}" class="text-white" title="Facebook">Facebook</a> | 
-        <a href="{{ Session::has('setting') ? Session::get('setting')->linkedin_link : '#' }}" class="text-white" title="LinkedIn">LinkedIn</a> | 
-        <a href="{{ Session::has('setting') ? Session::get('setting')->github_link : '#' }}" class="text-white" title="Github">Github</a> | 
-        <a href="{{ Session::has('setting') ? Session::get('setting')->twitter_link : '#' }}" class="text-white" title="Twitter">Twitter</a>
+        <a href="{{ $setting ? $setting->youtube_link : '#' }}" class="text-white" title="YouTube">YouTube</a> | 
+        <a href="{{ $setting ? $setting->facebook_link : '#' }}" class="text-white" title="Facebook">Facebook</a> | 
+        <a href="{{ $setting ? $setting->linkedin_link : '#' }}" class="text-white" title="LinkedIn">LinkedIn</a> | 
+        <a href="{{ $setting ? $setting->github_link : '#' }}" class="text-white" title="Github">Github</a> | 
+        <a href="{{ $setting ? $setting->twitter_link : '#' }}" class="text-white" title="Twitter">Twitter</a>
       </div>
       <!-- Default to the left -->
-      <span>Developed By <a href="https://facebook.com/abdulmajidcse" class="text-white font-weight-bold border-bottom">Abdul Majid</a>.</span>
+      <span class="font-weight-bold">2020 &copy; Developed By <a href="https://facebook.com/abdulmajidcse" class="text-white border-bottom">Abdul Majid</a>.</span>
     </div>
   </footer>
 

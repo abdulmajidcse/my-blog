@@ -10,10 +10,13 @@
 
 {{-- Default meta keyword and meta description --}}
 @php
-    $defaultTitle       = 'Web Design, Web Development';
-    $defaultKeyword     = 'Web Design, Web Development, HTML, CSS, JavaScript, JQuery, Bootstrap, Vuejs, Reactjs, PHP, MySQL, WordPress, Laravel, Codeigniter';
-    $defaultDescription = 'Hello! This is Abdul Majid. I am a web developer. I love to learn and share knowledge with others. This is my personal blog. I think this blog will be helpful. Thank you!';
-    $defaultImage       = 'assets/static_uploads/abdulmajid.jpg';
+    // Setting
+    $setting = \App\Models\Setting::first();
+
+    $defaultTitle       = $setting ? $setting->app_title : 'A Bengali Blog About ICT';
+    $defaultKeyword     = $setting ? $setting->meta_keyword : 'HTML, CSS, JavaScript, JQuery, Reactjs, Vuejs, PHP, MySQL, WordPress, Laravel';
+    $defaultDescription = $setting ? $setting->meta_description : 'This is a bengali blog about ICT. You can get more information about ICT. I mean Web Design, Development, Computer Science, Software Development etc.';
+    $defaultImage       = $setting ? 'assets/uploads/'.$setting->meta_image : 'assets/static_uploads/abdulmajid.jpg';
 @endphp
 
 @if (isset($blogPost))
