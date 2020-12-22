@@ -86,7 +86,7 @@
               <!-- /.card-header -->
               <div class="card-body pad">
                   <textarea name="content" class="post-content form-control @error('content') is-invalid @enderror" placeholder="What's on your mind?" required>
-                    {!! $blogPost->content !!}
+                    {{ $blogPost->content }}
                   </textarea>
                   @error('content')
                     <span class="invalid-feedback" role="alert">
