@@ -27,13 +27,13 @@
                 {{-- post thumbnail --}}
                 @if ($blogPost->image)
                     <div style="max-width: 400px;">
-                        <a href="{{ route('frontend.blog.post', $blogPost->slug) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="{{ $blogPost->name }}" class="img img-thumbnail w-100"></a>
+                        <a href="{{ route('frontend.blog.post', $blogPost->slug) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="{{ $blogPost->name }}" class="img w-100"></a>
                     </div>
                 @endif
 
                 <!-- /.user-block -->
                 <div>
-                    <p>{!! Str::words($blogPost->content, 60) !!}</p>
+                    <p>{!! Str::words($blogPost->content, 20) !!}</p>
                 </div>
             </div>
 

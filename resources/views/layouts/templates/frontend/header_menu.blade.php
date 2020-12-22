@@ -7,7 +7,7 @@
   <nav class="main-header navbar navbar-expand-md navbar-dark navbar-primary">
     <div class="container">
 
-      <a href="{{ route('frontend.home') }}" class="navbar-brand">
+      <a href="{{ route('frontend.home') }}" class="navbar-brand d-md-none">
         <img src="{{ $setting ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}" alt="{{ $setting ? $setting->app_name : config('app.name') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
       </a>
 

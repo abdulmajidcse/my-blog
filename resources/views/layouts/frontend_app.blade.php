@@ -23,12 +23,29 @@
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
-  <!-- Magnific Popup core CSS file -->
-  <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   @stack('frontend_styles')
+
+  <style>
+    /* code preview style */
+    #custom-style pre {
+      background-color: #333 !important;
+      color: white !important;
+    }
+
+    /* blog post image and iframe style */
+    #custom-style img, iframe {
+      width: 100% !important;
+    }
+
+    @media screen and (max-width: 480px) {
+      #custom-style iframe {
+        height: 200px !important;
+      }
+    }
+  </style>
 
 </head>
 <body class="hold-transition layout-top-nav">
@@ -58,7 +75,7 @@
             {{-- Blog post start from here --}}
             <div class="col-md-7 col-lg-8">
               <div class="card">
-                <div class="card-body">
+                <div class="card-body" id="custom-style">
 
                   @yield('blog_content')
                   
@@ -109,18 +126,8 @@
 <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
-<!-- Magnific Popup core JS file -->
-<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
 
 <script>
-
-  $('.magnific_image_container').magnificPopup({
-    delegate: 'a',
-    type: 'image',
-    gallery:{
-        enabled: true
-    }
-  })
 
   // search form
   $(document).on("submit", "#search-form", function(e){

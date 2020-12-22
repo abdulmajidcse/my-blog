@@ -43,8 +43,8 @@
         <div>
             {{-- post thumbnail --}}
             @if ($blogPost->image)
-                <div class="magnific_image_container">
-                    <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="{{ $blogPost->name }}" class="img img-thumbnail w-100"></a>
+                <div>
+                    <img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="{{ $blogPost->name }}" class="img w-100">
                 </div>
             @endif
 
