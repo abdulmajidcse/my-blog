@@ -67,6 +67,12 @@ Route::prefix('admin')->group(function() {
             return response()->json(['slug' => Str::slug($request->name, '-')]);
         })->name('slug.create');
 
+        // media store
+        Route::get('media', 'MediaController@index')->name('media.index');
+        Route::get('media/create', 'MediaController@create')->name('media.create');
+        Route::post('media/store', 'MediaController@store')->name('media.store');
+        Route::delete('media/{media}', 'MediaController@destroy')->name('media.destroy');
+
         // Blog Category Routes
         Route::resource('blog-categories', 'BlogCategoryController')->except(['show']);
 

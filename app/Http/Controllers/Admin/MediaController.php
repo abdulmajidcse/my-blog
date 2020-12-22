@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Media;
 use Illuminate\Http\Request;
@@ -15,7 +15,8 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        $allMedia = Media::orderBy('id', 'desc')->paginate(50);
+        return view('admin.media.index', ['allMedia' => $allMedia]);
     }
 
     /**
@@ -25,7 +26,7 @@ class MediaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.media.create');
     }
 
     /**
@@ -36,41 +37,28 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'images.0'     => 'required',
+            'images.*'     => 'required|image|mimes:jpg,jpeg,png|max:5000',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Media $media)
-    {
-        //
-    }
+        // multiple image uploads and store
+        foreach ($request->file('images') as $image) {
+            $media = new Media();
+            $image_name = uniqid() . time();
+            $ext = strtolower($image->getClientOriginalExtension());
+            $image_full_name = $image_name . "." . $ext;
+            $upload_path = "assets/uploads/";
+            //upload file
+            $image->move($upload_path, $image_full_name);
+            // save name in table
+            $media->name = $image_full_name;
+            $media->save();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Media $media)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Media  $media
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Media $media)
-    {
-        //
+        $request->session()->flash('message', 'Media Saved.');
+        $request->session()->flash('alert-type', 'success');
+        return redirect()->back();
     }
 
     /**
@@ -79,8 +67,17 @@ class MediaController extends Controller
      * @param  \App\Models\Media  $media
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Media $media)
+    public function destroy(Request $request, Media $media)
     {
-        //
+        //delete image
+        if(file_exists('assets/uploads/'.$media->name)) {
+            echo 'assets/uploads/'.$media->name;
+            unlink('assets/uploads/'.$media->name);
+        }
+        $media->delete();
+
+        $request->session()->flash('message', 'Media Permanently Deleted.');
+        $request->session()->flash('alert-type', 'success');
+        return redirect()->back();
     }
 }
