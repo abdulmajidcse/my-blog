@@ -32,8 +32,6 @@
                     <th>Name</th>
                     <th>Slug</th>
                     <th>Content</th>
-                    <th>Meta Keyword</th>
-                    <th>Meta Description</th>
                     <th>Option</th>
                     </tr>
                 </thead>
@@ -43,17 +41,13 @@
                             <td> {{ ++$loop->index }} </td>
                             <td> 
                                 @if ($blogPost->image)
-                                    <div class="magnific_image_container">
-                                        <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100"></a>
-                                    </div>
+                                    <img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100">
                                 @endif
                             </td>
                             <td> {{ optional($blogPost->blogCategory)->name }} </td>
                             <td> {{ $blogPost->name }} </td>
                             <td> {{ $blogPost->slug }} </td>
-                            <td> {!! Str::words($blogPost->content, 20) !!} </td>
-                            <td> {{ $blogPost->meta_keyword }} </td>
-                            <td> {{ $blogPost->meta_description }} </td>
+                            <td> <p style="min-width: 300px;">{!! Str::words($blogPost->content, 20) !!}</p> </td>
                             <td>
                                 <div class="dropdown">
 
@@ -62,7 +56,7 @@
                                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Action
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{ route('admin.trash.blog.restore', ['post', $blogPost->id]) }}"><i class="fas fa-trash-restore"></i> Restore</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" id="destroy" href="{{ route('admin.trash.blog.destroy', ['post', $blogPost->id]) }}"><i class="fas fa-trash-alt"></i> Permanently Delete</a>
@@ -102,7 +96,7 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true,
+            "autoWidth": false,
             "responsive": true,
         });
     </script>

@@ -29,8 +29,6 @@
                     <th>#</th>
                     <th>Name</th>
                     <th>Slug</th>
-                    <th>Meta Keyword</th>
-                    <th>Meta Description</th>
                     <th>Option</th>
                     </tr>
                 </thead>
@@ -40,8 +38,6 @@
                             <td> {{ ++$loop->index }} </td>
                             <td> {{ $blogCategory->name }} </td>
                             <td> {{ $blogCategory->slug }} </td>
-                            <td> {{ $blogCategory->meta_keyword }} </td>
-                            <td> {{ $blogCategory->meta_description }} </td>
                             <td>
                                 <div class="dropdown">
 
@@ -50,7 +46,7 @@
                                         <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Action
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
+                                        <div class="dropdown-menu">
                                             <a class="dropdown-item" href="{{ route('admin.blog-categories.edit', $blogCategory) }}"><i class="fas fa-edit"></i> Edit</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" id="destroy" href="{{ route('admin.blog-categories.destroy', $blogCategory) }}"><i class="fas fa-trash-alt"></i> Delete</a>
@@ -90,7 +86,7 @@
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true,
+            "autoWidth": false,
             "responsive": true,
         });
     </script>
