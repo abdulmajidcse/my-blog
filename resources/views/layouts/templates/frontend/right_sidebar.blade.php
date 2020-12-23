@@ -2,12 +2,12 @@
   <div class="card card-primary card-outline">
     <div class="card-body">
       <!-- SEARCH FORM -->
-      <form id="search-form">
+      <form id="search-form-rightbar">
         <div class="input-group input-group-sm">
           @if(isset($searchValue))
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value" value="{{ $searchValue }}">
+            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value-rightbar" value="{{ $searchValue }}">
           @else
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value">
+            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value-rightbar">
           @endif
           
           <div class="input-group-append">

@@ -123,10 +123,22 @@
 
 <script>
 
-  // search form
-  $(document).on("submit", "#search-form", function(e){
+  // search form header
+  $(document).on("submit", "#search-form-header", function(e){
     e.preventDefault()
-    let searchValue = $('#search-value').val()
+    let searchValue = $('#search-value-header').val()
+
+    if(searchValue != '') {
+      let link = "{{ route('frontend.search', '') }}" + "/" + searchValue 
+      window.location.href = link;
+    }
+
+  })
+
+  // search form rightbar
+  $(document).on("submit", "#search-form-rightbar", function(e){
+    e.preventDefault()
+    let searchValue = $('#search-value-rightbar').val()
 
     if(searchValue != '') {
       let link = "{{ route('frontend.search', '') }}" + "/" + searchValue 

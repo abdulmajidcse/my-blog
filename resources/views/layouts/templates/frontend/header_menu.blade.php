@@ -35,12 +35,12 @@
         </ul>
 
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-0 ml-lg-3" id="search-form">
+        <form class="form-inline ml-0 ml-lg-3" id="search-form-header">
           <div class="input-group input-group-sm">
             @if(isset($searchValue))
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value" value="{{ $searchValue }}">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value-header" value="{{ $searchValue }}">
             @else
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" id="search-value-header">
             @endif
             
             <div class="input-group-append">
