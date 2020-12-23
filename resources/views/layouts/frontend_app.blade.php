@@ -133,9 +133,11 @@
   $(document).on("submit", "#search-form", function(e){
     e.preventDefault()
     let searchValue = $('#search-value').val()
-    let link = "{{ route('frontend.search', '') }}" + "/" + searchValue 
 
-    window.location.href = link;
+    if(searchValue != '') {
+      let link = "{{ route('frontend.search', '') }}" + "/" + searchValue 
+      window.location.href = link;
+    }
 
   })
 

@@ -74,6 +74,20 @@
 
     </div>
 
+    {{-- Related Posts --}}
+    <ul class="list-group mt-3">
+        <li class="list-group-item bg-info font-weight-bold">Related Posts</li>
+        {{-- Blog Posts --}}
+        @php
+        $blogPosts = \App\Models\BlogPost::where('blog_category_id', $blogPost->blog_category_id)->where('id', '!=', $blogPost->id)->orderBy('id', 'desc')->limit(5)->get();
+        @endphp
+        @foreach ($blogPosts as $blogPost)
+        <li class="list-group-item">
+            <a href="{{ route('frontend.blog.post', $blogPost->slug) }}">{{ $blogPost->name }}</a>
+        </li>
+        @endforeach
+    </ul>
+
 
     {{-- Copy link modal --}}
     <div class="modal fade" id="copyLinkModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="copyLinkModalLabel" aria-hidden="true">
