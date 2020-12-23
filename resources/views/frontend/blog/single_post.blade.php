@@ -28,7 +28,7 @@
     <!-- Post -->
     <div class="post">
         <div class="user-block">
-            <h3 class="font-weight-bold mb-0"><a href="{{ route('frontend.blog.post', $blogPost->slug) }}"> {{ Str::title($blogPost->name) }} </a></h3>
+            <h4 class="font-weight-bold mb-0"> {{ Str::title($blogPost->name) }} </h4>
             <span class="small">
                 @if ($blogPost->BlogCategory)
                     <i class="fas fa-layer-group mr-1"></i> <a href="{{ route('frontend.blog.category', $blogPost->blogCategory->slug) }}" class="font-weight-bold mr-2">{{ $blogPost->BlogCategory->name }}</a>
@@ -43,9 +43,7 @@
         <div>
             {{-- post thumbnail --}}
             @if ($blogPost->image)
-                <div>
-                    <img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="{{ $blogPost->name }}" class="img w-100">
-                </div>
+                <img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="{{ $blogPost->name }}" class="img w-100">
             @endif
 
             <!-- /.user-block -->

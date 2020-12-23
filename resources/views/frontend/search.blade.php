@@ -12,41 +12,36 @@
 
     <h2 class="text-center text-muted font-weight-bold border-bottom">Search for: {{ $searchValue }}</h2>
 
-    @foreach ($blogPosts as $blogPost)
-        <!-- Post -->
-        <div class="post">
-            <div class="user-block">
-                <h3 class="font-weight-bold mb-0"><a href="{{ route('frontend.blog.post', $blogPost->slug) }}"> {{ Str::title($blogPost->name) }} </a></h3>
-                <span class="small">
-                    @if ($blogPost->BlogCategory)
-                        <i class="fas fa-layer-group mr-1"></i> <a href="{{ route('frontend.blog.category', $blogPost->blogCategory->slug) }}" class="font-weight-bold mr-2">{{ $blogPost->BlogCategory->name }}</a>
-                    @endif
-                    <i class="fas fa-calendar-alt mr-1"></i> <span class="font-weight-bold">{{ date_format($blogPost->created_at, 'M d, Y') }}</span>
-                </span>
-            </div>
+    <div class="row">
+        @foreach ($blogPosts as $blogPost)
+            <div class="col-md-6">
+                <!-- Post -->
+                <div class="post">
 
-            <div>
-                {{-- post thumbnail --}}
-                @if ($blogPost->image)
-                    <div style="max-width: 400px;">
+                    {{-- post thumbnail --}}
+                    @if ($blogPost->image)
                         <a href="{{ route('frontend.blog.post', $blogPost->slug) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="{{ $blogPost->name }}" class="img w-100"></a>
+                    @endif
+
+                    <div class="user-block">
+                        <h4 class="font-weight-bold mb-0"><a href="{{ route('frontend.blog.post', $blogPost->slug) }}"> {{ Str::title($blogPost->name) }} </a></h4>
                     </div>
-                @endif
 
-                <!-- /.user-block -->
-                <div>
-                    <p>{!! Str::words($blogPost->content, 20) !!}</p>
+                    <!-- /.user-block -->
+                    <div>
+                        <p>{!! Str::words($blogPost->content, 20) !!}</p>
+                    </div>
+
+                    {{-- read more --}}
+                    <div>
+                        <p><a href="{{ route('frontend.blog.post', $blogPost->slug) }}" class="btn btn-sm btn-success btn-flat font-weight-bold">Read More</a></p>
+                    </div>
+
                 </div>
+                <!-- /.post -->
             </div>
-
-            {{-- read more --}}
-            <div>
-                <p><a href="{{ route('frontend.blog.post', $blogPost->slug) }}" class="btn btn-sm btn-dark btn-flat">Read More</a></p>
-            </div>
-
-        </div>
-        <!-- /.post -->
-    @endforeach
+        @endforeach
+    </div>
 
     {{-- See More --}}
     <div class="float-right">

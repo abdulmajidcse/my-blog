@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $blogPosts = BlogPost::orderBy('id', 'desc')->paginate(5);
+        $blogPosts = BlogPost::orderBy('id', 'desc')->paginate(10);
         if(count($blogPosts) > 0) {
             return view('frontend.home', ['blogPosts' => $blogPosts]);
         } else {

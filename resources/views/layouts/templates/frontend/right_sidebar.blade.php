@@ -22,41 +22,9 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-      <strong><i class="fas fa-book mr-1"></i> Education</strong>
-
-      <p class="text-muted">
-        Diploma in Computer Technology from Kurigram Polytechnic Institute
-      </p>
-
-      <hr>
-
-      <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-      <p class="text-muted">Rangpur, Bangladesh</p>
-
-      <hr>
-
-      <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-      <p>
-        <span class="badge badge-pill badge-primary">HTML</span>
-        <span class="badge badge-pill badge-primary">CSS</span>
-        <span class="badge badge-pill badge-primary">Javascript</span>
-        <span class="badge badge-pill badge-primary">JQuery</span>
-        <span class="badge badge-pill badge-primary">Bootstrap</span>
-        <span class="badge badge-pill badge-primary">Vuejs</span>
-        <span class="badge badge-pill badge-primary">PHP</span>
-        <span class="badge badge-pill badge-primary">MySQL</span>
-        <span class="badge badge-pill badge-primary">WordPress</span>
-        <span class="badge badge-pill badge-primary">Laravel</span>
-        <span class="mr-2 small text-primary"> and more ...</span>
-      </p>
-
-      <hr>
-
-      <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
 
       <p class="text-muted">Hello! This is Abdul Majid. I am a web developer. I love to learn and share knowledge with others. This is my personal blog. I think this blog will be helpful. Thank you!</p>
+
     </div>
     <!-- /.card-body -->
   </div>

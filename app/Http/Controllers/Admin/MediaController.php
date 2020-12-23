@@ -70,7 +70,7 @@ class MediaController extends Controller
     public function destroy(Request $request, Media $media)
     {
         //delete image
-        if(file_exists('assets/uploads/'.$media->name)) {
+        if($media->name && file_exists('assets/uploads/'.$media->name)) {
             echo 'assets/uploads/'.$media->name;
             unlink('assets/uploads/'.$media->name);
         }

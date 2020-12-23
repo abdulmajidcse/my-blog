@@ -73,7 +73,7 @@
           <div class="row">
             
             {{-- Blog post start from here --}}
-            <div class="col-md-7 col-lg-8">
+            <div class="col-lg-9">
               <div class="card">
                 <div class="card-body" id="custom-style">
 
@@ -85,7 +85,7 @@
             </div>
             <!-- /.col -->
 
-            <div class="col-md-5 col-lg-4">
+            <div class="col-lg-3">
   
               @include('layouts.templates.frontend.right_sidebar')
 

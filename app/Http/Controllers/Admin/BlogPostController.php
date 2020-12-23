@@ -135,7 +135,7 @@ class BlogPostController extends Controller
             $image->move($upload_path, $image_full_name);
 
             //delete old image
-            if(file_exists('assets/uploads/'.$blogPost->image)) {
+            if($blogPost->image && file_exists('assets/uploads/'.$blogPost->image)) {
                 unlink('assets/uploads/'.$blogPost->image);
             }
 
