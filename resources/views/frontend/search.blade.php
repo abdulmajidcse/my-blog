@@ -23,7 +23,7 @@
                         <a href="{{ route('frontend.blog.post', $blogPost->slug) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="{{ $blogPost->name }}" class="img w-100"></a>
                     @endif
 
-                    <div class="user-block">
+                    <div class="user-block mt-2">
                         <h4 class="font-weight-bold mb-0"><a href="{{ route('frontend.blog.post', $blogPost->slug) }}"> {{ Str::title($blogPost->name) }} </a></h4>
                     </div>
 
@@ -34,7 +34,7 @@
 
                     {{-- read more --}}
                     <div>
-                        <p><a href="{{ route('frontend.blog.post', $blogPost->slug) }}" class="btn btn-sm btn-success btn-flat font-weight-bold">Read More</a></p>
+                        <p><a href="{{ route('frontend.blog.post', $blogPost->slug) }}" class="btn btn-sm btn-success font-weight-bold">Read More</a></p>
                     </div>
 
                 </div>

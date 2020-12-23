@@ -57,7 +57,7 @@
 
             {{-- Post tags --}}
             <div class="mt-3">
-                <span class="btn btn-flat btn-dark"><i class="fas fa-tags"></i> Tags: </span> {{ Str::title($blogPost->meta_keyword) }}
+                <span class="btn btn-sm btn-dark"><i class="fas fa-tags"></i> Tags: </span> {{ Str::title($blogPost->meta_keyword) }}
             </div>
 
         </div>
