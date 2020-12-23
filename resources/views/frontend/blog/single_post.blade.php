@@ -11,6 +11,12 @@
 @push('frontend_styles')
     
     <style>
+        @media screen and (max-width: 480px) {
+            #single-post-content iframe {
+                height: 200px !important;
+            }
+        }
+
         /* Social share icon style */
         .social-share a i{
             font-size: 30px;
@@ -47,7 +53,7 @@
             @endif
 
             <!-- /.user-block -->
-            <div>
+            <div id="single-post-content">
                 <p>{!! $blogPost->content !!}</p>
             </div>
 
@@ -70,7 +76,7 @@
         <h2 class="text-muted font-weight-bold">Leave a comment</h2>
 
         {{-- facebook comment --}}
-        <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5"></div>
+        <div class="fb-comments" data-href="{{ Request::url() }}" data-width="100%" data-numposts="5"></div>
 
     </div>
 

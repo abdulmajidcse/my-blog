@@ -39,12 +39,6 @@
     #custom-style img, iframe {
       width: 100% !important;
     }
-
-    @media screen and (max-width: 480px) {
-      #custom-style iframe {
-        height: 200px !important;
-      }
-    }
   </style>
 
 </head>
