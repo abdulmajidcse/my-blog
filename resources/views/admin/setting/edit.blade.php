@@ -46,8 +46,8 @@
                   </span>
               @enderror
               @if ($setting->app_logo)
-                <div class="magnific_image_container mt-2" style="width: 200px;">
-                  <a href="{{ asset('assets/uploads/'.$setting->app_logo) }}"><img src="{{ asset('assets/uploads/'.$setting->app_logo) }}" alt="App Logo" class="img w-100"></a>
+                <div class="mt-2" style="width: 200px;">
+                  <img src="{{ asset('assets/uploads/'.$setting->app_logo) }}" alt="App Logo" class="img w-100">
                 </div>
               @endif
             </div>
@@ -131,8 +131,8 @@
                   </span>
               @enderror
               @if ($setting->meta_image)
-                <div class="magnific_image_container mt-2" style="width: 200px;">
-                  <a href="{{ asset('assets/uploads/'.$setting->meta_image) }}"><img src="{{ asset('assets/uploads/'.$setting->meta_image) }}" alt="Meta Image" class="img w-100"></a>
+                <div class="mt-2" style="width: 200px;">
+                  <img src="{{ asset('assets/uploads/'.$setting->meta_image) }}" alt="Meta Image" class="img w-100">
                 </div>
               @endif
             </div>
