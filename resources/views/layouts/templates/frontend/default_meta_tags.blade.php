@@ -63,7 +63,7 @@
     <meta name="image" content="{{ asset($defaultImage) }}" />
 
     <meta property="og:title" content="{{ $defaultTitle }}" />
-    <meta property="og:description" content="{{ $defaultKeyword }}">
+    <meta property="og:description" content="{{ $defaultDescription }}">
     <meta property="og:keywords" content="{{ $defaultKeyword }}" />
     <meta property="og:image" content="{{ asset($defaultImage) }}" />
 
