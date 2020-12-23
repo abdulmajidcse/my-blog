@@ -24,10 +24,16 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Solaiman Lipi Bangla font -->
+  <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
 
   @stack('admin_styles')
+
+  <style>
+    body {
+      font-family: 'SolaimanLipi', Arial, sans-serif !important;
+    }
+  </style>
 
 </head>
 <body class="hold-transition sidebar-mini">

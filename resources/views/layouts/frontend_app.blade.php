@@ -23,12 +23,15 @@
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Solaiman Lipi Bangla font -->
+  <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
 
   @stack('frontend_styles')
 
   <style>
+    body {
+      font-family: 'SolaimanLipi', Arial, sans-serif !important;
+    }
     /* code preview style */
     #custom-style pre {
       background-color: #333 !important;
