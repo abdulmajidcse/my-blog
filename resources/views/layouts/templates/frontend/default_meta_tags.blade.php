@@ -1,5 +1,6 @@
 {{-- <meta name='google-site-verification' content="" /> --}}
 <!-- [ Meta Tag SEO ] -->
+<meta name="robots" content="ALL, FOLLOW,INDEX" />
 <meta name='language' content='English, Bangla'/>
 <meta name='url' content="{{ Request::url() }}" />
 <meta name='identifier-URL' content="{{ Request::url() }}" />
