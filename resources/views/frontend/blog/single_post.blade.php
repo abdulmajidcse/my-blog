@@ -34,7 +34,7 @@
     <!-- Post -->
     <div class="post">
         <div class="user-block">
-            <h4 class="font-weight-bold mb-0"> {{ Str::title($blogPost->name) }} </h4>
+            <h4 class="font-weight-bold mb-0"> {{ $blogPost->name }} </h4>
             <span class="small">
                 @if ($blogPost->BlogCategory)
                     <i class="fas fa-layer-group mr-1"></i> <a href="{{ route('frontend.blog.category', $blogPost->blogCategory->slug) }}" class="font-weight-bold mr-2">{{ $blogPost->BlogCategory->name }}</a>
@@ -63,7 +63,7 @@
 
             {{-- Post tags --}}
             <div class="mt-3">
-                <span class="btn btn-sm btn-dark"><i class="fas fa-tags"></i> Tags: </span> {{ Str::title($blogPost->meta_keyword) }}
+                <span class="btn btn-sm btn-dark"><i class="fas fa-tags"></i> Tags: </span> {{ $blogPost->meta_keyword }}
             </div>
 
         </div>

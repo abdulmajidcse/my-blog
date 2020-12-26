@@ -23,7 +23,7 @@
                     @endif
 
                     <div class="user-block mt-2">
-                        <h4 class="font-weight-bold mb-0"><a href="{{ route('frontend.blog.post', $blogPost->slug) }}"> {{ Str::title($blogPost->name) }} </a></h4>
+                        <h4 class="font-weight-bold mb-0"><a href="{{ route('frontend.blog.post', $blogPost->slug) }}"> {{ $blogPost->name }} </a></h4>
                     </div>
 
                     <!-- /.user-block -->
