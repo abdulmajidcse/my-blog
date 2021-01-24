@@ -32,6 +32,9 @@
     body {
       font-family: 'SolaimanLipi', Arial, sans-serif !important;
     }
+    input, textarea, button, .btn {
+      border-radius: 0px !important;
+    }
     /* code preview style */
     #custom-style pre {
       background-color: #333 !important;
@@ -150,6 +153,13 @@
 
   })
 
+</script>
+
+<script>
+  // bootstrap title tooltip
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
 </script>
 
 @stack('frontend_scripts')

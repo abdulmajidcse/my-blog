@@ -20,6 +20,8 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
@@ -32,6 +34,9 @@
   <style>
     body {
       font-family: 'SolaimanLipi', Arial, sans-serif !important;
+    }
+    input, textarea, button, .btn {
+      border-radius: 0px !important;
     }
   </style>
 
@@ -88,15 +93,11 @@
   <footer class="main-footer bg-dark" style="background-image: linear-gradient(0deg, #000041 0%, rgb(255 36 77 / 74%) 100%);">
     <div class="container">
       <!-- To the right -->
-      <div class="float-md-right font-weight-bold text-white">
-        <a href="{{ $setting ? $setting->youtube_link : '#' }}" class="text-white" title="YouTube">YouTube</a> | 
-        <a href="{{ $setting ? $setting->facebook_link : '#' }}" class="text-white" title="Facebook">Facebook</a> | 
-        <a href="{{ $setting ? $setting->linkedin_link : '#' }}" class="text-white" title="LinkedIn">LinkedIn</a> | 
-        <a href="{{ $setting ? $setting->github_link : '#' }}" class="text-white" title="Github">Github</a> | 
-        <a href="{{ $setting ? $setting->twitter_link : '#' }}" class="text-white" title="Twitter">Twitter</a>
+      <div class="float-md-right text-white">
+        <span>Developed by <a href="https://facebook.com/abdulmajidcse" class="text-white border-bottom">Abdul Majid</a>.</span>
       </div>
       <!-- Default to the left -->
-      <span class="font-weight-bold">2020 &copy; Developed By <a href="https://facebook.com/abdulmajidcse" class="text-white border-bottom">Abdul Majid</a>.</span>
+      <span> &copy; {{ date('Y') }}  All Rights Reserved by Abdul Majid.</span>
     </div>
   </footer>
 
@@ -115,6 +116,11 @@
 <script src="{{ asset('assets/js/sweetalert2010.min.js') }}"></script>
 
 <script>
+
+    // bootstrap title tooltip
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 
     $.ajaxSetup({
         headers: {

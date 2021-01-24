@@ -38,7 +38,7 @@
             </div>
 
             <div class="form-group">
-              <label for="app_logo">App Logo *</label>
+              <label for="app_logo">App Logo</label>
               <input type="file" class="form-control @error('app_logo') is-invalid @enderror" id="app_logo" name="app_logo">
               @error('app_logo')
                   <span class="invalid-feedback" role="alert">
@@ -53,8 +53,8 @@
             </div>
 
             <div class="form-group">
-              <label for="facebook_link">Facebook Link *</label>
-              <input type="url" class="form-control @error('facebook_link') is-invalid @enderror" id="facebook_link" name="facebook_link" value="{{ $setting->facebook_link }}" required>
+              <label for="facebook_link">Facebook Link</label>
+              <input type="url" class="form-control @error('facebook_link') is-invalid @enderror" id="facebook_link" name="facebook_link" value="{{ $setting->facebook_link }}">
               @error('facebook_link')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -63,8 +63,8 @@
             </div>
 
             <div class="form-group">
-              <label for="youtube_link">YouTube Link *</label>
-              <input type="url" class="form-control @error('youtube_link') is-invalid @enderror" id="youtube_link" name="youtube_link" value="{{ $setting->youtube_link }}" required>
+              <label for="youtube_link">YouTube Link</label>
+              <input type="url" class="form-control @error('youtube_link') is-invalid @enderror" id="youtube_link" name="youtube_link" value="{{ $setting->youtube_link }}">
               @error('youtube_link')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -73,8 +73,8 @@
             </div>
 
             <div class="form-group">
-              <label for="linkedin_link">LinkedIn Link *</label>
-              <input type="url" class="form-control @error('linkedin_link') is-invalid @enderror" id="linkedin_link" name="linkedin_link" value="{{ $setting->linkedin_link }}" required>
+              <label for="linkedin_link">LinkedIn Link</label>
+              <input type="url" class="form-control @error('linkedin_link') is-invalid @enderror" id="linkedin_link" name="linkedin_link" value="{{ $setting->linkedin_link }}">
               @error('linkedin_link')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -83,8 +83,8 @@
             </div>
 
             <div class="form-group">
-              <label for="github_link">Github Link *</label>
-              <input type="url" class="form-control @error('github_link') is-invalid @enderror" id="github_link" name="github_link" value="{{ $setting->github_link }}" required>
+              <label for="github_link">Github Link</label>
+              <input type="url" class="form-control @error('github_link') is-invalid @enderror" id="github_link" name="github_link" value="{{ $setting->github_link }}">
               @error('github_link')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -93,8 +93,8 @@
             </div>
 
             <div class="form-group">
-              <label for="twitter_link">Twitter Link *</label>
-              <input type="url" class="form-control @error('twitter_link') is-invalid @enderror" id="twitter_link" name="twitter_link" value="{{ $setting->twitter_link }}" required>
+              <label for="twitter_link">Twitter Link</label>
+              <input type="url" class="form-control @error('twitter_link') is-invalid @enderror" id="twitter_link" name="twitter_link" value="{{ $setting->twitter_link }}">
               @error('twitter_link')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -103,8 +103,8 @@
             </div>
 
             <div class="form-group">
-              <label for="meta_keyword">Meta Keyword *</label>
-              <textarea rows="4" class="form-control @error('meta_keyword') is-invalid @enderror" id="meta_keyword" name="meta_keyword" required>{{ $setting->meta_keyword }}</textarea>
+              <label for="meta_keyword">Meta Keyword</label>
+              <textarea rows="4" class="form-control @error('meta_keyword') is-invalid @enderror" id="meta_keyword" name="meta_keyword">{{ $setting->meta_keyword }}</textarea>
               @error('meta_keyword')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -113,8 +113,8 @@
             </div>
 
             <div class="form-group">
-              <label for="meta_description">Meta Description *</label>
-              <textarea rows="4" class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" required>{{ $setting->meta_description }}</textarea>
+              <label for="meta_description">Meta Description</label>
+              <textarea rows="4" class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description">{{ $setting->meta_description }}</textarea>
               @error('meta_description')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
@@ -123,7 +123,7 @@
             </div>
 
             <div class="form-group">
-              <label for="meta_image">Meta Image *</label>
+              <label for="meta_image">Meta Image</label>
               <input type="file" class="form-control @error('meta_image') is-invalid @enderror" id="meta_image" name="meta_image">
               @error('meta_image')
                   <span class="invalid-feedback" role="alert">

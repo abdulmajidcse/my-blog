@@ -8,7 +8,7 @@
     <div class="container">
 
       <a href="{{ route('frontend.home') }}" class="navbar-brand">
-        <img src="{{ $setting ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}" alt="{{ $setting ? $setting->app_name : config('app.name') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="{{ $setting && $setting->app_logo ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}" alt="{{ $setting ? $setting->app_name : config('app.name') }}" class="brand-image img-circle elevation-3" style="opacity: .8">
       </a>
 
       <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

@@ -28,7 +28,6 @@
                     <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Slug</th>
                     <th>Option</th>
                     </tr>
                 </thead>
@@ -37,7 +36,6 @@
                         <tr>
                             <td> {{ ++$loop->index }} </td>
                             <td> {{ $blogCategory->name }} </td>
-                            <td> {{ $blogCategory->slug }} </td>
                             <td>
                                 <div class="dropdown">
 

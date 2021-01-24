@@ -39,17 +39,17 @@ class BlogCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'             => 'required|string|unique:blog_categories',
-            'slug'             => 'required|string|unique:blog_categories',
-            'meta_keyword'     => 'required|string',
-            'meta_description' => 'required|string',
+            'name'            => 'required|string|unique:blog_categories',
+            'slug'            => 'required|string|unique:blog_categories',
+            'seo_keyword'     => 'nullable|string',
+            'seo_description' => 'nullable|string',
         ]);
 
-        $blogCategory                   = new BlogCategory();
-        $blogCategory->name             = $request->name;
-        $blogCategory->slug             = Str::slug($request->slug, '-');
-        $blogCategory->meta_keyword     = $request->meta_keyword;
-        $blogCategory->meta_description = $request->meta_description;
+        $blogCategory                  = new BlogCategory();
+        $blogCategory->name            = $request->name;
+        $blogCategory->slug            = Str::slug($request->slug, '-');
+        $blogCategory->seo_keyword     = $request->seo_keyword;
+        $blogCategory->seo_description = $request->seo_description;
         $blogCategory->save();
         
         $request->session()->flash('message', 'Blog Category Saved.');
@@ -84,16 +84,16 @@ class BlogCategoryController extends Controller
     public function update(Request $request, BlogCategory $blogCategory)
     {
         $request->validate([
-            'name'             => 'required|string|unique:blog_categories,name,'.$blogCategory->id,
-            'slug'             => 'required|string|unique:blog_categories,slug,'.$blogCategory->id,
-            'meta_keyword'     => 'required|string',
-            'meta_description' => 'required|string',
+            'name'            => 'required|string|unique:blog_categories,name,'.$blogCategory->id,
+            'slug'            => 'required|string|unique:blog_categories,slug,'.$blogCategory->id,
+            'seo_keyword'     => 'nullable|string',
+            'seo_description' => 'nullable|string',
         ]);
 
-        $blogCategory->name             = $request->name;
-        $blogCategory->slug             = Str::slug($request->slug, '-');
-        $blogCategory->meta_keyword     = $request->meta_keyword;
-        $blogCategory->meta_description = $request->meta_description;
+        $blogCategory->name            = $request->name;
+        $blogCategory->slug            = Str::slug($request->slug, '-');
+        $blogCategory->seo_keyword     = $request->seo_keyword;
+        $blogCategory->seo_description = $request->seo_description;
         $blogCategory->save();
         
         $request->session()->flash('message', 'Blog Category Saved.');

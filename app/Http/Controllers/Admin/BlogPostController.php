@@ -46,12 +46,12 @@ class BlogPostController extends Controller
             'slug'             => 'required|string|unique:blog_posts',
             'image'            => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
             'content'          => 'required|string',
-            'meta_keyword'     => 'required|string',
-            'meta_description' => 'required|string',
+            'seo_keyword'      => 'nullable|string',
+            'seo_description'  => 'nullable|string',
         ],
         [
             'blog_category_id.required' => 'The post category field is required.',
-            'blog_category_id.numeric' => 'The post category must be a number.',
+            'blog_category_id.numeric'  => 'The post category must be a number.',
         ]);
 
         $blogPost                   = new BlogPost();
@@ -59,8 +59,8 @@ class BlogPostController extends Controller
         $blogPost->name             = $request->name;
         $blogPost->slug             = Str::slug($request->slug, '-');
         $blogPost->content          = $request->content;
-        $blogPost->meta_keyword     = $request->meta_keyword;
-        $blogPost->meta_description = $request->meta_description;
+        $blogPost->seo_keyword      = $request->seo_keyword;
+        $blogPost->seo_description  = $request->seo_description;
 
         // image upload and store name in table
         if($request->file('image')) {
@@ -73,6 +73,15 @@ class BlogPostController extends Controller
             $image->move($upload_path, $image_full_name);
             // save name in table
             $blogPost->image = $image_full_name;
+        }
+
+        /**
+         * Post save as draft
+         */
+        if($request->save_as_draft) {
+            $blogPost->status  = 2;
+        } else {
+            $blogPost->status  = 1;
         }
 
         $blogPost->save();
@@ -109,20 +118,20 @@ class BlogPostController extends Controller
             'slug'             => 'required|string|unique:blog_posts,slug,'.$blogPost->id,
             'image'            => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
             'content'          => 'required|string',
-            'meta_keyword'     => 'required|string',
-            'meta_description' => 'required|string',
+            'seo_keyword'      => 'nullable|string',
+            'seo_description'  => 'nullable|string',
         ],
         [
             'blog_category_id.required' => 'The post category field is required.',
-            'blog_category_id.numeric' => 'The post category must be a number.',
+            'blog_category_id.numeric'  => 'The post category must be a number.',
         ]);
 
         $blogPost->blog_category_id = $request->blog_category_id;
         $blogPost->name             = $request->name;
         $blogPost->slug             = Str::slug($request->slug, '-');
         $blogPost->content          = $request->content;
-        $blogPost->meta_keyword     = $request->meta_keyword;
-        $blogPost->meta_description = $request->meta_description;
+        $blogPost->seo_keyword      = $request->seo_keyword;
+        $blogPost->seo_description  = $request->seo_description;
 
         // image upload and store name in table
         if($request->file('image')) {
@@ -141,6 +150,15 @@ class BlogPostController extends Controller
 
             // save name in table
             $blogPost->image = $image_full_name;
+        }
+
+        /**
+         * Post save as draft
+         */
+        if($request->save_as_draft) {
+            $blogPost->status  = 2;
+        } else {
+            $blogPost->status  = 1;
         }
 
         $blogPost->save();

@@ -29,6 +29,12 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
 
+  <style>
+    input, textarea, button, .btn {
+      border-radius: 0px !important;
+    }
+  </style>
+
 </head>
 <body class="hold-transition login-page">
 

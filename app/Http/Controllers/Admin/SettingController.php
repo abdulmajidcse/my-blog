@@ -33,29 +33,29 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'app_name'         => 'required|string',
-            'app_title'        => 'required|string',
-            'app_logo'         => 'required|image|mimes:jpg,jpeg,png|max:5000',
-            'facebook_link'    => 'required|url',
-            'youtube_link'     => 'required|url',
-            'linkedin_link'    => 'required|url',
-            'github_link'      => 'required|url',
-            'twitter_link'     => 'required|url',
-            'meta_keyword'     => 'required|string',
-            'meta_description' => 'required|string',
-            'meta_image'       => 'required|image|mimes:jpg,jpeg,png|max:5000',
+            'app_name'        => 'required|string',
+            'app_title'       => 'required|string',
+            'app_logo'        => 'nullable|image|mimes: jpg,jpeg,png|max:5000',
+            'facebook_link'   => 'nullable|url',
+            'youtube_link'    => 'nullable|url',
+            'linkedin_link'   => 'nullable|url',
+            'github_link'     => 'nullable|url',
+            'twitter_link'    => 'nullable|url',
+            'seo_keyword'     => 'nullable|string',
+            'seo_description' => 'nullable|string',
+            'seo_image'       => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
         ]);
 
-        $setting                   = new Setting();
-        $setting->app_name         = $request->app_name;
-        $setting->app_title        = $request->app_title;
-        $setting->facebook_link    = $request->facebook_link;
-        $setting->youtube_link     = $request->youtube_link;
-        $setting->linkedin_link    = $request->linkedin_link;
-        $setting->github_link      = $request->github_link;
-        $setting->twitter_link     = $request->twitter_link;
-        $setting->meta_keyword     = $request->meta_keyword;
-        $setting->meta_description = $request->meta_description;
+        $setting                  = new Setting();
+        $setting->app_name        = $request->app_name;
+        $setting->app_title       = $request->app_title;
+        $setting->facebook_link   = $request->facebook_link;
+        $setting->youtube_link    = $request->youtube_link;
+        $setting->linkedin_link   = $request->linkedin_link;
+        $setting->github_link     = $request->github_link;
+        $setting->twitter_link    = $request->twitter_link;
+        $setting->seo_keyword     = $request->seo_keyword;
+        $setting->seo_description = $request->seo_description;
 
         // app logo upload and store name in table
         if($request->file('app_logo')) {
@@ -70,9 +70,9 @@ class SettingController extends Controller
             $setting->app_logo = $image_full_name;
         }
 
-        // meta image upload and store name in table
-        if($request->file('meta_image')) {
-            $image = $request->file('meta_image');
+        // seo image upload and store name in table
+        if($request->file('seo_image')) {
+            $image = $request->file('seo_image');
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
@@ -80,7 +80,7 @@ class SettingController extends Controller
             //upload file
             $image->move($upload_path, $image_full_name);
             // save name in table
-            $setting->meta_image = $image_full_name;
+            $setting->seo_image = $image_full_name;
         }
 
         $setting->save();
@@ -100,28 +100,28 @@ class SettingController extends Controller
     public function update(Request $request, Setting $setting)
     {
         $request->validate([
-            'app_name'         => 'required|string',
-            'app_title'        => 'required|string',
-            'app_logo'         => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
-            'facebook_link'    => 'required|url',
-            'youtube_link'     => 'required|url',
-            'linkedin_link'    => 'required|url',
-            'github_link'      => 'required|url',
-            'twitter_link'     => 'required|url',
-            'meta_keyword'     => 'required|string',
-            'meta_description' => 'required|string',
-            'meta_image'       => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
+            'app_name'        => 'required|string',
+            'app_title'       => 'required|string',
+            'app_logo'        => 'nullable|image|mimes: jpg,jpeg,png|max:5000',
+            'facebook_link'   => 'nullable|url',
+            'youtube_link'    => 'nullable|url',
+            'linkedin_link'   => 'nullable|url',
+            'github_link'     => 'nullable|url',
+            'twitter_link'    => 'nullable|url',
+            'seo_keyword'     => 'nullable|string',
+            'seo_description' => 'nullable|string',
+            'seo_image'       => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
         ]);
 
-        $setting->app_name         = $request->app_name;
-        $setting->app_title        = $request->app_title;
-        $setting->facebook_link    = $request->facebook_link;
-        $setting->youtube_link     = $request->youtube_link;
-        $setting->linkedin_link    = $request->linkedin_link;
-        $setting->github_link      = $request->github_link;
-        $setting->twitter_link     = $request->twitter_link;
-        $setting->meta_keyword     = $request->meta_keyword;
-        $setting->meta_description = $request->meta_description;
+        $setting->app_name        = $request->app_name;
+        $setting->app_title       = $request->app_title;
+        $setting->facebook_link   = $request->facebook_link;
+        $setting->youtube_link    = $request->youtube_link;
+        $setting->linkedin_link   = $request->linkedin_link;
+        $setting->github_link     = $request->github_link;
+        $setting->twitter_link    = $request->twitter_link;
+        $setting->seo_keyword     = $request->seo_keyword;
+        $setting->seo_description = $request->seo_description;
 
         // app logo upload and store name in table
         if($request->file('app_logo')) {
@@ -142,9 +142,9 @@ class SettingController extends Controller
             $setting->app_logo = $image_full_name;
         }
 
-        // meta image upload and store name in table
-        if($request->file('meta_image')) {
-            $image = $request->file('meta_image');
+        // seo image upload and store name in table
+        if($request->file('seo_image')) {
+            $image = $request->file('seo_image');
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
@@ -152,13 +152,13 @@ class SettingController extends Controller
             //upload file
             $image->move($upload_path, $image_full_name);
 
-            //delete old meta_image
-            if(file_exists('assets/uploads/'.$setting->meta_image)) {
-                unlink('assets/uploads/'.$setting->meta_image);
+            //delete old seo_image
+            if(file_exists('assets/uploads/'.$setting->seo_image)) {
+                unlink('assets/uploads/'.$setting->seo_image);
             }
 
             // save name in table
-            $setting->meta_image = $image_full_name;
+            $setting->seo_image = $image_full_name;
         }
 
         $setting->save();

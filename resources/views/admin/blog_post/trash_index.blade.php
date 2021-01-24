@@ -27,11 +27,8 @@
                 <thead>
                     <tr>
                     <th>#</th>
-                    <th>Image</th>
                     <th>Category</th>
                     <th>Name</th>
-                    <th>Slug</th>
-                    <th>Content</th>
                     <th>Option</th>
                     </tr>
                 </thead>
@@ -39,15 +36,8 @@
                     @foreach ($blogPosts as $blogPost)
                         <tr>
                             <td> {{ ++$loop->index }} </td>
-                            <td> 
-                                @if ($blogPost->image)
-                                    <img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100">
-                                @endif
-                            </td>
                             <td> {{ optional($blogPost->blogCategory)->name }} </td>
                             <td> {{ $blogPost->name }} </td>
-                            <td> {{ $blogPost->slug }} </td>
-                            <td> <p style="min-width: 300px;">{!! Str::words($blogPost->content, 20) !!}</p> </td>
                             <td>
                                 <div class="dropdown">
 

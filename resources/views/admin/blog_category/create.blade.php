@@ -40,9 +40,9 @@
             </div>
 
             <div class="form-group">
-              <label for="meta_keyword">Meta Keyword *</label>
-              <textarea rows="4" class="form-control @error('meta_keyword') is-invalid @enderror" id="meta_keyword" name="meta_keyword" required>{{ old('meta_keyword') }}</textarea>
-              @error('meta_keyword')
+              <label for="seo_keyword">SEO Keyword</label>
+              <textarea rows="4" class="form-control @error('seo_keyword') is-invalid @enderror" id="seo_keyword" name="seo_keyword">{{ old('seo_keyword') }}</textarea>
+              @error('seo_keyword')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
@@ -50,9 +50,9 @@
             </div>
 
             <div class="form-group">
-              <label for="meta_description">Meta Description *</label>
-              <textarea rows="8" class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description" required>{{ old('meta_description') }}</textarea>
-              @error('meta_description')
+              <label for="seo_description">SEO Description</label>
+              <textarea rows="8" class="form-control @error('seo_description') is-invalid @enderror" id="seo_description" name="seo_description">{{ old('seo_description') }}</textarea>
+              @error('seo_description')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
