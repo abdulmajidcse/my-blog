@@ -41,14 +41,14 @@
 <div class="wrapper">
   
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-dark navbar-primary">
+  <nav class="main-header navbar navbar-expand navbar-dark navbar-primary" style="background-image: linear-gradient(0deg, #000041 0%, rgb(255 36 77 / 74%) 100%);">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item">
-        <a href="{{ route('frontend.home') }}" class="nav-link">Visite Site</a>
+        <a href="{{ route('frontend.home') }}" class="nav-link" target="_blank">Visit Site</a>
       </li>
     </ul>
 
@@ -76,27 +76,16 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    
-    {{-- card-header --}}
-    <section class="content-header">
-      <div class="container">
-        <div class="row mb-2">
-          <div class="col-12 text-muted">
-            <h1>{{ $setting ? $setting->app_title : 'Set Your Application Title Here' }}</h1>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content mt-4">
       @yield('admin_content')
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer bg-dark">
+  <footer class="main-footer bg-dark" style="background-image: linear-gradient(0deg, #000041 0%, rgb(255 36 77 / 74%) 100%);">
     <div class="container">
       <!-- To the right -->
       <div class="float-md-right font-weight-bold text-white">
