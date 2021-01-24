@@ -23,8 +23,8 @@ class Setting extends Model
         'linkedin_link',
         'github_link',
         'twitter_link',
-        'meta_keyword',
-        'meta_description',
-        'meta_image',
+        'seo_keyword',
+        'seo_description',
+        'seo_image',
     ];
 }

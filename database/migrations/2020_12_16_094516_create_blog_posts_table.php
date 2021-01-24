@@ -22,8 +22,9 @@ class CreateBlogPostsTable extends Migration
             $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->longText('content');
-            $table->text('meta_keyword');
-            $table->text('meta_description');
+            $table->text('seo_keyword')->nullable();
+            $table->text('seo_description')->nullable();
+            $table->unsignedTinyInteger('status')->default(1)->comment('1=publish, 2=draft');
             $table->softDeletes();
             $table->timestamps();
         });

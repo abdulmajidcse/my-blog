@@ -18,7 +18,7 @@ class BlogCategory extends Model
     protected $fillable = [
         'name',
         'slug',
-        'meta_keyword',
-        'meta_description',
+        'seo_keyword',
+        'seo_description',
     ];
 }

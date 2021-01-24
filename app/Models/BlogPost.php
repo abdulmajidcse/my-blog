@@ -21,8 +21,9 @@ class BlogPost extends Model
         'slug',
         'image',
         'content',
-        'meta_keyword',
-        'meta_description',
+        'seo_keyword',
+        'seo_description',
+        'status',
     ];
 
     public function blogCategory()

@@ -17,8 +17,8 @@ class CreateBlogCategoriesTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug')->unique();
-            $table->text('meta_keyword');
-            $table->text('meta_description');
+            $table->text('seo_keyword')->nullable();
+            $table->text('seo_description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
