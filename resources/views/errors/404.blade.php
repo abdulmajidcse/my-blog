@@ -15,6 +15,9 @@
 <!-- 404 section -->
 <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
     <div class="w-100">
+        <!-- search form -->
+        @include('layouts.templates.frontend.search_form')
+        
         <h1 class="font-weight-bold text-center text-danger">404</h1>
 
         <div class="error-content">

@@ -106,7 +106,7 @@
     })
 
     // search form topbar
-    $(document).on("submit", "#search", function(e){
+    $(document).on("submit", "#search-form", function(e){
       e.preventDefault()
       let searchValue = $('#search-value').val()
 

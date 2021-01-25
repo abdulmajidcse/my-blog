@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function search($value)
     {
         $blogPosts = BlogPost::where('status', 1)
-            ->orWhere('name', 'LIKE', "%{$value}%")
+            ->where('name', 'LIKE', "%{$value}%")
             ->orWhere('slug', 'LIKE', "%{$value}%")
             ->orWhere('content', 'LIKE', "%{$value}%")
             ->orWhere('seo_keyword', 'LIKE', "%{$value}%")

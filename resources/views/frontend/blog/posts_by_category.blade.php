@@ -13,7 +13,9 @@
     <!-- Blog Posts section -->
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
         <div class="w-100">
-            <h2 class="text-center text-muted font-weight-bold border-bottom">Category: {{ $blogCategory->name }}</h2>
+            <!-- search form -->
+            @include('layouts.templates.frontend.search_form')
+            <h4 class="text-center text-muted text-normal text-bn border-bottom mb-3">Category: {{ $blogCategory->name }}</h4>
             
             <!-- Blog Posts -->
             @include('layouts.templates.frontend.all_post')

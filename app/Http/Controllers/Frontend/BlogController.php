@@ -51,6 +51,11 @@ class BlogController extends Controller
     public function singlePost($slug)
     {
         $blogPost = BlogPost::where('slug', $slug)->firstOrFail();
-        return view('frontend.blog.single_post', ['blogPost' => $blogPost]);
+        $blogPosts = BlogPost::where('status', 1)
+            ->where('blog_category_id', $blogPost->blog_category_id)
+            ->where('id', '!=', $blogPost->id)
+            ->latest('id')
+            ->take(6)->get();
+        return view('frontend.blog.single_post', ['blogPost' => $blogPost, 'blogPosts' => $blogPosts]);
     }
 }

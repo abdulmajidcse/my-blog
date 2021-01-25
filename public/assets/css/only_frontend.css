@@ -40,3 +40,7 @@ nav#sideNav {
   -webkit-transition: .3s;
   -moz-transition: .3s;
 }
+
+.form-control:focus {
+  box-shadow: none !important;
+}

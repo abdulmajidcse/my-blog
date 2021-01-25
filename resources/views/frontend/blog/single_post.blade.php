@@ -43,6 +43,9 @@
     <!-- Single Post section -->
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
         <div class="w-100">
+            <!-- search form -->
+            @include('layouts.templates.frontend.search_form')
+            
             <!-- Post -->
             <div class="single-blog-post-wrapper">
                 <h4 class="text-normal text-bn mb-2"> {{ $blogPost->name }} </h4>
@@ -81,19 +84,10 @@
 
             </div>
 
-            {{-- Related Posts --}}
-            @php
-                $relatedPosts = \App\Models\BlogPost::where('blog_category_id', $blogPost->blog_category_id)->where('id', '!=', $blogPost->id)->latest('id')->take(6)->get();
-            @endphp
-            @if(count($relatedPosts) > 0)
-                <ul class="list-group mt-3">
-                    <li class="list-group-item bg-info font-weight-bold">Related Posts</li>
-                    @foreach ($relatedPosts as $relatedPost)
-                    <li class="list-group-item">
-                        <a href="{{ route('frontend.blog.post', $relatedPost->slug) }}">{{ $relatedPost->name }}</a>
-                    </li>
-                    @endforeach
-                </ul>
+            @if(count($blogPosts) > 0)
+                <!-- related posts -->
+                <h2 class="my-3">Related Posts</h2>
+                @include('layouts.templates.frontend.all_post')
             @endif
 
 

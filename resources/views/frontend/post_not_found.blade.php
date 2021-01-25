@@ -9,8 +9,11 @@
 <!-- no post available section -->
 <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
     <div class="w-100">
+        <!-- search form -->
+        @include('layouts.templates.frontend.search_form')
+        
         @if(isset($searchValue))
-            <h2 class="text-center text-muted font-weight-bold border-bottom">Search for: {{ $searchValue }}</h2>
+            <h4 class="text-center text-muted text-normal text-bn border-bottom mb-3">Search For: {{ $searchValue }}</h4>
         @else
             <h2 class="font-weight-bold text-center text-danger"> Comming soon...</h2>
         @endif
