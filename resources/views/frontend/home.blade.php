@@ -102,7 +102,7 @@
         <div class="w-100">
             <h2 class="mb-5">Recent Posts</h2>
 
-            @if ($blogPosts->count() > 0
+            @if ($blogPosts->count() > 0)
               @include('layouts.templates.frontend.all_post')
 
               <p class="text-center mt-1"><a href="{{ route('frontend.blog.index') }}" class="btn btn-flat btn-danger font-weight-bold"> See More Posts </a></p>
