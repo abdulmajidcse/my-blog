@@ -84,11 +84,14 @@
 
             </div>
 
-            @if(count($blogPosts) > 0)
+            @if($blogPosts->count() > 0)
                 <!-- related posts -->
                 <h2 class="my-3">Related Posts</h2>
                 @include('layouts.templates.frontend.all_post')
             @endif
+
+            <!-- blog categories -->
+            @include('layouts.templates.frontend.blog_categories')
 
 
             {{-- Copy link modal --}}

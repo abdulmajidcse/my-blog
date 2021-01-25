@@ -17,7 +17,8 @@ class BlogController extends Controller
     {
         $blogPosts = BlogPost::where('status', 1)->latest('id')->paginate(24);
         if(count($blogPosts) > 0) {
-            return view('frontend.blog.index', ['blogPosts' => $blogPosts]);
+            $blogCategories = BlogCategory::latest('id')->get();
+            return view('frontend.blog.index', ['blogPosts' => $blogPosts, 'blogCategories' => $blogCategories]);
         }
         
         return view('frontend.post_not_found');
@@ -37,7 +38,8 @@ class BlogController extends Controller
             ->paginate(24);
 
         if(count($blogPosts) > 0) {
-            return view('frontend.blog.posts_by_category', ['blogPosts' => $blogPosts, 'blogCategory' => $blogCategory]);
+            $blogCategories = BlogCategory::latest('id')->get();
+            return view('frontend.blog.posts_by_category', ['blogPosts' => $blogPosts, 'blogCategory' => $blogCategory, 'blogCategories' => $blogCategories]);
         }
         
         return abort(404, 'Not Found');
@@ -56,6 +58,7 @@ class BlogController extends Controller
             ->where('id', '!=', $blogPost->id)
             ->latest('id')
             ->take(6)->get();
-        return view('frontend.blog.single_post', ['blogPost' => $blogPost, 'blogPosts' => $blogPosts]);
+        $blogCategories = BlogCategory::latest('id')->get();
+        return view('frontend.blog.single_post', ['blogPost' => $blogPost, 'blogPosts' => $blogPosts, 'blogCategories' => $blogCategories]);
     }
 }

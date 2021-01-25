@@ -21,4 +21,9 @@ class BlogCategory extends Model
         'seo_keyword',
         'seo_description',
     ];
+
+    public function blogPosts()
+    {
+        return $this->hasMany(BlogPost::class);
+    }
 }

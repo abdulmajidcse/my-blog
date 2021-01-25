@@ -106,6 +106,9 @@
               @include('layouts.templates.frontend.all_post')
 
               <p class="text-center mt-1"><a href="{{ route('frontend.blog.index') }}" class="btn btn-flat btn-danger font-weight-bold"> See More Posts </a></p>
+
+              <!-- blog categories -->
+              @include('layouts.templates.frontend.blog_categories')
             @else
               <h2 class="font-weight-bold text-center text-danger"> Comming soon...</h2>
               <div class="error-content">

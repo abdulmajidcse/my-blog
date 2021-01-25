@@ -23,6 +23,9 @@
             
             <!-- Pagination -->
             @include('layouts.templates.frontend.pagination')
+
+            <!-- blog categories -->
+            @include('layouts.templates.frontend.blog_categories')
         </div>
     </section>
 

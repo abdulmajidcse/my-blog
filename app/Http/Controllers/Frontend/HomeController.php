@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
+use App\Models\BlogCategory;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -15,7 +16,8 @@ class HomeController extends Controller
     public function index()
     {
         $blogPosts = BlogPost::where('status', 1)->latest('id')->take(6)->get();
-        return view('frontend.home', ['blogPosts' => $blogPosts]);
+        $blogCategories = BlogCategory::latest('id')->get();
+        return view('frontend.home', ['blogPosts' => $blogPosts, 'blogCategories' => $blogCategories]);
     }
 
      /**
@@ -34,7 +36,8 @@ class HomeController extends Controller
             ->latest('id')->paginate(24);
         
         if(count($blogPosts) > 0) {
-            return view('frontend.search', ['blogPosts' => $blogPosts, 'searchValue' => $value]);
+            $blogCategories = BlogCategory::latest('id')->get();
+            return view('frontend.search', ['blogPosts' => $blogPosts, 'searchValue' => $value, 'blogCategories' => $blogCategories]);
         }
 
         return view('frontend.post_not_found', ['searchValue' => $value]);
