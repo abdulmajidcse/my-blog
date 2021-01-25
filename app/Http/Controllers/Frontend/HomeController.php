@@ -15,11 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $blogPosts = BlogPost::where('status', 1)->latest('id')->take(6)->get();
-        if(count($blogPosts) > 0) {
-            return view('frontend.home', ['blogPosts' => $blogPosts]);
-        } else {
-            return view('errors.no_post');
-        }
+        return view('frontend.home', ['blogPosts' => $blogPosts]);
     }
 
      /**
@@ -29,17 +25,18 @@ class HomeController extends Controller
      */
     public function search($value)
     {
-        $blogPosts = BlogPost::where('name', 'LIKE', "%{$value}%")
+        $blogPosts = BlogPost::where('status', 1)
+            ->orWhere('name', 'LIKE', "%{$value}%")
             ->orWhere('slug', 'LIKE', "%{$value}%")
             ->orWhere('content', 'LIKE', "%{$value}%")
             ->orWhere('meta_keyword', 'LIKE', "%{$value}%")
             ->orWhere('meta_description', 'LIKE', "%{$value}%")
-            ->orderBy('id', 'desc')->paginate(5);
+            ->latest('id')->paginate(24);
         
         if(count($blogPosts) > 0) {
             return view('frontend.search', ['blogPosts' => $blogPosts, 'searchValue' => $value]);
         }
 
-        return view('errors.no_post', ['searchValue' => $value]);
+        return view('frontend.post_not_found', ['searchValue' => $value]);
     }
 }

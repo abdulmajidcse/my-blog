@@ -40,8 +40,8 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0" nonce="pvTYXP2P"></script>
 
-    <!-- about section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
+    <!-- Single Post section -->
+    <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
         <div class="w-100">
             <!-- Post -->
             <div class="single-blog-post-wrapper">

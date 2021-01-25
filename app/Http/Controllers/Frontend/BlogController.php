@@ -15,12 +15,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogPosts = BlogPost::orderBy('id', 'desc')->paginate(10);
+        $blogPosts = BlogPost::where('status', 1)->latest('id')->paginate(24);
         if(count($blogPosts) > 0) {
-            return view('frontend.home', ['blogPosts' => $blogPosts]);
-        } else {
-            return view('errors.no_post');
+            return view('frontend.blog.index', ['blogPosts' => $blogPosts]);
         }
+        
+        return view('frontend.post_not_found');
     }
     
     /**
@@ -30,18 +30,17 @@ class BlogController extends Controller
      */
     public function postsByCategory($slug)
     {
-        $blogCategory = BlogCategory::where('slug', $slug)->first();
-        if($blogCategory) {
-            $blogPosts = BlogPost::where('blog_category_id', $blogCategory->id)->orderBy('id', 'desc')->paginate(10);
+        $blogCategory = BlogCategory::where('slug', $slug)->firstOrFail();
+        $blogPosts = BlogPost::where('status', 1)
+            ->where('blog_category_id', $blogCategory->id)
+            ->latest('id')
+            ->paginate(24);
 
-            if(count($blogPosts) > 0) {
-                return view('frontend.blog.posts_by_category', ['blogPosts' => $blogPosts, 'blogCategory' => $blogCategory]);
-            } else {
-                return view('errors.no_post', ['blogCategory' => $blogCategory]);
-            }
-            
+        if(count($blogPosts) > 0) {
+            return view('frontend.blog.posts_by_category', ['blogPosts' => $blogPosts, 'blogCategory' => $blogCategory]);
         }
-        return view('errors.404');
+        
+        return view('frontend.post_not_found', ['blogCategory' => $blogCategory]);
     }
 
     /**

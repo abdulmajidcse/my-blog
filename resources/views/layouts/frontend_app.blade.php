@@ -53,11 +53,9 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        @if (! Route::is('frontend.home'))
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="{{ route('frontend.home') }}">Home</a>
-          </li>
-        @endif
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger {{ Route::is('frontend.home') ? 'text-muted' : '' }}" href="{{ route('frontend.home') }}">Home</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="{{ Route::is('frontend.home') ? '#about' : route('frontend.home') . '#about' }}">About</a>
         </li>
