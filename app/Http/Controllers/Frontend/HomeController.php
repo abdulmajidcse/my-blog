@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $blogPosts = BlogPost::latest()->take(5)->get();
+        $blogPosts = BlogPost::where('status', 1)->latest('id')->take(6)->get();
         if(count($blogPosts) > 0) {
             return view('frontend.home', ['blogPosts' => $blogPosts]);
         } else {

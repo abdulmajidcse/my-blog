@@ -14,7 +14,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="icon" type="image/jpg" href="{{ $setting ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}">
+  <link rel="icon" type="image/jpg" href="{{ $setting && $setting->app_logo ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}">
 
   <title>@yield('admin_title', 'Web Developer') | {{ $setting ? $setting->app_name : config('app.name') }}</title>
 
@@ -113,7 +113,7 @@
 
 <script>
 
-    // bootstrap title tooltip
+    // bootstrap title tooltip init
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })

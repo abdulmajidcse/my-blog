@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -52,10 +51,7 @@ class BlogController extends Controller
      */
     public function singlePost($slug)
     {
-        $blogPost = BlogPost::where('slug', $slug)->first();
-        if($blogPost) {
-            return view('frontend.blog.single_post', ['blogPost' => $blogPost]);
-        }
-        return view('errors.404');
+        $blogPost = BlogPost::where('slug', $slug)->firstOrFail();
+        return view('frontend.blog.single_post', ['blogPost' => $blogPost]);
     }
 }

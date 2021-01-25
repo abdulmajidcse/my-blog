@@ -15,153 +15,113 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="icon" type="image/jpg" href="{{ $setting ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}">
+  <link rel="icon" type="image/jpg" href="{{ $setting && $setting->app_logo ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}">
 
   <title>@yield('frontend_title', 'Web Developer') | {{ $setting ? $setting->app_name : config('app.name') }}</title>
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
   <!-- Solaiman Lipi Bangla font -->
   <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{{ asset('assets/css/resume.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/only_frontend.css') }}">
   <!-- custom css -->
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
   @stack('frontend_styles')
 
-  <style>
-    /* code preview style */
-    #custom-style pre {
-      background-color: #333 !important;
-      color: white !important;
-    }
-
-    /* blog post image and iframe style */
-    #custom-style img, iframe {
-      width: 100% !important;
-    }
-  </style>
-
 </head>
-<body class="hold-transition layout-top-nav">
-<div class="wrapper">
 
-  @include('layouts.templates.frontend.header_menu')
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container">
-          <div class="row mb-2">
-            <div class="col-12 text-muted">
-              <h1>{{ $setting ? $setting->app_title : 'Set Your Application title Here' }}</h1>
-            </div>
-          </div>
-        </div><!-- /.container-fluid -->
-      </section>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="container">
-          <div class="row">
-            
-            {{-- Blog post start from here --}}
-            <div class="col-lg-9">
-              <div class="card">
-                <div class="card-body" id="custom-style">
-
-                  @yield('blog_content')
-                  
-                </div><!-- /.card-body -->
-              </div>
-              <!-- /.nav-tabs-custom -->
-            </div>
-            <!-- /.col -->
-
-            <div class="col-lg-3">
-  
-              @include('layouts.templates.frontend.right_sidebar')
-
-            </div>
-            <!-- /.col -->
-
-          </div>
-          <!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
-  <footer class="main-footer bg-dark">
-    <div class="container">
-      <!-- To the right -->
-      <div class="float-md-right font-weight-bold text-white">
-        <a href="{{ $setting ? $setting->youtube_link : '#' }}" class="text-white" title="YouTube">YouTube</a> | 
-        <a href="{{ $setting ? $setting->facebook_link : '#' }}" class="text-white" title="Facebook">Facebook</a> | 
-        <a href="{{ $setting ? $setting->linkedin_link : '#' }}" class="text-white" title="LinkedIn">LinkedIn</a> | 
-        <a href="{{ $setting ? $setting->github_link : '#' }}" class="text-white" title="Github">Github</a> | 
-        <a href="{{ $setting ? $setting->twitter_link : '#' }}" class="text-white" title="Twitter">Twitter</a>
-      </div>
-      <!-- Default to the left -->
-      <span class="font-weight-bold">2020 &copy; Developed By <a href="https://facebook.com/abdulmajidcse" class="text-white border-bottom">Abdul Majid</a>.</span>
+<body id="page-top">
+    
+  <!-- left navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+      <span class="d-block d-lg-none"><img src="{{ $setting && $setting->app_logo ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}" class="rounded-circle" style="width: 35px;"><span class="ml-2">Abdul Majid</span></span>
+      <span class="d-none d-lg-block">
+        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="{{ $setting && $setting->app_logo ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}" alt="">
+      </span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        @if (! Route::is('frontend.home'))
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{{ route('frontend.home') }}">Home</a>
+          </li>
+        @endif
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="{{ Route::is('frontend.home') ? '#about' : route('frontend.home') . '#about' }}">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="{{ Route::is('frontend.home') ? '#skills' : route('frontend.home') . '#skills' }}">Skills</a>
+        </li>
+        <li class="nav-item {{ Route::is('frontend.blog.*') ? 'active' : '' }}">
+          <a class="nav-link js-scroll-trigger" href="{{ Route::is('frontend.home') ? '#recent-posts' : route('frontend.blog.index') }}">Blog</a>
+        </li>
+      </ul>
     </div>
-  </footer>
-</div>
-<!-- ./wrapper -->
+  </nav> <!-- end of left navbar -->
 
-<!-- REQUIRED SCRIPTS -->
+  <!-- main container -->
+  <div class="container-fluid p-0 background">
 
-<!-- jQuery -->
-<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+    @yield('frontend_content')
 
-<script>
+    <hr class="m-0">
 
-  // search form header
-  $(document).on("submit", "#search-form-header", function(e){
-    e.preventDefault()
-    let searchValue = $('#search-value-header').val()
+    <!-- footer section -->
+    <footer class="mt-2">
+      <div class="w-100 text-center p-3">
+        <p> &copy; {{ date('Y') }}  All Rights Reserved by Abdul Majid. </p>
+        
+      </div>
+    </footer> <!-- end of footer section -->
 
-    if(searchValue != '') {
-      let link = "{{ route('frontend.search', '') }}" + "/" + searchValue 
-      window.location.href = link;
-    }
+  </div> <!-- end of main container -->
 
-  })
+  <!-- jQuery and Bootstrap js -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
-  // search form rightbar
-  $(document).on("submit", "#search-form-rightbar", function(e){
-    e.preventDefault()
-    let searchValue = $('#search-value-rightbar').val()
+  <!-- Plugin JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
-    if(searchValue != '') {
-      let link = "{{ route('frontend.search', '') }}" + "/" + searchValue 
-      window.location.href = link;
-    }
+  <!-- fontawesome icon -->
+  <script src="https://kit.fontawesome.com/71910267df.js" crossorigin="anonymous"></script>
 
-  })
+  <!-- Custom scripts for this template -->
+  <script src="{{ asset('assets/js/resume.min.js') }}"></script>
 
-</script>
+  <script>
+    // bootstrap title tooltip init
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 
-<script>
-  // bootstrap title tooltip
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
-</script>
+    // search form topbar
+    $(document).on("submit", "#search", function(e){
+      e.preventDefault()
+      let searchValue = $('#search-value').val()
 
-@stack('frontend_scripts')
+      if(searchValue != '') {
+        let link = "{{ route('frontend.search', '') }}" + "/" + searchValue 
+        window.location.href = link;
+      }
+
+    })
+  </script>
+
+  @stack('frontend_scripts')
 
 </body>
+
 </html>
