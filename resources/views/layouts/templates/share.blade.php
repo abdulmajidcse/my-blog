@@ -1,5 +1,5 @@
 {{-- Social Share --}}
-<div class="m-2 text-dark social-icons">
+<div class="my-3 text-dark social-icons">
 
     <span class="h5 font-weight-bold"><i class="fas fa-share"></i> Share on: </span>
     

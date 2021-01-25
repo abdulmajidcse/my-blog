@@ -45,7 +45,7 @@
         <div class="w-100">
             <!-- Post -->
             <div class="single-blog-post-wrapper">
-                <h4 class="text-normal text-bn mb-0"> {{ $blogPost->name }} </h4>
+                <h4 class="text-normal text-bn mb-2"> {{ $blogPost->name }} </h4>
                 <span class="small">
                     @if ($blogPost->BlogCategory)
                         <i class="fas fa-layer-group mr-1"></i> Category: <a href="{{ route('frontend.blog.category', $blogPost->blogCategory->slug) }}" class="font-weight-bold text-bn mr-2">{{ $blogPost->BlogCategory->name }}</a>
