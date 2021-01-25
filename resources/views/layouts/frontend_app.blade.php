@@ -25,16 +25,15 @@
   <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
   <!-- Solaiman Lipi Bangla font -->
   <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+  <!-- custom css -->
+  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
   @stack('frontend_styles')
 
   <style>
-    body {
-      font-family: 'SolaimanLipi', Arial, sans-serif !important;
-    }
-    input, textarea, button, .btn {
-      border-radius: 0px !important;
-    }
     /* code preview style */
     #custom-style pre {
       background-color: #333 !important;

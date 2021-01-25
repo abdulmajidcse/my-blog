@@ -47,7 +47,7 @@
                                             Action
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ route('frontend.blog.post', $blogPost->slug) }}"><i class="fas fa-eye"></i> View</a>
+                                            <a class="dropdown-item" href="{{ route('frontend.blog.post', $blogPost->slug) }}" target="_blank"><i class="fas fa-eye"></i> View</a>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="{{ route('admin.blog-posts.edit', $blogPost) }}"><i class="fas fa-edit"></i> Edit</a>
                                             <div class="dropdown-divider"></div>

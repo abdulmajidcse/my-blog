@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BlogCategory;
 use App\Models\BlogPost;
 
 class HomeController extends Controller
@@ -16,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $blogPosts = BlogPost::orderBy('id', 'desc')->paginate(10);
+        $blogPosts = BlogPost::latest()->take(5)->get();
         if(count($blogPosts) > 0) {
             return view('frontend.home', ['blogPosts' => $blogPosts]);
         } else {

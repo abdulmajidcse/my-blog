@@ -10,6 +10,21 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        $blogPosts = BlogPost::orderBy('id', 'desc')->paginate(10);
+        if(count($blogPosts) > 0) {
+            return view('frontend.home', ['blogPosts' => $blogPosts]);
+        } else {
+            return view('errors.no_post');
+        }
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

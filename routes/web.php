@@ -5,31 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /**
- * Frontend Routes
- * For Guest
- */
-
-Route::name('frontend.')->namespace('Frontend')->group(function() {
-    // All blog posts
-    Route::get('/', 'HomeController@index')->name('home');
-
-    // search
-    Route::get('search/{value}', 'HomeController@search')->where('value', '.*')->name('search');
-
-    /**
-     * Frontend Blog Routes
-     */
-    Route::prefix('blog')->name('blog.')->group(function() {
-        // all post by category
-        Route::get('category/{slug}', 'BlogController@postsByCategory')->name('category');
-        // single post
-        Route::get('{slug}', 'BlogController@singlePost')->name('post');
-    });
-});
-
-
-
-/**
  * Authenticate Routes
  * For Admin
  */
@@ -93,4 +68,30 @@ Route::prefix('admin')->group(function() {
     });
 
 
+});
+
+
+/**
+ * Frontend Routes
+ * For Guest
+ */
+
+Route::name('frontend.')->namespace('Frontend')->group(function() {
+    
+    Route::get('/', 'HomeController@index')->name('home');
+
+    // search
+    Route::get('search/{value}', 'HomeController@search')->name('search');
+
+    /**
+     * Frontend Blog Routes
+     */
+    Route::name('blog.')->group(function() {
+        // all post
+        Route::get('blog', 'BlogController@index')->name('index');
+        // all post by category
+        Route::get('category/{slug}', 'BlogController@postsByCategory')->name('category');
+        // single post
+        Route::get('{slug}', 'BlogController@singlePost')->name('post');
+    });
 });
