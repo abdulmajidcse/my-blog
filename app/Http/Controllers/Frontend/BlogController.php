@@ -40,7 +40,7 @@ class BlogController extends Controller
             return view('frontend.blog.posts_by_category', ['blogPosts' => $blogPosts, 'blogCategory' => $blogCategory]);
         }
         
-        return view('frontend.post_not_found', ['blogCategory' => $blogCategory]);
+        return abort(404, 'Not Found');
     }
 
     /**

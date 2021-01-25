@@ -1,7 +1,7 @@
 @extends('layouts.frontend_app')
 
 @section('frontend_meta_tags')
-    @include('layouts.templates.frontend.default_meta_tags')
+    @include('layouts.templates.frontend.meta_tags')
 @endsection
 
 @section('frontend_title')

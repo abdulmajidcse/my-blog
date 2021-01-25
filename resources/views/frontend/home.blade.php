@@ -102,9 +102,17 @@
         <div class="w-100">
             <h2 class="mb-5">Recent Posts</h2>
 
-            @include('layouts.templates.frontend.all_post')
+            @if ($blogPosts->count() > 0
+              @include('layouts.templates.frontend.all_post')
 
-            <p class="text-center mt-1"><a href="{{ route('frontend.blog.index') }}" class="btn btn-flat btn-danger font-weight-bold"> See More Posts </a></p>
+              <p class="text-center mt-1"><a href="{{ route('frontend.blog.index') }}" class="btn btn-flat btn-danger font-weight-bold"> See More Posts </a></p>
+            @else
+              <h2 class="font-weight-bold text-center text-danger"> Comming soon...</h2>
+              <div class="error-content">
+                  <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! No Post Available.</h3>
+                  <p>We could not find any post you were looking for.</p>
+              </div>
+            @endif
 
         </div>
 

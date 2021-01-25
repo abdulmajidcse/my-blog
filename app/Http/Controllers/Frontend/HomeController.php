@@ -29,8 +29,8 @@ class HomeController extends Controller
             ->orWhere('name', 'LIKE', "%{$value}%")
             ->orWhere('slug', 'LIKE', "%{$value}%")
             ->orWhere('content', 'LIKE', "%{$value}%")
-            ->orWhere('meta_keyword', 'LIKE', "%{$value}%")
-            ->orWhere('meta_description', 'LIKE', "%{$value}%")
+            ->orWhere('seo_keyword', 'LIKE', "%{$value}%")
+            ->orWhere('seo_description', 'LIKE', "%{$value}%")
             ->latest('id')->paginate(24);
         
         if(count($blogPosts) > 0) {

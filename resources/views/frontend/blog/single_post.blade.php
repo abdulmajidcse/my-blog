@@ -50,7 +50,7 @@
                     @if ($blogPost->BlogCategory)
                         <i class="fas fa-layer-group mr-1"></i> Category: <a href="{{ route('frontend.blog.category', $blogPost->blogCategory->slug) }}" class="font-weight-bold text-bn mr-2">{{ $blogPost->BlogCategory->name }}</a>
                     @endif
-                    <i class="fas fa-calendar-alt mr-1"></i> Publish: <span class="font-weight-bold">{{ date_format($blogPost->created_at, 'F d, Y') }}</span>
+                    <i class="fas fa-calendar-alt mr-1"></i> Publish: <span class="font-weight-bold">{{ $blogPost->created_at->format('F d, Y') }}</span>
                 </span>
 
                 {{-- Social Share --}}
