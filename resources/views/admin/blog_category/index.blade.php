@@ -28,6 +28,7 @@
                     <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Posts</th>
                     <th>Option</th>
                     </tr>
                 </thead>
@@ -36,6 +37,7 @@
                         <tr>
                             <td> {{ ++$loop->index }} </td>
                             <td> {{ $blogCategory->name }} </td>
+                            <td> {{ $blogCategory->BlogPosts->count() }} </td>
                             <td>
                                 <div class="dropdown">
 

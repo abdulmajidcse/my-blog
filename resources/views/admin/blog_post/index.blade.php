@@ -29,6 +29,7 @@
                     <th>#</th>
                     <th>Category</th>
                     <th>Name</th>
+                    <th>Status</th>
                     <th>Option</th>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@
                             <td> {{ ++$loop->index }} </td>
                             <td> {{ optional($blogPost->blogCategory)->name }} </td>
                             <td> {{ $blogPost->name }} </td>
+                            <td> {{ $blogPost->status == 1 ? 'Publish' : 'Draft' }} </td>
                             <td>
                                 <div class="dropdown">
 

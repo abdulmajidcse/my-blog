@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\BlogCategory;
 use App\Models\BlogPost;
+use App\Models\BlogCategory;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -52,7 +53,12 @@ class BlogController extends Controller
      */
     public function singlePost($slug)
     {
-        $blogPost = BlogPost::where('slug', $slug)->firstOrFail();
+        if (Auth::check()) {
+            $blogPost = BlogPost::where('slug', $slug)->firstOrFail();
+        } else {
+            $blogPost = BlogPost::where('status', 1)->where('slug', $slug)->firstOrFail();
+        }
+        
         $blogPosts = BlogPost::where('status', 1)
             ->where('blog_category_id', $blogPost->blog_category_id)
             ->where('id', '!=', $blogPost->id)
