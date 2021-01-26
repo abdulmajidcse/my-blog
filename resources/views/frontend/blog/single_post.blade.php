@@ -11,9 +11,29 @@
 @push('frontend_styles')
     
     <style>
-        @media screen and (max-width: 480px) {
+        #single-blog-post-content {
+            width: 100%;
+        }
+
+        #single-blog-post-content pre {
+            background:#1E1E1E;
+            color: white;
+            padding: 8px;
+            overflow-x: scroll;
+        }
+
+        iframe {
+            width: 100% !important;
+        }
+
+        #single-blog-post-content iframe {
+            width: 100% !important;
+            height: 80vh !important;
+        }
+
+        @media screen and (max-width: 500px) {
             #single-blog-post-content iframe {
-                height: 200px !important;
+                height: 50vh !important;
             }
         }
 
