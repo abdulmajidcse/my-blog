@@ -134,7 +134,7 @@ class SettingController extends Controller
             $image->move($upload_path, $image_full_name);
 
             //delete old app_logo
-            if(file_exists('assets/uploads/'.$setting->app_logo)) {
+            if($setting->app_logo && file_exists('assets/uploads/'.$setting->app_logo)) {
                 unlink('assets/uploads/'.$setting->app_logo);
             }
 
@@ -153,7 +153,7 @@ class SettingController extends Controller
             $image->move($upload_path, $image_full_name);
 
             //delete old seo_image
-            if(file_exists('assets/uploads/'.$setting->seo_image)) {
+            if($setting->seo_image && file_exists('assets/uploads/'.$setting->seo_image)) {
                 unlink('assets/uploads/'.$setting->seo_image);
             }
 
