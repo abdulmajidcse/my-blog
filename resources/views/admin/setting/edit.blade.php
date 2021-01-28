@@ -103,9 +103,9 @@
             </div>
 
             <div class="form-group">
-              <label for="meta_keyword">Meta Keyword</label>
-              <textarea rows="4" class="form-control @error('meta_keyword') is-invalid @enderror" id="meta_keyword" name="meta_keyword">{{ $setting->meta_keyword }}</textarea>
-              @error('meta_keyword')
+              <label for="seo_keyword">SEO Keyword</label>
+              <textarea rows="4" class="form-control @error('seo_keyword') is-invalid @enderror" id="seo_keyword" name="seo_keyword">{{ $setting->seo_keyword }}</textarea>
+              @error('seo_keyword')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
@@ -113,9 +113,9 @@
             </div>
 
             <div class="form-group">
-              <label for="meta_description">Meta Description</label>
-              <textarea rows="4" class="form-control @error('meta_description') is-invalid @enderror" id="meta_description" name="meta_description">{{ $setting->meta_description }}</textarea>
-              @error('meta_description')
+              <label for="seo_description">SEO Description</label>
+              <textarea rows="4" class="form-control @error('seo_description') is-invalid @enderror" id="seo_description" name="seo_description">{{ $setting->seo_description }}</textarea>
+              @error('seo_description')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
@@ -123,16 +123,16 @@
             </div>
 
             <div class="form-group">
-              <label for="meta_image">Meta Image</label>
-              <input type="file" class="form-control @error('meta_image') is-invalid @enderror" id="meta_image" name="meta_image">
-              @error('meta_image')
+              <label for="seo_image">SEO Image</label>
+              <input type="file" class="form-control @error('seo_image') is-invalid @enderror" id="seo_image" name="seo_image">
+              @error('seo_image')
                   <span class="invalid-feedback" role="alert">
                       <strong>{{ $message }}</strong>
                   </span>
               @enderror
-              @if ($setting->meta_image)
+              @if ($setting->seo_image)
                 <div class="mt-2" style="width: 200px;">
-                  <img src="{{ asset('assets/uploads/'.$setting->meta_image) }}" alt="Meta Image" class="img w-100">
+                  <img src="{{ asset('assets/uploads/'.$setting->seo_image) }}" alt="seo Image" class="img w-100">
                 </div>
               @endif
             </div>
