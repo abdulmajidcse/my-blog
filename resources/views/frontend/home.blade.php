@@ -25,19 +25,19 @@
           <p class="lead mb-5 text-justify">Hi, I'm Md Abdul Majid. I'm a Laravel Developer. I develop web applications using PHP language and Laravel framework. Programming is my love, not only a profession! You can develop your web application with your choice and always I'll able to you!</p>
           <div class="social-icons">
             <h4 class="text-capitalize">Connect with me</h4>
-            <a href="{{ $setting && $setting->github_link ? $setting->github_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Github">
+            <a href="{{ $setting && $setting->github_link ? $setting->github_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Github" target="_blank">
               <i class="fab fa-github"></i>
             </a>
-            <a href="{{ $setting && $setting->linkedin_link ? $setting->linkedin_link : '#' }}" data-toggle="tooltip" data-placement="top" title="LinkedIn">
+            <a href="{{ $setting && $setting->linkedin_link ? $setting->linkedin_link : '#' }}" data-toggle="tooltip" data-placement="top" title="LinkedIn" target="_blank">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="{{ $setting && $setting->twitter_link ? $setting->twitter_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Twitter">
+            <a href="{{ $setting && $setting->twitter_link ? $setting->twitter_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="{{ $setting && $setting->facebook_link ? $setting->facebook_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Facebook">
+            <a href="{{ $setting && $setting->facebook_link ? $setting->facebook_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="{{ $setting && $setting->youtube_link ? $setting->youtube_link : '#' }}" data-toggle="tooltip" data-placement="top" title="YouTube">
+            <a href="{{ $setting && $setting->youtube_link ? $setting->youtube_link : '#' }}" data-toggle="tooltip" data-placement="top" title="YouTube" target="_blank">
               <i class="fab fa-youtube"></i>
             </a>
           </div>
