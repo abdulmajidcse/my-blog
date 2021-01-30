@@ -33,8 +33,32 @@
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
   <!-- custom css -->
   <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+  <!-- magnific css -->
+  <link rel="stylesheet" href="{{ asset('assets/css/magnific-popup.css') }}">
 
   @stack('admin_styles')
+
+  <style>
+    .magnific_image_container img {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        transition: .3s;
+        -webkit-transition: .3s;
+        -moz-transition: .3s;
+    }
+    .magnific_image_container img:hover{
+        transform: scale(0.97);
+        -webkit-transform: scale(0.97);
+        -moz-transform: scale(0.97);
+        -o-transform: scale(0.97);
+        opacity: 0.75;
+        -webkit-opacity: 0.75;
+        -moz-opacity: 0.75;
+        transition: .3s;
+        -webkit-transition: .3s;
+        -moz-transition: .3s;
+    }
+  </style>
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -110,6 +134,8 @@
 <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
 <!-- sweet alert -->
 <script src="{{ asset('assets/js/sweetalert2010.min.js') }}"></script>
+<!-- magnific js -->
+<script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
 
 <script>
 
@@ -117,6 +143,15 @@
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })
+
+    // Magnific Image Init
+    $('.magnific_image_container').magnificPopup({
+      delegate: 'a',
+      type: 'image',
+      gallery:{
+          enabled: true
+      }
+    });
 
     $.ajaxSetup({
         headers: {

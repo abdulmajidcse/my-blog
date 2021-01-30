@@ -36,7 +36,7 @@
               @enderror
               @if ($blogPost->image)
                 <div class="magnific_image_container mt-2" style="width: 200px;">
-                  <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img w-100"></a>
+                  <a href="{{ asset('assets/uploads/'.$blogPost->image) }}"><img src="{{ asset('assets/uploads/'.$blogPost->image) }}" alt="Thumbnail" class="img img-thumbnail w-100"></a>
                 </div>
               @endif
             </div>
