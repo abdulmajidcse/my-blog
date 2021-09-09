@@ -1,5 +1,5 @@
 ## About Portfolio BLog
-This a blog for portfolio. It's developed with Bootstrap, jQuery, Laravel and MySQL. Here you can see some features of the website.
+This is a blog for portfolio. It's developed with Bootstrap, jQuery, Laravel and MySQL. Here you can see some features of the website.
 
 - A Nice frontend and Backend
 - Blog Category
