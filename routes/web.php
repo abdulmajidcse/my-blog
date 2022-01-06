@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 /**
  * Login, Register, Reset Password, Confirm Password and Verify Email Routes
  */
-Route::prefix('admin')->group(function() {
+Route::prefix('auth')->group(function() {
     
     /**
      * Default Auth laravel/ui package
