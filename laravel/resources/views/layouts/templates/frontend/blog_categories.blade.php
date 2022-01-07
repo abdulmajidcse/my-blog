@@ -1,6 +1,6 @@
 @if($blogCategories->count() > 0)
     <!-- blog categories -->
-    <h2 class="my-3">Categories</h2>
+    <h3 class="my-3">Categories</h3>
     <ul class="list-inline dev-icons">
         @foreach ($blogCategories as $blogCategory)
             @if ($blogCategory->blogPosts->count() == 1 && $blogCategory->blogPosts[0]->status == 1)

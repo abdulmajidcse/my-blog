@@ -1,6 +1,6 @@
 {{-- Setting --}}
 @php
-    $setting = \App\Models\Setting::first();
+$setting = \App\Models\Setting::first();
 @endphp
 
 @extends('layouts.frontend_app')
@@ -17,109 +17,61 @@
     <!-- about section -->
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
         <div class="w-100">
-          <h2 class="mb-0">Abdul
-            <span class="text-primary">Majid</span>
-          </h2>
-          <div class="subheading mb-5">Web Developer.
-          </div>
-          <p class="lead mb-5 text-justify">Hi, I'm Md Abdul Majid. I'm a Laravel Developer. I develop web applications using PHP language and Laravel framework. Programming is my love, not only a profession! You can develop your web application with your choice and always I'll able to you!</p>
-          <div class="social-icons">
-            <h4 class="text-capitalize">Connect with me</h4>
-            <a href="{{ $setting && $setting->github_link ? $setting->github_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Github" target="_blank">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="{{ $setting && $setting->linkedin_link ? $setting->linkedin_link : '#' }}" data-toggle="tooltip" data-placement="top" title="LinkedIn" target="_blank">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="{{ $setting && $setting->twitter_link ? $setting->twitter_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="{{ $setting && $setting->facebook_link ? $setting->facebook_link : '#' }}" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="{{ $setting && $setting->youtube_link ? $setting->youtube_link : '#' }}" data-toggle="tooltip" data-placement="top" title="YouTube" target="_blank">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </div>
+            <h3 class="mb-3">Hi, I'm Abdul
+                <span class="text-primary">Majid!</span>
+            </h3>
+            <p class="lead text-justify">Hi, I'm Md. Abdul Majid. I'm a Web Developer. I'm currently working on Laravel
+                and ReactJS. Programming is my love, not only a profession!</p>
+            <p class="lead mb-5 text-justify">I share my journey on this blog, mostly technical. I enjoy building new things
+                and maybe at this very moment
+                I am building something new. Follow me to stay updated.</p>
+            <div class="social-icons">
+                <h4 class="text-capitalize">Connect with me</h4>
+                <a href="{{ $setting && $setting->github_link ? $setting->github_link : '#' }}" data-toggle="tooltip"
+                    data-placement="top" title="Github" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="{{ $setting && $setting->linkedin_link ? $setting->linkedin_link : '#' }}" data-toggle="tooltip"
+                    data-placement="top" title="LinkedIn" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="{{ $setting && $setting->twitter_link ? $setting->twitter_link : '#' }}" data-toggle="tooltip"
+                    data-placement="top" title="Twitter" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="{{ $setting && $setting->facebook_link ? $setting->facebook_link : '#' }}" data-toggle="tooltip"
+                    data-placement="top" title="Facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="{{ $setting && $setting->youtube_link ? $setting->youtube_link : '#' }}" data-toggle="tooltip"
+                    data-placement="top" title="YouTube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
         </div>
     </section> <!-- end of about section -->
-  
-    <hr class="m-0">
-  
-    <!-- skill section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
-        <div class="w-100">
-          <h2 class="mb-5">Skills</h2>
-  
-          <div class="subheading  mt-4 text-capitalize">Professional Experience</div>
-          <p> I am professional on these Technologies. Most of the time I work on these </p>
-  
-          <ul class="list-inline dev-icons">
-            <li class="list-inline-item">PHP</li>
-            <li class="list-inline-item">SQL</li>
-            <li class="list-inline-item">MySql</li>
-            <li class="list-inline-item">WordPress</li>
-            <li class="list-inline-item">Laravel</li>
-          </ul>
-          
-          <ul class="list-inline dev-icons">  
-            <li class="list-inline-item">HTML</li>
-            <li class="list-inline-item">CSS</li>
-            <li class="list-inline-item">JavaScript</li>
-            <li class="list-inline-item">JQuery</li>
-            <li class="list-inline-item">Ajax</li>
-            <li class="list-inline-item">Bootstrap</li>
-          </ul>
-          
-          <ul class="list-inline dev-icons">
-            <li class="list-inline-item">Git</li>
-            <li class="list-inline-item">Linux</li>
-            <li class="list-inline-item">Windows</li>
-          </ul>
-  
-  
-          <div class="subheading  mt-4 text-capitalize">Familiar</div>
-          <p> I have basic knowledge of these but not skilled for development. </p>
-          <ul class="list-inline dev-icons">
-            <li class="list-inline-item">C</li>
-            <li class="list-inline-item">C#</li>
-            <li class="list-inline-item">Python</li>
-            <li class="list-inline-item">Java</li>
-          </ul>
-  
-          <div class="subheading  mt-4 text-capitalize">IDE and Text Editors</div>
-          <ul class="list-inline dev-icons">
-            <li class="list-inline-item">PhpStrom</li>
-            <li class="list-inline-item">VS Code</li>
-            <li class="list-inline-item">Subllime Text</li>
-            <li class="list-inline-item">Bracket</li>
-            <li class="list-inline-item">Notepad++</li>
-          </ul>
-          
-        </div>
-
-    </section> <!-- end of skill section -->
 
     <hr class="m-0">
-  
+
     <!-- recent posts section -->
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="recent-posts">
         <div class="w-100">
-            <h2 class="mb-5">Recent Posts</h2>
+            <h3 class="mb-5">Recent Blog Posts</h3>
 
             @if ($blogPosts->count() > 0)
-              @include('layouts.templates.frontend.all_post')
+                @include('layouts.templates.frontend.all_post')
 
-              <p class="text-center mt-1"><a href="{{ route('frontend.blog.index') }}" class="btn btn-flat btn-danger font-weight-bold"> See More Posts </a></p>
+                <p class="text-center mt-1"><a href="{{ route('frontend.blog.index') }}"
+                        class="btn btn-flat btn-danger font-weight-bold"> See More Posts </a></p>
 
-              <!-- blog categories -->
-              @include('layouts.templates.frontend.blog_categories')
+                <!-- blog categories -->
+                @include('layouts.templates.frontend.blog_categories')
             @else
-              <h2 class="font-weight-bold text-center text-danger"> Comming soon...</h2>
-              <div class="error-content">
-                  <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! No Post Available.</h3>
-                  <p>We could not find any post you were looking for.</p>
-              </div>
+                <h3 class="font-weight-bold text-center text-danger"> Comming soon...</h3>
+                <div class="error-content">
+                    <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! No Post Available.</h3>
+                    <p>We could not find any post you were looking for.</p>
+                </div>
             @endif
 
         </div>
