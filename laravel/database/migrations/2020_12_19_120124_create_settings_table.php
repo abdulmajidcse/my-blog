@@ -17,12 +17,15 @@ class CreateSettingsTable extends Migration
             $table->id();
             $table->string('app_name');
             $table->string('app_title');
+            $table->text('app_description')->nullable();
             $table->string('app_logo')->nullable();
             $table->string('facebook_link')->nullable();
             $table->string('youtube_link')->nullable();
             $table->string('linkedin_link')->nullable();
             $table->string('github_link')->nullable();
             $table->string('twitter_link')->nullable();
+            $table->string('google_verification_code')->nullable();
+            $table->string('bing_verification_code')->nullable();
             $table->text('seo_keyword')->nullable();
             $table->text('seo_description')->nullable();
             $table->string('seo_image')->nullable();
