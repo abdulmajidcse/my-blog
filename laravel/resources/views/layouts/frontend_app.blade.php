@@ -77,7 +77,9 @@ $setting = \App\Models\Setting::first();
     <!-- main container -->
     <div class="container-fluid p-0 background">
 
-        @yield('frontend_content')
+        <section class="resume-section">
+            @yield('frontend_content')
+        </section>
 
         <hr class="m-0">
 

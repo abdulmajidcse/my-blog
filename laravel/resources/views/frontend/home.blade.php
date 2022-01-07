@@ -15,7 +15,7 @@ $setting = \App\Models\Setting::first();
 
 @section('frontend_content')
     <!-- about section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
+    <section class="p-3 p-lg-5 d-flex align-items-center" id="about">
         <div class="w-100">
             <h3 class="mb-3">Hi, I'm Abdul
                 <span class="text-primary">Majid!</span>
@@ -54,7 +54,7 @@ $setting = \App\Models\Setting::first();
     <hr class="m-0">
 
     <!-- recent posts section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="recent-posts">
+    <section class="p-3 p-lg-5 d-flex align-items-center" id="recent-posts">
         <div class="w-100">
             <h3 class="mb-5">Recent Blog Posts</h3>
 
@@ -63,9 +63,6 @@ $setting = \App\Models\Setting::first();
 
                 <p class="text-center mt-1"><a href="{{ route('frontend.blog.index') }}"
                         class="btn btn-flat btn-danger font-weight-bold"> See More Posts </a></p>
-
-                <!-- blog categories -->
-                @include('layouts.templates.frontend.blog_categories')
             @else
                 <h3 class="font-weight-bold text-center text-danger"> Comming soon...</h3>
                 <div class="error-content">

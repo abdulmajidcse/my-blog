@@ -11,23 +11,17 @@
 @section('frontend_content')
 
     <!-- Blog Posts section -->
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center">
+    <section class="p-3 p-lg-5 d-flex align-items-center">
         <div class="w-100">
-
             <!-- search form -->
             @include('layouts.templates.frontend.search_form')
 
             <!-- Blog Posts -->
             @include('layouts.templates.frontend.all_post')
-            
+
             <!-- Pagination -->
             @include('layouts.templates.frontend.pagination')
-
-            <!-- blog categories -->
-            @include('layouts.templates.frontend.blog_categories')
         </div>
     </section>
-
-    
 
 @endsection
