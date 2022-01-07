@@ -5,6 +5,32 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+/**
+ * Frontend Routes
+ * For Guest
+ */
+
+Route::name('frontend.')->namespace('Frontend')->group(function () {
+
+    Route::get('/', 'HomeController@index')->name('home');
+
+    // search
+    Route::get('search/{value}', 'HomeController@search')->name('search');
+
+    /**
+     * Frontend Blog Routes
+     */
+    Route::prefix('blog')->name('blog.')->group(function () {
+        // all post
+        Route::get('/', 'BlogController@index')->name('index');
+        // all post by category
+        Route::get('category/{slug}', 'BlogController@postsByCategory')->name('category');
+        // single post
+        Route::get('{slug}', 'BlogController@singlePost')->name('post');
+    });
+});
+
 /**
  * Authenticate Routes
  * For Admin
@@ -13,8 +39,8 @@ use Illuminate\Support\Facades\Route;
 /**
  * Login, Register, Reset Password, Confirm Password and Verify Email Routes
  */
-Route::prefix('auth')->group(function() {
-    
+Route::prefix('auth')->group(function () {
+
     /**
      * Default Auth laravel/ui package
      * Auth System
@@ -26,7 +52,7 @@ Route::prefix('auth')->group(function() {
      * Authenticate Dashboard
      * Admin Controll Panel Routes
      */
-    Route::name('admin.')->namespace('Admin')->middleware('auth')->group(function() {
+    Route::name('admin.')->namespace('Admin')->middleware('auth')->group(function () {
         // admin home route
         Route::get('/', 'HomeController@index')->name('home');
 
@@ -38,7 +64,7 @@ Route::prefix('auth')->group(function() {
         Route::resource('settings', 'SettingController')->only(['index', 'store', 'update']);
 
         // name to slug convert route
-        Route::post('create-slug', function(Request $request) {
+        Route::post('create-slug', function (Request $request) {
             // return a slug in json format
             return response()->json(['slug' => Str::slug($request->name, '-')]);
         })->name('slug.create');
@@ -58,41 +84,12 @@ Route::prefix('auth')->group(function() {
         /**
          * Trash Routes
          */
-        Route::prefix('trash')->name('trash.')->group(function() {
-            Route::prefix('blog')->name('blog.')->group(function() {
+        Route::prefix('trash')->name('trash.')->group(function () {
+            Route::prefix('blog')->name('blog.')->group(function () {
                 Route::get('{type}', 'TrashController@indexBlog')->name('index');
                 Route::get('{type}/{id}', 'TrashController@restoreBlog')->name('restore');
                 Route::delete('{type}/{id}', 'TrashController@permanentlyDestroyBlog')->name('destroy');
             });
         });
-
-    });
-
-
-});
-
-
-/**
- * Frontend Routes
- * For Guest
- */
-
-Route::name('frontend.')->namespace('Frontend')->group(function() {
-    
-    Route::get('/', 'HomeController@index')->name('home');
-
-    // search
-    Route::get('search/{value}', 'HomeController@search')->name('search');
-
-    /**
-     * Frontend Blog Routes
-     */
-    Route::name('blog.')->group(function() {
-        // all post
-        Route::get('blog', 'BlogController@index')->name('index');
-        // all post by category
-        Route::get('category/{slug}', 'BlogController@postsByCategory')->name('category');
-        // single post
-        Route::get('{slug}', 'BlogController@singlePost')->name('post');
     });
 });
