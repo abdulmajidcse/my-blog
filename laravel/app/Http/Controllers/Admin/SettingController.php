@@ -35,27 +35,21 @@ class SettingController extends Controller
         $request->validate([
             'app_name'        => 'required|string',
             'app_title'       => 'required|string',
-            'app_logo'        => 'nullable|image|mimes: jpg,jpeg,png|max:5000',
+            'app_description' => 'nullable|string',
+            'app_logo'        => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
             'facebook_link'   => 'nullable|url',
             'youtube_link'    => 'nullable|url',
             'linkedin_link'   => 'nullable|url',
             'github_link'     => 'nullable|url',
             'twitter_link'    => 'nullable|url',
+            'google_verification_code' => 'nullable|string',
+            'bing_verification_code' => 'nullable|string',
             'seo_keyword'     => 'nullable|string',
             'seo_description' => 'nullable|string',
             'seo_image'       => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
         ]);
 
-        $setting                  = new Setting();
-        $setting->app_name        = $request->app_name;
-        $setting->app_title       = $request->app_title;
-        $setting->facebook_link   = $request->facebook_link;
-        $setting->youtube_link    = $request->youtube_link;
-        $setting->linkedin_link   = $request->linkedin_link;
-        $setting->github_link     = $request->github_link;
-        $setting->twitter_link    = $request->twitter_link;
-        $setting->seo_keyword     = $request->seo_keyword;
-        $setting->seo_description = $request->seo_description;
+        $data = $request->all();
 
         // app logo upload and store name in table
         if($request->file('app_logo')) {
@@ -67,7 +61,7 @@ class SettingController extends Controller
             //upload file
             $image->move($upload_path, $image_full_name);
             // save name in table
-            $setting->app_logo = $image_full_name;
+            $data['app_logo'] = $image_full_name;
         }
 
         // seo image upload and store name in table
@@ -80,10 +74,10 @@ class SettingController extends Controller
             //upload file
             $image->move($upload_path, $image_full_name);
             // save name in table
-            $setting->seo_image = $image_full_name;
+            $data['seo_image'] = $image_full_name;
         }
 
-        $setting->save();
+        Setting::create($data);
         
         $request->session()->flash('message', 'Setting Saved.');
         $request->session()->flash('alert-type', 'success');
@@ -102,26 +96,21 @@ class SettingController extends Controller
         $request->validate([
             'app_name'        => 'required|string',
             'app_title'       => 'required|string',
+            'app_description' => 'nullable|string',
             'app_logo'        => 'nullable|image|mimes: jpg,jpeg,png|max:5000',
             'facebook_link'   => 'nullable|url',
             'youtube_link'    => 'nullable|url',
             'linkedin_link'   => 'nullable|url',
             'github_link'     => 'nullable|url',
             'twitter_link'    => 'nullable|url',
+            'google_verification_code' => 'nullable|string',
+            'bing_verification_code' => 'nullable|string',
             'seo_keyword'     => 'nullable|string',
             'seo_description' => 'nullable|string',
             'seo_image'       => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
         ]);
 
-        $setting->app_name        = $request->app_name;
-        $setting->app_title       = $request->app_title;
-        $setting->facebook_link   = $request->facebook_link;
-        $setting->youtube_link    = $request->youtube_link;
-        $setting->linkedin_link   = $request->linkedin_link;
-        $setting->github_link     = $request->github_link;
-        $setting->twitter_link    = $request->twitter_link;
-        $setting->seo_keyword     = $request->seo_keyword;
-        $setting->seo_description = $request->seo_description;
+        $data = $request->all();
 
         // app logo upload and store name in table
         if($request->file('app_logo')) {
@@ -139,7 +128,7 @@ class SettingController extends Controller
             }
 
             // save name in table
-            $setting->app_logo = $image_full_name;
+            $data['app_logo'] = $image_full_name;
         }
 
         // seo image upload and store name in table
@@ -158,10 +147,10 @@ class SettingController extends Controller
             }
 
             // save name in table
-            $setting->seo_image = $image_full_name;
+            $data['seo_image'] = $image_full_name;
         }
 
-        $setting->save();
+        $setting->update($data);
         
         $request->session()->flash('message', 'Setting Saved.');
         $request->session()->flash('alert-type', 'success');
