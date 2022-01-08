@@ -13,6 +13,13 @@ $setting = \App\Models\Setting::first();
 
     @yield('frontend_meta_tags')
 
+    @if (Request::is('/'))
+        <meta name="msvalidate.01"
+            content="{{ $setting && $setting->google_verification_code ? $setting->google_verification_code : '' }}" />
+        <meta name="google-site-verification"
+            content="{{ $setting && $setting->bing_verification_code ? $setting->bing_verification_code : '' }}" />
+    @endif
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -86,7 +93,8 @@ $setting = \App\Models\Setting::first();
         <!-- footer section -->
         <footer class="mt-2">
             <div class="w-100 text-center p-3">
-                <p> &copy; {{ date('Y') }} All Rights Reserved by Abdul Majid. </p>
+                <p> &copy; {{ date('Y') }} All Rights Reserved by
+                    {{ $setting ? $setting->app_name : config('app.name') }}. </p>
 
             </div>
         </footer> <!-- end of footer section -->

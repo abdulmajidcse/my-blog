@@ -20,11 +20,18 @@ $setting = \App\Models\Setting::first();
             <h3 class="mb-3">Hi, I'm Abdul
                 <span class="text-primary">Majid!</span>
             </h3>
-            <p class="lead text-justify">Hi, I'm Md. Abdul Majid. I'm a Web Developer. I'm currently working on Laravel
-                and ReactJS. Programming is my love, not only a profession!</p>
-            <p class="lead mb-5 text-justify">I share my journey on this blog, mostly technical. I enjoy building new things
-                and maybe at this very moment
-                I am building something new. Follow me to stay updated.</p>
+
+            @if ($setting && $setting->app_description)
+                <p class="lead text-justify">{!! $setting->app_description !!}</p>
+            @else
+                <p class="lead text-justify">Hi, I'm Md. Abdul Majid. I'm a Web Developer. I'm currently working on Laravel
+                    and ReactJS. Programming is my love, not only a profession!</p>
+                <p class="lead mb-5 text-justify">I share my journey on this blog, mostly technical. I enjoy building new
+                    things
+                    and maybe at this very moment
+                    I am building something new. Follow me to stay updated.</p>
+            @endif
+
             <div class="social-icons">
                 <h4 class="text-capitalize">Connect with me</h4>
                 <a href="{{ $setting && $setting->github_link ? $setting->github_link : '#' }}" data-toggle="tooltip"
