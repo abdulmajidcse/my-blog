@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Setting;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // share data in all routes
+        $data['setting'] = Setting::first();
+        View::share($data);
     }
 }

@@ -11,9 +11,6 @@
 
 {{-- Default meta keyword and meta description --}}
 @php
-// Setting
-$setting = \App\Models\Setting::first();
-
 $defaultTitle = $setting && $setting->app_title ? $setting->app_title : 'A Blog About ICT';
 $defaultKeyword = $setting && $setting->seo_keyword ? $setting->seo_keyword : 'HTML, CSS, JavaScript, JQuery, Reactjs, Vuejs, PHP, MySQL, WordPress, Laravel';
 $defaultDescription = $setting && $setting->seo_description ? $setting->seo_description : "Hi, I'm Md. Abdul Majid. I'm a Web Developer. I'm currently working on Laravel and ReactJS. Programming is my love, not only a profession! I share my journey on this blog, mostly technical. I enjoy building new things and maybe at this very moment I am building something new. Follow me to stay updated.";

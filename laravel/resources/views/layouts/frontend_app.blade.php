@@ -1,8 +1,3 @@
-{{-- Setting --}}
-@php
-$setting = \App\Models\Setting::first();
-@endphp
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 

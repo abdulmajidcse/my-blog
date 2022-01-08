@@ -1,8 +1,3 @@
-{{-- Setting --}}
-@php
-$setting = \App\Models\Setting::first();
-@endphp
-
 @extends('layouts.frontend_app')
 
 @section('frontend_meta_tags')
