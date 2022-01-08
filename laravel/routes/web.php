@@ -4,6 +4,13 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 
 
 /**
@@ -11,23 +18,23 @@ use Illuminate\Support\Facades\Route;
  * For Guest
  */
 
-Route::name('frontend.')->namespace('Frontend')->group(function () {
+Route::name('frontend.')->group(function () {
 
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/', [FrontendHomeController::class, 'index'])->name('home');
 
     // search
-    Route::get('search/{value}', 'HomeController@search')->name('search');
+    Route::get('search/{value}', [FrontendHomeController::class, 'search'])->name('search');
 
     /**
      * Frontend Blog Routes
      */
     Route::prefix('blog')->name('blog.')->group(function () {
         // all post
-        Route::get('/', 'BlogController@index')->name('index');
+        Route::get('/', [BlogController::class, 'index'])->name('index');
         // all post by category
-        Route::get('category/{slug}', 'BlogController@postsByCategory')->name('category');
+        Route::get('category/{slug}', [BlogController::class, 'postsByCategory'])->name('category');
         // single post
-        Route::get('{slug}', 'BlogController@singlePost')->name('post');
+        Route::get('{slug}', [BlogController::class, 'singlePost'])->name('post');
     });
 });
 
@@ -52,16 +59,16 @@ Route::prefix('auth')->group(function () {
      * Authenticate Dashboard
      * Admin Controll Panel Routes
      */
-    Route::name('admin.')->namespace('Admin')->middleware('auth')->group(function () {
+    Route::name('admin.')->middleware('auth')->group(function () {
         // admin home route
-        Route::get('/', 'HomeController@index')->name('home');
+        Route::get('/', [AdminHomeController::class, 'index'])->name('home');
 
         // admin profile route
-        Route::get('profile', 'HomeController@editProfile')->name('profile');
-        Route::put('profile', 'HomeController@updateProfile')->name('profile.update');
+        Route::get('profile', [AdminHomeController::class, 'editProfile'])->name('profile');
+        Route::put('profile', [AdminHomeController::class, 'updateProfile'])->name('profile.update');
 
         // settings route
-        Route::resource('settings', 'SettingController')->only(['index', 'store', 'update']);
+        Route::resource('settings', SettingController::class)->only(['index', 'store', 'update']);
 
         // name to slug convert route
         Route::post('create-slug', function (Request $request) {
@@ -70,25 +77,25 @@ Route::prefix('auth')->group(function () {
         })->name('slug.create');
 
         // media store
-        Route::get('media', 'MediaController@index')->name('media.index');
-        Route::get('media/create', 'MediaController@create')->name('media.create');
-        Route::post('media/store', 'MediaController@store')->name('media.store');
-        Route::delete('media/{media}', 'MediaController@destroy')->name('media.destroy');
+        Route::get('media', [MediaController::class, 'index'])->name('media.index');
+        Route::get('media/create', [MediaController::class, 'create'])->name('media.create');
+        Route::post('media/store', [MediaController::class, 'store'])->name('media.store');
+        Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
 
         // Blog Category Routes
-        Route::resource('blog-categories', 'BlogCategoryController')->except(['show']);
+        Route::resource('blog-categories', BlogCategoryController::class)->except(['show']);
 
         // Blog Post Routes
-        Route::resource('blog-posts', 'BlogPostController')->except(['show']);
+        Route::resource('blog-posts', BlogPostController::class)->except(['show']);
 
         /**
          * Trash Routes
          */
         Route::prefix('trash')->name('trash.')->group(function () {
             Route::prefix('blog')->name('blog.')->group(function () {
-                Route::get('{type}', 'TrashController@indexBlog')->name('index');
-                Route::get('{type}/{id}', 'TrashController@restoreBlog')->name('restore');
-                Route::delete('{type}/{id}', 'TrashController@permanentlyDestroyBlog')->name('destroy');
+                Route::get('{type}', [TrashController::class, 'indexBlog'])->name('index');
+                Route::get('{type}/{id}', [TrashController::class, 'restoreBlog'])->name('restore');
+                Route::delete('{type}/{id}', [TrashController::class, 'permanentlyDestroyBlog'])->name('destroy');
             });
         });
     });
