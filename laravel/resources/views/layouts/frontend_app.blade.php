@@ -9,9 +9,9 @@
     @yield('frontend_meta_tags')
 
     @if (Request::is('/'))
-        <meta name="msvalidate.01"
-            content="{{ $setting && $setting->google_verification_code ? $setting->google_verification_code : '' }}" />
         <meta name="google-site-verification"
+            content="{{ $setting && $setting->google_verification_code ? $setting->google_verification_code : '' }}" />
+        <meta name="msvalidate.01"
             content="{{ $setting && $setting->bing_verification_code ? $setting->bing_verification_code : '' }}" />
     @endif
 
