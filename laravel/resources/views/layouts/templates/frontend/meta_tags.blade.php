@@ -1,17 +1,22 @@
-{{-- <meta name='google-site-verification' content="" /> --}}
-<!-- [ Meta Tag SEO ] -->
+{{-- meta tags for seo --}}
 <meta name="robots" content="ALL, FOLLOW, INDEX" />
-<meta name='language' content='English, Bangla' />
+<meta name='locale' content='en_US' />
 <meta name='url' content="{{ Request::url() }}" />
 <meta name='identifier-URL' content="{{ Request::url() }}" />
-<meta name='type' content='article, blog, portfolio' />
-<meta name="author" content="Abdul Majid" />
+<meta name='type' content='website' />
+<meta name="author" content="{{ $setting && $setting->app_name ? $setting->app_name : 'Abdul Majid' }}" />
+<meta name="article:publisher"
+    content="{{ $setting && $setting->facebook_link ? $setting->facebook_link : 'https://www.facebook.com/abdulmajidcse' }}" />
 <meta property="og:url" content="{{ Request::url() }}" />
-<meta property="og:type" content="article, blog, portfolio" />
+<meta property="og:type" content="website" />
+<meta property="og:author" content="{{ $setting && $setting->app_name ? $setting->app_name : 'Abdul Majid' }}" />
+<meta property="og:locale" content="en_US" />
+<meta property="article:publisher"
+    content="{{ $setting && $setting->facebook_link ? $setting->facebook_link : 'https://www.facebook.com/abdulmajidcse' }}" />
 
 {{-- Default meta keyword and meta description --}}
 @php
-$defaultTitle = $setting && $setting->app_title ? $setting->app_title : 'A Blog About ICT';
+$defaultTitle = $setting && $setting->app_title ? $setting->app_title : 'A technical blog';
 $defaultKeyword = $setting && $setting->seo_keyword ? $setting->seo_keyword : 'HTML, CSS, JavaScript, JQuery, Reactjs, Vuejs, PHP, MySQL, WordPress, Laravel';
 $defaultDescription = $setting && $setting->seo_description ? $setting->seo_description : "Hi, I'm Md. Abdul Majid. I'm a Web Developer. I'm currently working on Laravel and ReactJS. Programming is my love, not only a profession! I share my journey on this blog, mostly technical. I enjoy building new things and maybe at this very moment I am building something new. Follow me to stay updated.";
 $defaultImage = $setting && $setting->seo_image ? 'assets/uploads/' . $setting->seo_image : 'assets/static_uploads/abdulmajid.jpg';
