@@ -4,11 +4,6 @@
     {{ 'Edit Post'}}
 @endsection
 
-@push('admin_styles')
-    <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}">
-@endpush
-
 @section('admin_content')
 
     <div class="card">
@@ -85,7 +80,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body pad">
-                  <textarea name="content" class="post-content form-control @error('content') is-invalid @enderror" placeholder="What's on your mind?" required>
+                  <textarea name="content" class="editor form-control @error('content') is-invalid @enderror" placeholder="What's on your mind?" required>
                     {{ $blogPost->content }}
                   </textarea>
                   @error('content')
@@ -133,19 +128,3 @@
     </div>
 
 @endsection
-
-@push('admin_scripts')
-  <script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
-  <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
-
-  <script type="text/javascript">
-      $(document).ready(function () {
-          bsCustomFileInput.init();
-      })
-
-      $(function () {
-        // Summernote
-        $('.post-content').summernote()
-      })
-  </script>
-@endpush

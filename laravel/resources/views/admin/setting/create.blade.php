@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                     <label for="app_description">App Description</label>
-                    <textarea type="text" class="form-control @error('app_description') is-invalid @enderror"
+                    <textarea type="text" class="editor form-control @error('app_description') is-invalid @enderror"
                         id="app_description" name="app_description" rows="5">{{ old('app_description') }}</textarea>
                     @error('app_description')
                         <span class="invalid-feedback" role="alert">

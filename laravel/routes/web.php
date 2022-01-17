@@ -56,7 +56,7 @@ Route::prefix('auth')->group(function () {
     Auth::routes(['register' => false]);
 
     // laravel filemanager routes
-    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    Route::prefix('filemanager')->middleware('auth')->group(function () {
         Lfm::routes();
     });
 
