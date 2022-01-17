@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Admin\BlogPostController;
@@ -81,12 +80,6 @@ Route::prefix('auth')->group(function () {
             // return a slug in json format
             return response()->json(['slug' => Str::slug($request->name, '-')]);
         })->name('slug.create');
-
-        // media store
-        Route::get('media', [MediaController::class, 'index'])->name('media.index');
-        Route::get('media/create', [MediaController::class, 'create'])->name('media.create');
-        Route::post('media/store', [MediaController::class, 'store'])->name('media.store');
-        Route::delete('media/{media}', [MediaController::class, 'destroy'])->name('media.destroy');
 
         // Blog Category Routes
         Route::resource('blog-categories', BlogCategoryController::class)->except(['show']);
