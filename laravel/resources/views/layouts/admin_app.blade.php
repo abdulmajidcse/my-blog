@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- magnific css -->
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
+    {{-- toastr js css --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+        integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     @stack('admin_styles')
 
@@ -139,6 +143,10 @@
     <script src="{{ asset('js/sweetalert2010.min.js') }}"></script>
     <!-- magnific js -->
     <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+    {{-- toastr js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- tinymce editor and unisharp laravel filemanager --}}
     <x-tinymce-config />
 
@@ -163,6 +171,25 @@
             }
         });
 
+        // toastr js config
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
         // name to slug convert
         $('#name').change(function() {
 
@@ -178,20 +205,14 @@
                     $('#slug').val(success.slug)
                 })
                 .fail((error) => {
-                    Swal.fire({
-                        icon: 'error',
-                        text: 'Name to slug convert failed!',
-                    })
+                    toastr["error"]("Name to slug convert failed!");
                 })
 
         })
 
         // action message
         @if (Session::has('message') and Session::has('alert-type'))
-            Swal.fire({
-            icon: "{{ Session::get('alert-type') }}",
-            text: "{{ Session::get('message') }}",
-            })
+            toastr["{{ Session::get('alert-type') }}"]("{{ Session::get('message') }}");
         @endif
 
         //return delete confirm message**********
@@ -216,11 +237,6 @@
             </form>
           `)
                     document.getElementById('destroy-form').submit()
-                } else {
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'Canceled!',
-                    })
                 }
             })
 
@@ -241,11 +257,6 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = link;
-                } else {
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'Canceled!',
-                    })
                 }
             })
 
