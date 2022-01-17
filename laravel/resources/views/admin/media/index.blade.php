@@ -22,9 +22,9 @@
                     <div class="col-sm-4 col-md-3">
                         <div class="mb-3">
                             <div class="magnific_image_container">
-                                <a href="{{ asset('assets/uploads/'.$media->name) }}"><img src="{{ asset('assets/uploads/'.$media->name) }}" class="img img-thumbnail w-100" alt="Media"></a>
+                                <a href="{{ asset('uploads/'.$media->name) }}"><img src="{{ asset('uploads/'.$media->name) }}" class="img img-thumbnail w-100" alt="Media"></a>
                             </div>
-                            <input id="copyLinkValue{{ $media->id }}" type="text" value="{{ asset('assets/uploads/'.$media->name) }}" class="form-control form-control-sm">
+                            <input id="copyLinkValue{{ $media->id }}" type="text" value="{{ asset('uploads/'.$media->name) }}" class="form-control form-control-sm">
 
                             <div class="m-1">
                                 <button onclick="copyPostLink({{ $media->id }})" class="btn btn-sm btn-flat btn-success"><i class="fas fa-link"></i> Copy</button>

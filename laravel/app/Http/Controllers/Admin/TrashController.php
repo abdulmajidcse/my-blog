@@ -80,8 +80,8 @@ class TrashController extends Controller
             $blogPost = BlogPost::onlyTrashed()->findOrFail($id);
 
             //delete post image
-            if($blogPost->image && file_exists('assets/uploads/'.$blogPost->image)) {
-                unlink('assets/uploads/'.$blogPost->image);
+            if($blogPost->image && file_exists('uploads/'.$blogPost->image)) {
+                unlink('uploads/'.$blogPost->image);
             }
 
             $blogPost->forceDelete();

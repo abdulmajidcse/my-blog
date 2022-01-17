@@ -57,7 +57,7 @@ class SettingController extends Controller
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
-            $upload_path = "assets/uploads/";
+            $upload_path = "uploads/";
             //upload file
             $image->move($upload_path, $image_full_name);
             // save name in table
@@ -70,7 +70,7 @@ class SettingController extends Controller
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
-            $upload_path = "assets/uploads/";
+            $upload_path = "uploads/";
             //upload file
             $image->move($upload_path, $image_full_name);
             // save name in table
@@ -118,13 +118,13 @@ class SettingController extends Controller
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
-            $upload_path = "assets/uploads/";
+            $upload_path = "uploads/";
             //upload file
             $image->move($upload_path, $image_full_name);
 
             //delete old app_logo
-            if($setting->app_logo && file_exists('assets/uploads/'.$setting->app_logo)) {
-                unlink('assets/uploads/'.$setting->app_logo);
+            if($setting->app_logo && file_exists('uploads/'.$setting->app_logo)) {
+                unlink('uploads/'.$setting->app_logo);
             }
 
             // save name in table
@@ -137,13 +137,13 @@ class SettingController extends Controller
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
-            $upload_path = "assets/uploads/";
+            $upload_path = "uploads/";
             //upload file
             $image->move($upload_path, $image_full_name);
 
             //delete old seo_image
-            if($setting->seo_image && file_exists('assets/uploads/'.$setting->seo_image)) {
-                unlink('assets/uploads/'.$setting->seo_image);
+            if($setting->seo_image && file_exists('uploads/'.$setting->seo_image)) {
+                unlink('uploads/'.$setting->seo_image);
             }
 
             // save name in table

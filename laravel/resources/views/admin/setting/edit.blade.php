@@ -63,7 +63,7 @@
                     @enderror
                     @if ($setting->app_logo)
                         <div class="mt-2" style="width: 200px;">
-                            <img src="{{ asset('assets/uploads/' . $setting->app_logo) }}" alt="App Logo"
+                            <img src="{{ asset('uploads/' . $setting->app_logo) }}" alt="App Logo"
                                 class="img w-100">
                         </div>
                     @endif
@@ -187,7 +187,7 @@
                     @enderror
                     @if ($setting->seo_image)
                         <div class="mt-2" style="width: 200px;">
-                            <img src="{{ asset('assets/uploads/' . $setting->seo_image) }}" alt="seo Image"
+                            <img src="{{ asset('uploads/' . $setting->seo_image) }}" alt="seo Image"
                                 class="img w-100">
                         </div>
                     @endif

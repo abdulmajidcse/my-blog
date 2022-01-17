@@ -68,7 +68,7 @@ class BlogPostController extends Controller
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
-            $upload_path = "assets/uploads/";
+            $upload_path = "uploads/";
             //upload file
             $image->move($upload_path, $image_full_name);
             // save name in table
@@ -139,13 +139,13 @@ class BlogPostController extends Controller
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
-            $upload_path = "assets/uploads/";
+            $upload_path = "uploads/";
             //upload file
             $image->move($upload_path, $image_full_name);
 
             //delete old image
-            if($blogPost->image && file_exists('assets/uploads/'.$blogPost->image)) {
-                unlink('assets/uploads/'.$blogPost->image);
+            if($blogPost->image && file_exists('uploads/'.$blogPost->image)) {
+                unlink('uploads/'.$blogPost->image);
             }
 
             // save name in table

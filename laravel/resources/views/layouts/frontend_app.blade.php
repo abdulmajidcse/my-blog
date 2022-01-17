@@ -19,7 +19,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" type="image/jpg"
-        href="{{ $setting && $setting->app_logo ? asset('assets/uploads/' . $setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}">
+        href="{{ $setting && $setting->app_logo ? asset('uploads/' . $setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}">
 
     <title>@yield('frontend_title', 'Web Developer') | {{ $setting ? $setting->app_name : config('app.name') }}
     </title>
@@ -35,10 +35,10 @@
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="{{ asset('assets/css/resume.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/only_frontend.css') }}">
+    <link href="{{ asset('css/resume.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/only_frontend.css') }}">
     <!-- custom css -->
-    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     @stack('frontend_styles')
 
@@ -50,11 +50,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none"><img
-                    src="{{ $setting && $setting->app_logo ? asset('assets/uploads/' . $setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}"
+                    src="{{ $setting && $setting->app_logo ? asset('uploads/' . $setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}"
                     class="rounded-circle" style="width: 35px;"><span class="ml-2">Abdul Majid</span></span>
             <span class="d-none d-lg-block">
                 <img class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                    src="{{ $setting && $setting->app_logo ? asset('assets/uploads/' . $setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}"
+                    src="{{ $setting && $setting->app_logo ? asset('uploads/' . $setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}"
                     alt="">
             </span>
         </a>
@@ -110,7 +110,7 @@
     <script src="https://kit.fontawesome.com/71910267df.js" crossorigin="anonymous"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="{{ asset('assets/js/resume.min.js') }}"></script>
+    <script src="{{ asset('js/resume.min.js') }}"></script>
 
     <script>
         // bootstrap title tooltip init

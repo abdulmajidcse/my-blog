@@ -3,7 +3,7 @@
      style="background-image: linear-gradient(0deg, #000041 0%, rgb(255 36 77 / 74%) 100%);">
      <!-- Brand Logo -->
      <a href="{{ route('admin.home') }}" class="brand-link border-bottom border-light">
-         <img src="{{ $setting && $setting->app_logo ? asset('assets/uploads/' . $setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}"
+         <img src="{{ $setting && $setting->app_logo ? asset('uploads/' . $setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}"
              alt="Abdul Majid" class="brand-image img-circle elevation-3" style="opacity: .8">
          <span class="brand-text font-weight-light">{{ $setting ? $setting->app_name : config('app.name') }}</span>
      </a>

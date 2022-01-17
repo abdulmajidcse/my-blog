@@ -83,7 +83,7 @@
 
                 {{-- post thumbnail --}}
                 @if ($blogPost->image)
-                    <img src="{{ asset('assets/uploads/' . $blogPost->image) }}" alt="{{ $blogPost->name }}"
+                    <img src="{{ asset('uploads/' . $blogPost->image) }}" alt="{{ $blogPost->name }}"
                         class="img img-thumbnail w-100 mt-1">
                 @endif
 
@@ -145,7 +145,7 @@
 @push('frontend_scripts')
 
     <!-- sweet alert -->
-    <script src="{{ asset('assets/js/sweetalert2010.min.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2010.min.js') }}"></script>
 
     <script>
         function copyPostLink() {

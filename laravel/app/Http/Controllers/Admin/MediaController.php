@@ -48,7 +48,7 @@ class MediaController extends Controller
             $image_name = uniqid() . time();
             $ext = strtolower($image->getClientOriginalExtension());
             $image_full_name = $image_name . "." . $ext;
-            $upload_path = "assets/uploads/";
+            $upload_path = "uploads/";
             //upload file
             $image->move($upload_path, $image_full_name);
             // save name in table
@@ -70,9 +70,9 @@ class MediaController extends Controller
     public function destroy(Request $request, Media $media)
     {
         //delete image
-        if($media->name && file_exists('assets/uploads/'.$media->name)) {
-            echo 'assets/uploads/'.$media->name;
-            unlink('assets/uploads/'.$media->name);
+        if($media->name && file_exists('uploads/'.$media->name)) {
+            echo 'uploads/'.$media->name;
+            unlink('uploads/'.$media->name);
         }
         $media->delete();
 

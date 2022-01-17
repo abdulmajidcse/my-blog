@@ -9,25 +9,25 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <link rel="icon" type="image/jpg" href="{{ asset('assets/static_uploads/abdulmajid.jpg') }}">
+  <link rel="icon" type="image/jpg" href="{{ asset('static_uploads/abdulmajid.jpg') }}">
 
   <title>@yield('auth_title', config('app.name')) | {{ config('app.name') }}</title>
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
   <!-- Solaiman Lipi Bangla font -->
   <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
   <!-- custom css -->
-  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
 </head>
 <body class="hold-transition login-page">
@@ -37,7 +37,7 @@
     <div class="card card-outline card-primary mb-1">
       <div class="card-header text-center">
         <a href="{{ route('frontend.home') }}">
-          <img src="{{ $setting && $setting->app_logo ? asset('assets/uploads/'.$setting->app_logo) : asset('assets/static_uploads/abdulmajid.jpg') }}" alt="{{ $setting ? $setting->app_name : config('app.name') }}" width="50" height="50" class="d-inline-block align-top img-circle">
+          <img src="{{ $setting && $setting->app_logo ? asset('uploads/'.$setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}" alt="{{ $setting ? $setting->app_name : config('app.name') }}" width="50" height="50" class="d-inline-block align-top img-circle">
           <span class="h1 font-weight-bold">{{ $setting ? $setting->app_name : config('app.name') }}</span>
         </a>
       </div>
