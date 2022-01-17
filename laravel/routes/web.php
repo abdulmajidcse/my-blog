@@ -3,6 +3,7 @@
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\SettingController;
@@ -53,6 +54,11 @@ Route::prefix('auth')->group(function () {
      * Auth System
      */
     Auth::routes(['register' => false]);
+
+    // laravel filemanager routes
+    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+        Lfm::routes();
+    });
 
 
     /**
