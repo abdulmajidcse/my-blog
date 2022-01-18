@@ -8,6 +8,16 @@
     {{ 'Home' }}
 @endsection
 
+@push('frontend_styles')
+    <style>
+        .lead {
+            font-size: 1.15rem;
+            font-weight: 400;
+        }
+
+    </style>
+@endpush
+
 @section('frontend_content')
     <!-- about section -->
     <section class="p-3 p-lg-5 d-flex align-items-center" id="about">
@@ -17,7 +27,7 @@
             </h3>
 
             @if ($setting && $setting->app_description)
-                <p class="lead text-justify">{!! $setting->app_description !!}</p>
+                <div class="lead text-justify">{!! $setting->app_description !!}</div>
             @else
                 <p class="lead text-justify">Hi, I'm Md. Abdul Majid. I'm a Web Developer. I'm currently working on Laravel
                     and ReactJS. Programming is my love, not only a profession!</p>
