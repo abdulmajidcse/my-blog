@@ -57,11 +57,6 @@
 
 @section('frontend_content')
 
-    {{-- facebook comment plugin --}}
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v9.0"
-        nonce="pvTYXP2P"></script>
-
     <!-- Single Post section -->
     <section class="p-3 p-lg-5 d-flex align-items-center">
         <div class="w-100">
@@ -99,13 +94,9 @@
             <!-- /.post -->
 
             {{-- leave a comment --}}
-            <div>
+            {{-- <div>
                 <h3 class="text-muted font-weight-bold mt-1">Leave a comment</h3>
-
-                {{-- facebook comment --}}
-                <div class="fb-comments" data-href="{{ Request::url() }}" data-width="100%" data-numposts="5"></div>
-
-            </div>
+            </div> --}}
 
             @if ($blogPosts->count() > 0)
                 <!-- related posts -->
@@ -148,6 +139,25 @@
     <script src="{{ asset('js/sweetalert2010.min.js') }}"></script>
 
     <script>
+        // toastr js config
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
         function copyPostLink() {
             /* Get the text field */
             let copylink = document.getElementById("copyLinkValue");
@@ -160,11 +170,8 @@
             document.execCommand("copy");
 
             setTimeout(function() {
-                Swal.fire({
-                    icon: 'success',
-                    text: 'Copied the link.',
-                })
-            }, 1000)
+                toastr["success"]("Copied the link.");
+            }, 1000);
         }
     </script>
 
