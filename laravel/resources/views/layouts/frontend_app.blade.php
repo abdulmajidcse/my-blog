@@ -52,7 +52,7 @@
 
     <!-- left navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <a class="navbar-brand js-scroll-trigger" href="{{ route('frontend.home') }}">
             <span class="d-block d-lg-none"><img
                     src="{{ $setting && $setting->app_logo ? asset('uploads/' . $setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}"
                     class="rounded-circle" style="width: 35px;"><span class="ml-2">Abdul Majid</span></span>
@@ -68,13 +68,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger {{ Route::is('frontend.home') ? 'active' : '' }}"
-                        href="{{ Route::is('frontend.home') ? '#about' : route('frontend.home') }}">Home</a>
+                <li class="nav-item {{ Route::is('frontend.home') ? 'active' : '' }}">
+                    <a class="nav-link js-scroll-trigger" href="{{ route('frontend.home') }}">Home</a>
                 </li>
                 <li class="nav-item {{ Route::is('frontend.blog.*') ? 'active' : '' }}">
-                    <a class="nav-link js-scroll-trigger"
-                        href="{{ Route::is('frontend.home') ? '#recent-posts' : route('frontend.blog.index') }}">Blog</a>
+                    <a class="nav-link js-scroll-trigger" href="{{ route('frontend.blog.index') }}">Blog</a>
                 </li>
             </ul>
         </div>
