@@ -130,7 +130,7 @@
             let searchValue = $('#search-value').val()
 
             if (searchValue != '') {
-                let link = "{{ route('frontend.search', '') }}" + "/" + searchValue
+                let link = "{{ route('frontend.blog.search', '') }}" + "/" + searchValue
                 window.location.href = link;
             }
 

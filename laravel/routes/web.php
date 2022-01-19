@@ -12,18 +12,13 @@ use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHomeController;
 
-
 /**
  * Frontend Routes
  * For Guest
  */
 
 Route::name('frontend.')->group(function () {
-
     Route::get('/', [FrontendHomeController::class, 'index'])->name('home');
-
-    // search
-    Route::get('search/{value}', [FrontendHomeController::class, 'search'])->name('search');
 
     /**
      * Frontend Blog Routes
@@ -31,10 +26,12 @@ Route::name('frontend.')->group(function () {
     Route::prefix('blog')->name('blog.')->group(function () {
         // all post
         Route::get('/', [BlogController::class, 'index'])->name('index');
-        // all post by category
-        Route::get('category/{slug}', [BlogController::class, 'postsByCategory'])->name('category');
         // single post
         Route::get('{slug}', [BlogController::class, 'singlePost'])->name('post');
+        // all post by category
+        Route::get('category/{slug}', [BlogController::class, 'postsByCategory'])->name('category');
+        // search
+        Route::get('search/{value}', [FrontendHomeController::class, 'search'])->name('search');
     });
 });
 
@@ -78,7 +75,7 @@ Route::prefix('auth')->group(function () {
         // name to slug convert route
         Route::post('create-slug', function (Request $request) {
             // return a slug in json format
-            return response()->json(['slug' => Str::slug($request->name, '-')]);
+            return response()->json(['slug' => Str::slug($request->name)]);
         })->name('slug.create');
 
         // Blog Category Routes
