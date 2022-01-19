@@ -16,7 +16,7 @@ class TrashController extends Controller
      */
     public function indexBlog(Request $request, $type)
     {
-        if($type == 'categories') {
+        if ($type == 'categories') {
             // category trash
             $blogCategories = BlogCategory::onlyTrashed()->orderBy('id', 'desc')->get();
             return view('admin.blog_category.trash_index', ['blogCategories' => $blogCategories]);
@@ -38,7 +38,7 @@ class TrashController extends Controller
      */
     public function restoreBlog(Request $request, $type, $id)
     {
-        if($type == 'category') {
+        if ($type == 'category') {
             // restore category
             $blogCategory = BlogCategory::onlyTrashed()->findOrFail($id);
             $blogCategory->restore();
@@ -68,7 +68,7 @@ class TrashController extends Controller
      */
     public function permanentlyDestroyBlog(Request $request, $type, $id)
     {
-        if($type == 'category') {
+        if ($type == 'category') {
             // permanently delete category
             $blogCategory = BlogCategory::onlyTrashed()->findOrFail($id);
             $blogCategory->forceDelete();
@@ -78,12 +78,6 @@ class TrashController extends Controller
         } elseif ($type == 'post') {
             // permanently delete post
             $blogPost = BlogPost::onlyTrashed()->findOrFail($id);
-
-            //delete post image
-            if($blogPost->image && file_exists('uploads/'.$blogPost->image)) {
-                unlink('uploads/'.$blogPost->image);
-            }
-
             $blogPost->forceDelete();
 
             $request->session()->flash('message', 'Blog Post Permanently Deleted.');
