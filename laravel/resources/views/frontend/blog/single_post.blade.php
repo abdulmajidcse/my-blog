@@ -73,7 +73,7 @@
                             class="font-weight-bold text-bn mr-2">{{ $blogPost->BlogCategory->name }}</a>
                     @endif
                     <i class="fas fa-calendar-alt mr-1"></i> Publish: <span
-                        class="font-weight-bold">{{ $blogPost->created_at->format('F d, Y') }}</span>
+                        class="font-weight-bold">{{ $blogPost->published_at->format('F d, Y') }}</span>
                 </span>
 
                 {{-- post thumbnail --}}

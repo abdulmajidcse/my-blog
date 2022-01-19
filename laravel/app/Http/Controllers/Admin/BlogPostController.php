@@ -63,6 +63,7 @@ class BlogPostController extends Controller
             $data['status']  = 2;
         } else {
             $data['status']  = 1;
+            $data['published_at'] = now();
         }
 
         BlogPost::create($data);
@@ -117,6 +118,7 @@ class BlogPostController extends Controller
             $data['status']  = 2;
         } else {
             $data['status']  = 1;
+            !$blogPost->published_at && $data['published_at'] = now();
         }
 
         $blogPost->update($data);

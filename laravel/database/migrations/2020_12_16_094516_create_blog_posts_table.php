@@ -25,6 +25,7 @@ class CreateBlogPostsTable extends Migration
             $table->text('seo_keyword')->nullable();
             $table->text('seo_description')->nullable();
             $table->unsignedTinyInteger('status')->default(1)->comment('1=publish, 2=draft');
+            $table->timestamp('published_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

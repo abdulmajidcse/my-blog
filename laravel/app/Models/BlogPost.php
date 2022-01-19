@@ -24,6 +24,16 @@ class BlogPost extends Model
         'seo_keyword',
         'seo_description',
         'status',
+        'published_at',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'published_at' => 'datetime',
     ];
 
     public function blogCategory()
