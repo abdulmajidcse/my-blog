@@ -17,6 +17,7 @@
             @include('layouts.templates.frontend.search_form')
 
             <!-- Blog Posts -->
+            <h3 class="my-3 border-bottom">All Blog Posts</h3>
             @include('layouts.templates.frontend.all_post')
 
             <!-- Pagination -->

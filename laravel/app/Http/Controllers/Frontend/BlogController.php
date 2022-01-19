@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogPosts = BlogPost::where('status', 1)->latest('id')->paginate(24);
+        $blogPosts = BlogPost::where('status', 1)->latest('id')->paginate(25);
         if(count($blogPosts) > 0) {
             $blogCategories = BlogCategory::latest('id')->get();
             return view('frontend.blog.index', ['blogPosts' => $blogPosts, 'blogCategories' => $blogCategories]);

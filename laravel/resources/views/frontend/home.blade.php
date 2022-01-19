@@ -67,7 +67,7 @@
     <!-- recent posts section -->
     <section class="p-3 p-lg-5 d-flex align-items-center" id="recent-posts">
         <div class="w-100">
-            <h3 class="mb-5">Recent Blog Posts</h3>
+            <h3 class="mb-3">Recent Blog Posts</h3>
 
             @if ($blogPosts->count() > 0)
                 @include('layouts.templates.frontend.all_post')
