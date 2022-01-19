@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\TrashController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Admin\BlogPostController;
@@ -51,12 +52,6 @@ Route::prefix('auth')->group(function () {
      */
     Auth::routes(['register' => false]);
 
-    // laravel filemanager routes
-    Route::prefix('filemanager')->middleware('auth')->group(function () {
-        Lfm::routes();
-    });
-
-
     /**
      * Authenticate Dashboard
      * Admin Controll Panel Routes
@@ -95,4 +90,9 @@ Route::prefix('auth')->group(function () {
             });
         });
     });
+});
+
+// laravel filemanager routes
+Route::prefix('filemanager')->middleware('auth')->group(function () {
+    Lfm::routes();
 });

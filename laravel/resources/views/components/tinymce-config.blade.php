@@ -26,7 +26,7 @@
                 var y = window.innerHeight || document.documentElement.clientHeight || document
                     .getElementsByTagName('body')[0].clientHeight;
 
-                var cmsURL = editor_config.path_absolute + '/auth/filemanager?editor=' + meta.fieldname;
+                var cmsURL = editor_config.path_absolute + '/filemanager?editor=' + meta.fieldname;
                 if (meta.filetype == 'image') {
                     cmsURL = cmsURL + "&type=Images";
                 } else {
