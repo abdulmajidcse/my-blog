@@ -100,7 +100,7 @@
 
             @if ($blogPosts->count() > 0)
                 <!-- related posts -->
-                <h2 class="my-3">Related Posts</h2>
+                <h3 class="my-3">Related Posts</h3>
                 @include('layouts.templates.frontend.all_post')
             @endif
 
