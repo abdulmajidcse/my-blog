@@ -39,9 +39,11 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    <div id="image_preview" class="mt-2" style="width: 5rem;">
-                        <img src="{{ $blogPost->image ? $blogPost->image : $noPreviewPhoto }}" alt="No Preview"
-                            class="img w-100">
+                    <div id="image_preview" class="magnific_image_container mt-2" style="width: 5rem;">
+                        <a href="{{ $blogPost->image ? $blogPost->image : $noPreviewPhoto }}">
+                            <img src="{{ $blogPost->image ? $blogPost->image : $noPreviewPhoto }}" alt="No Preview"
+                                class="img w-100">
+                        </a>
                     </div>
                 </div>
 
@@ -96,8 +98,8 @@
                     <div class="card-body pad">
                         <textarea name="content" class="editor form-control @error('content') is-invalid @enderror"
                             placeholder="What's on your mind?" required>
-                                {{ $blogPost->content }}
-                              </textarea>
+                                    {{ $blogPost->content }}
+                                  </textarea>
                         @error('content')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
