@@ -120,7 +120,7 @@
             <div class="container">
                 <!-- To the right -->
                 <div class="float-md-right text-white">
-                    <span>Developed by <a href="https://facebook.com/abdulmajidcse"
+                    <span>Developed by <a href="https://facebook.com/abdulmajidcse" target="_blank"
                             class="text-white border-bottom">Abdul Majid</a>.</span>
                 </div>
                 <!-- Default to the left -->
