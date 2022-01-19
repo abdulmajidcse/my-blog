@@ -15,9 +15,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $blogPosts = BlogPost::where('status', 1)->latest('id')->take(6)->get();
-        $blogCategories = BlogCategory::latest('id')->get();
-        return view('frontend.home', ['blogPosts' => $blogPosts, 'blogCategories' => $blogCategories]);
+        $data['blogPosts'] = BlogPost::where('status', 1)->latest('id')->take(6)->get();
+        $data['blogCategories'] = BlogCategory::latest('id')->get();
+
+        return view('frontend.home', $data);
     }
 
      /**

@@ -40,52 +40,33 @@ class BlogPostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'blog_category_id' => 'required|numeric',
-            'name'             => 'required|string|unique:blog_posts',
-            'slug'             => 'required|string|unique:blog_posts',
-            'image'            => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
-            'content'          => 'required|string',
-            'seo_keyword'      => 'nullable|string',
-            'seo_description'  => 'nullable|string',
-        ],
-        [
-            'blog_category_id.required' => 'The post category field is required.',
-            'blog_category_id.numeric'  => 'The post category must be a number.',
-        ]);
+        $request->validate(
+            [
+                'blog_category_id' => 'required|numeric',
+                'name'             => 'required|string|unique:blog_posts',
+                'slug'             => 'required|string|unique:blog_posts',
+                'image'            => 'nullable|url',
+                'content'          => 'required|string',
+                'seo_keyword'      => 'nullable|string',
+                'seo_description'  => 'nullable|string',
+            ],
+            [
+                'blog_category_id.required' => 'The post category field is required.',
+                'blog_category_id.numeric'  => 'The post category must be a number.',
+            ]
+        );
 
-        $blogPost                   = new BlogPost();
-        $blogPost->blog_category_id = $request->blog_category_id;
-        $blogPost->name             = $request->name;
-        $blogPost->slug             = Str::slug($request->slug, '-');
-        $blogPost->content          = $request->content;
-        $blogPost->seo_keyword      = $request->seo_keyword;
-        $blogPost->seo_description  = $request->seo_description;
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->slug);
 
-        // image upload and store name in table
-        if($request->file('image')) {
-            $image = $request->file('image');
-            $image_name = uniqid() . time();
-            $ext = strtolower($image->getClientOriginalExtension());
-            $image_full_name = $image_name . "." . $ext;
-            $upload_path = "uploads/";
-            //upload file
-            $image->move($upload_path, $image_full_name);
-            // save name in table
-            $blogPost->image = $image_full_name;
-        }
-
-        /**
-         * Post save as draft
-         */
-        if($request->save_as_draft) {
-            $blogPost->status  = 2;
+        if ($request->save_as_draft) {
+            $data['status']  = 2;
         } else {
-            $blogPost->status  = 1;
+            $data['status']  = 1;
         }
 
-        $blogPost->save();
-        
+        BlogPost::create($data);
+
         $request->session()->flash('message', 'Blog Post Saved.');
         $request->session()->flash('alert-type', 'success');
         return redirect()->back();
@@ -112,57 +93,34 @@ class BlogPostController extends Controller
      */
     public function update(Request $request, BlogPost $blogPost)
     {
-        $request->validate([
-            'blog_category_id' => 'required|numeric',
-            'name'             => 'required|string|unique:blog_posts,name,'.$blogPost->id,
-            'slug'             => 'required|string|unique:blog_posts,slug,'.$blogPost->id,
-            'image'            => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
-            'content'          => 'required|string',
-            'seo_keyword'      => 'nullable|string',
-            'seo_description'  => 'nullable|string',
-        ],
-        [
-            'blog_category_id.required' => 'The post category field is required.',
-            'blog_category_id.numeric'  => 'The post category must be a number.',
-        ]);
+        // return $request;
+        $request->validate(
+            [
+                'blog_category_id' => 'required|numeric',
+                'name'             => 'required|string|unique:blog_posts,name,' . $blogPost->id,
+                'slug'             => 'required|string|unique:blog_posts,slug,' . $blogPost->id,
+                'image'            => 'nullable|url',
+                'content'          => 'required|string',
+                'seo_keyword'      => 'nullable|string',
+                'seo_description'  => 'nullable|string',
+            ],
+            [
+                'blog_category_id.required' => 'The post category field is required.',
+                'blog_category_id.numeric'  => 'The post category must be a number.',
+            ]
+        );
 
-        $blogPost->blog_category_id = $request->blog_category_id;
-        $blogPost->name             = $request->name;
-        $blogPost->slug             = Str::slug($request->slug, '-');
-        $blogPost->content          = $request->content;
-        $blogPost->seo_keyword      = $request->seo_keyword;
-        $blogPost->seo_description  = $request->seo_description;
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->slug);
 
-        // image upload and store name in table
-        if($request->file('image')) {
-            $image = $request->file('image');
-            $image_name = uniqid() . time();
-            $ext = strtolower($image->getClientOriginalExtension());
-            $image_full_name = $image_name . "." . $ext;
-            $upload_path = "uploads/";
-            //upload file
-            $image->move($upload_path, $image_full_name);
-
-            //delete old image
-            if($blogPost->image && file_exists('uploads/'.$blogPost->image)) {
-                unlink('uploads/'.$blogPost->image);
-            }
-
-            // save name in table
-            $blogPost->image = $image_full_name;
-        }
-
-        /**
-         * Post save as draft
-         */
-        if($request->save_as_draft) {
-            $blogPost->status  = 2;
+        if ($request->save_as_draft) {
+            $data['status']  = 2;
         } else {
-            $blogPost->status  = 1;
+            $data['status']  = 1;
         }
 
-        $blogPost->save();
-        
+        $blogPost->update($data);
+
         $request->session()->flash('message', 'Blog Post Saved.');
         $request->session()->flash('alert-type', 'success');
         return redirect()->back();

@@ -13,8 +13,7 @@
         <div class="card-body">
 
             {{-- Setting Form --}}
-            <form role="form" action="{{ route('admin.settings.update', $setting) }}" method="POST"
-                enctype="multipart/form-data">
+            <form role="form" action="{{ route('admin.settings.update', $setting) }}" method="POST">
                 @csrf
                 @method('put')
 
@@ -54,19 +53,28 @@
 
                 <div class="form-group">
                     <label for="app_logo">App Logo</label>
-                    <input type="file" class="form-control-file @error('app_logo') is-invalid @enderror" id="app_logo"
-                        name="app_logo">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <a id="app_logo_lfm" data-input="app_logo" data-preview="app_logo_preview"
+                                class="btn btn-primary text-white">
+                                <i class="fas fa-image"></i> Choose
+                            </a>
+                        </span>
+                        <input readonly type="url" name="app_logo" id="app_logo"
+                            value="{{ $setting->app_logo ? $setting->app_logo : '' }}"
+                            class="form-control @error('app_logo') is-invalid @enderror" />
+                    </div>
                     @error('app_logo')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback d-block" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    @if ($setting->app_logo)
-                        <div class="mt-2" style="width: 200px;">
-                            <img src="{{ asset('uploads/' . $setting->app_logo) }}" alt="App Logo"
+                    <div id="app_logo_preview" class="magnific_image_container mt-2" style="width: 5rem;">
+                        <a href="{{ $setting->app_logo ? $setting->app_logo : $noPreviewPhoto }}">
+                            <img src="{{ $setting->app_logo ? $setting->app_logo : $noPreviewPhoto }}" alt="No Preview"
                                 class="img w-100">
-                        </div>
-                    @endif
+                        </a>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -178,19 +186,28 @@
 
                 <div class="form-group">
                     <label for="seo_image">SEO Image</label>
-                    <input type="file" class="form-control-file @error('seo_image') is-invalid @enderror" id="seo_image"
-                        name="seo_image">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <a id="seo_image_lfm" data-input="seo_image" data-preview="seo_image_preview"
+                                class="btn btn-primary text-white">
+                                <i class="fas fa-image"></i> Choose
+                            </a>
+                        </span>
+                        <input readonly type="url" name="seo_image" id="seo_image"
+                            value="{{ $setting->seo_image ? $setting->seo_image : '' }}"
+                            class="form-control @error('seo_image') is-invalid @enderror" />
+                    </div>
                     @error('seo_image')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback d-block" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
-                    @if ($setting->seo_image)
-                        <div class="mt-2" style="width: 200px;">
-                            <img src="{{ asset('uploads/' . $setting->seo_image) }}" alt="seo Image"
+                    <div id="seo_image_preview" class="magnific_image_container mt-2" style="width: 5rem;">
+                        <a href="{{ $setting->seo_image ? $setting->seo_image : $noPreviewPhoto }}">
+                            <img src="{{ $setting->seo_image ? $setting->seo_image : $noPreviewPhoto }}" alt="No Preview"
                                 class="img w-100">
-                        </div>
-                    @endif
+                        </a>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -203,3 +220,10 @@
     </div>
 
 @endsection
+
+@push('admin_scripts')
+    <script>
+        $('#seo_image_lfm').filemanager('image');
+        $('#app_logo_lfm').filemanager('image');
+    </script>
+@endpush

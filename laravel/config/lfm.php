@@ -94,11 +94,11 @@ return [
 
     'rename_duplicates'        => false,
 
-    'alphanumeric_filename'    => false,
+    'alphanumeric_filename'    => true,
 
-    'alphanumeric_directory'   => false,
+    'alphanumeric_directory'   => true,
 
-    'should_validate_size'     => false,
+    'should_validate_size'     => true,
 
     'should_validate_mime'     => true,
 
@@ -117,7 +117,7 @@ return [
      */
 
     // If true, image thumbnails would be created during upload
-    'should_create_thumbnails' => true,
+    'should_create_thumbnails' => false,
 
     'thumb_folder_name'        => 'thumbs',
 

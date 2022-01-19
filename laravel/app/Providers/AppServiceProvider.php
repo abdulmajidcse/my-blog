@@ -27,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // share data in all routes
         $data['setting'] = Setting::first();
+        $data['noPreviewPhoto'] = asset('photos/no-preview-photo.jpg');
         View::share($data);
     }
 }

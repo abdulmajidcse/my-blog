@@ -16,7 +16,7 @@ class SettingController extends Controller
     public function index()
     {
         $setting = Setting::first();
-        if($setting) {
+        if ($setting) {
             return view('admin.setting.edit', ['setting' => $setting]);
         }
 
@@ -36,7 +36,7 @@ class SettingController extends Controller
             'app_name'        => 'required|string',
             'app_title'       => 'required|string',
             'app_description' => 'nullable|string',
-            'app_logo'        => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
+            'app_logo'        => 'nullable|url',
             'facebook_link'   => 'nullable|url',
             'youtube_link'    => 'nullable|url',
             'linkedin_link'   => 'nullable|url',
@@ -46,42 +46,13 @@ class SettingController extends Controller
             'bing_verification_code' => 'nullable|string',
             'seo_keyword'     => 'nullable|string',
             'seo_description' => 'nullable|string',
-            'seo_image'       => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
+            'seo_image'       => 'nullable|url',
         ]);
 
         $data = $request->all();
-
-        // app logo upload and store name in table
-        if($request->file('app_logo')) {
-            $image = $request->file('app_logo');
-            $image_name = uniqid() . time();
-            $ext = strtolower($image->getClientOriginalExtension());
-            $image_full_name = $image_name . "." . $ext;
-            $upload_path = "uploads/";
-            //upload file
-            $image->move($upload_path, $image_full_name);
-            // save name in table
-            $data['app_logo'] = $image_full_name;
-        }
-
-        // seo image upload and store name in table
-        if($request->file('seo_image')) {
-            $image = $request->file('seo_image');
-            $image_name = uniqid() . time();
-            $ext = strtolower($image->getClientOriginalExtension());
-            $image_full_name = $image_name . "." . $ext;
-            $upload_path = "uploads/";
-            //upload file
-            $image->move($upload_path, $image_full_name);
-            // save name in table
-            $data['seo_image'] = $image_full_name;
-        }
-
         Setting::create($data);
-        
-        $request->session()->flash('message', 'Setting Saved.');
-        $request->session()->flash('alert-type', 'success');
-        return redirect()->back();
+
+        return redirect()->back()->with(['alert-type' => 'success', 'message' => 'Setting updated.']);
     }
 
     /**
@@ -97,7 +68,7 @@ class SettingController extends Controller
             'app_name'        => 'required|string',
             'app_title'       => 'required|string',
             'app_description' => 'nullable|string',
-            'app_logo'        => 'nullable|image|mimes: jpg,jpeg,png|max:5000',
+            'app_logo'        => 'nullable|url',
             'facebook_link'   => 'nullable|url',
             'youtube_link'    => 'nullable|url',
             'linkedin_link'   => 'nullable|url',
@@ -107,53 +78,12 @@ class SettingController extends Controller
             'bing_verification_code' => 'nullable|string',
             'seo_keyword'     => 'nullable|string',
             'seo_description' => 'nullable|string',
-            'seo_image'       => 'nullable|image|mimes:jpg,jpeg,png|max:5000',
+            'seo_image'       => 'nullable|url',
         ]);
 
         $data = $request->all();
+        $setting->fill($data)->save();
 
-        // app logo upload and store name in table
-        if($request->file('app_logo')) {
-            $image = $request->file('app_logo');
-            $image_name = uniqid() . time();
-            $ext = strtolower($image->getClientOriginalExtension());
-            $image_full_name = $image_name . "." . $ext;
-            $upload_path = "uploads/";
-            //upload file
-            $image->move($upload_path, $image_full_name);
-
-            //delete old app_logo
-            if($setting->app_logo && file_exists('uploads/'.$setting->app_logo)) {
-                unlink('uploads/'.$setting->app_logo);
-            }
-
-            // save name in table
-            $data['app_logo'] = $image_full_name;
-        }
-
-        // seo image upload and store name in table
-        if($request->file('seo_image')) {
-            $image = $request->file('seo_image');
-            $image_name = uniqid() . time();
-            $ext = strtolower($image->getClientOriginalExtension());
-            $image_full_name = $image_name . "." . $ext;
-            $upload_path = "uploads/";
-            //upload file
-            $image->move($upload_path, $image_full_name);
-
-            //delete old seo_image
-            if($setting->seo_image && file_exists('uploads/'.$setting->seo_image)) {
-                unlink('uploads/'.$setting->seo_image);
-            }
-
-            // save name in table
-            $data['seo_image'] = $image_full_name;
-        }
-
-        $setting->update($data);
-        
-        $request->session()->flash('message', 'Setting Saved.');
-        $request->session()->flash('alert-type', 'success');
-        return redirect()->back();
+        return redirect()->back()->with(['alert-type' => 'success', 'message' => 'Setting updated.']);
     }
 }
