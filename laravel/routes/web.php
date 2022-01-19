@@ -32,7 +32,7 @@ Route::name('frontend.')->group(function () {
         // all post by category
         Route::get('category/{slug}', [BlogController::class, 'postsByCategory'])->name('category');
         // search
-        Route::get('search/{value}', [FrontendHomeController::class, 'search'])->name('search');
+        Route::get('search/{value}', [FrontendHomeController::class, 'search'])->where('value', '.*')->name('search');
     });
 });
 
