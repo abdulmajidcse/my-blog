@@ -78,7 +78,7 @@
 
                 {{-- post thumbnail --}}
                 @if ($blogPost->image)
-                    <img src="{{ asset('uploads/' . $blogPost->image) }}" alt="{{ $blogPost->name }}"
+                    <img src="{{ $blogPost->image }}" alt="{{ $blogPost->name }}"
                         class="img img-thumbnail w-100 mt-1">
                 @endif
 

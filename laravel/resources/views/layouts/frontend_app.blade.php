@@ -19,7 +19,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" type="image/jpg"
-        href="{{ $setting && $setting->app_logo ? asset('uploads/' . $setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}">
+        href="{{ $setting && $setting->app_logo ? $setting->app_logo : $noPreviewPhoto }}">
 
     <title>@yield('frontend_title', 'Web Developer') | {{ $setting ? $setting->app_name : config('app.name') }}
     </title>
@@ -54,11 +54,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="{{ route('frontend.home') }}">
             <span class="d-block d-lg-none"><img
-                    src="{{ $setting && $setting->app_logo ? asset('uploads/' . $setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}"
+                    src="{{ $setting && $setting->app_logo ? $setting->app_logo : $noPreviewPhoto }}"
                     class="rounded-circle" style="width: 35px;"><span class="ml-2">Abdul Majid</span></span>
             <span class="d-none d-lg-block">
                 <img class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                    src="{{ $setting && $setting->app_logo ? asset('uploads/' . $setting->app_logo) : asset('static_uploads/abdulmajid.jpg') }}"
+                    src="{{ $setting && $setting->app_logo ? $setting->app_logo : $noPreviewPhoto }}"
                     alt="">
             </span>
         </a>
