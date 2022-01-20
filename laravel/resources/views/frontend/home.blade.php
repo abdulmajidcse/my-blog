@@ -22,8 +22,12 @@
     <!-- about section -->
     <section class="p-3 p-lg-5 d-flex align-items-center" id="about">
         <div class="w-100">
-            <h3 class="mb-3">Hi, I'm <span
-                    class="text-primary">{{ $setting ? $setting->app_name : config('app.name') }}!</span></h3>
+            <div class="mb-3">
+                <h2 class="mb-0 text-primary">{{ $setting ? $setting->app_name : config('app.name') }}</h2>
+                @if ($setting)
+                    <p>{{ $setting->app_title }}</p>
+                @endif
+            </div>
 
             @if ($setting && $setting->app_description)
                 <div class="lead text-justify">{!! $setting->app_description !!}</div>
